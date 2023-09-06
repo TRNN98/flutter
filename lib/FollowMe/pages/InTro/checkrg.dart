@@ -82,8 +82,8 @@ class CheckrgState extends State<Checkrg> {
             borderRadius: BorderRadius.circular(25.0),
             gradient: LinearGradient(
               colors: <Color>[
-                MyColor.color('button1'),
-                MyColor.color('button1'),
+                MyColor.color('w'),
+                MyColor.color('w'),
               ],
             ),
           ),
@@ -100,7 +100,7 @@ class CheckrgState extends State<Checkrg> {
               child: Text(
                 'ไม่ใช่',
                 textScaleFactor: MyClass.fontSizeApp(),
-                style: CustomTextStyle.defaultTxt1(context, 5, 'w'),
+                style: CustomTextStyle.defaultTxt1(context, 5, 'R'),
               ),
             ),
           ),
@@ -115,8 +115,8 @@ class CheckrgState extends State<Checkrg> {
             borderRadius: BorderRadius.circular(25.0),
             gradient: LinearGradient(
               colors: <Color>[
-                MyColor.color('buttongra'),
-                MyColor.color('buttongra1'),
+                MyColor.color('bl1'),
+                MyColor.color('w'),
               ],
             ),
           ),
@@ -133,7 +133,7 @@ class CheckrgState extends State<Checkrg> {
               child: Text(
                 '   ใช่   ',
                 textScaleFactor: MyClass.fontSizeApp(),
-                style: CustomTextStyle.buttonTxt(context, 5),
+                style: CustomTextStyle.defaultTxt1(context, 5, "bl"),
               ),
             ),
           ),

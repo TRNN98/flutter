@@ -112,12 +112,12 @@ class LoginState extends State<Login> {
                                 textScaleFactor: MyClass.fontSizeApp(),
                                 textAlign: TextAlign.center,
                                 style: CustomTextStyle.dataHeadTitleCTxt(
-                                    context, 3, 'Go')),
+                                    context, 7, 'bl')),
                             Text(MyClass.company('en'),
                                 textAlign: TextAlign.center,
                                 textScaleFactor: MyClass.fontSizeApp(),
                                 style: CustomTextStyle.dataHeadTitleCTxt(
-                                    context, -2, 'Go')),
+                                    context, -1, 'bl')),
                           ],
                         ),
                       ),

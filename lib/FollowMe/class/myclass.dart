@@ -185,8 +185,9 @@ class MyClass {
   }
 
   static company(data) {
-    var th = 'สหกรณ์ออมทรัพย์ครูอุดรธานี จำกัด';
-    var en = "UDONTHANI TEACHER SAVING\nCOOPERATIVE LIMITED";
+    var th = 'สหกรณ์ออมทรัพย์\nพนักงานการประปานครหลวง จำกัด';
+    var en =
+        "SAVING COOPERATIVE OF METROPOLITAN\n WATERWORKS AUTHORITY LIMITED";
     var en1 =
         "PHRAJOMKLAO PHRANAKORNNUA SAVINGS\nAND CREDIT COOPERATIVE LIMTED";
     if (data == 'th') {
@@ -520,7 +521,7 @@ class MyClass {
   static backGround() {
     return const BoxDecoration(
       image: DecorationImage(
-        image: AssetImage("assets/imgs/bg1.jpeg"),
+        image: AssetImage("assets/imgs/bg1.jpg"),
         fit: BoxFit.cover,
       ),
     );

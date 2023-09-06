@@ -57,21 +57,27 @@ class SeandfoState extends State<Pdpa> {
         body: Stack(
           children: [
             Container(
-              color: Colors.grey[100],
+              decoration: MyWidget.bgApp(),
+              // color: Colors.red[60],
               height: double.infinity,
               width: double.infinity,
               child: SafeArea(
                 child: Column(
                   children: [
-                    Text(
-                      "เงื่อนไขการลงทะเบียน",
-                      textScaleFactor: MyClass.fontSizeApp(),
-                      style: CustomTextStyle.defaultTxt(context, 8),
-                    ),
-                    Text(
-                      "Registration Condition",
-                      textScaleFactor: MyClass.fontSizeApp(),
-                      style: CustomTextStyle.defaultTxt(context, 8),
+                    Stack(
+                      children: [
+                        Text(
+                          "เงื่อนไขการลงทะเบียน",
+                          textScaleFactor: MyClass.fontSizeApp(),
+                          style: CustomTextStyle.defaultTxt1(context, 15, "w"),
+                        ),
+                        Text(
+                          "เงื่อนไขการลงทะเบียน",
+                          textScaleFactor: MyClass.fontSizeApp(),
+                          style: CustomTextStyle.defaultTxtPaint(
+                              context, 15, "bl", -1),
+                        ),
+                      ],
                     ),
                     lineSizedBox(context, 0),
                     Expanded(
@@ -157,7 +163,7 @@ class SeandfoState extends State<Pdpa> {
           Transform.scale(
             scale: tabletMode ? 2.0 : 1.0,
             child: Checkbox(
-              activeColor: MyColor.color('buttongra'),
+              activeColor: MyColor.color('divider'),
               value: checkbox,
               onChanged: checkbutton
                   ? (bool? value) {
@@ -195,12 +201,33 @@ class SeandfoState extends State<Pdpa> {
             height: displayHeight(context) * 0.06,
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(25.0),
-              gradient: LinearGradient(
-                colors: <Color>[
-                  MyColor.color('buttongra'),
-                  MyColor.color('buttongra1'),
-                ],
+              color: MyColor.color('w'),
+            ),
+            padding: const EdgeInsets.only(right: 5),
+            child: InkWell(
+              onTap: () {
+                Platform.isIOS
+                    ? FlutterExitApp.exitApp(iosForceExit: true)
+                    : FlutterExitApp.exitApp();
+              },
+              child: Center(
+                child: Text(
+                  Language.pdpa('pdpacancel', lgs),
+                  textScaleFactor: MyClass.fontSizeApp(),
+                  style: CustomTextStyle.defaultTxt1(context, 5, 'R'),
+                ),
               ),
+            ),
+          ),
+          const Expanded(
+            child: Text(''),
+          ),
+          Container(
+            width: displayWidth(context) * 0.4,
+            height: displayHeight(context) * 0.06,
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(25.0),
+              color: MyColor.color('G'),
             ),
             padding: const EdgeInsets.only(right: 5),
             child: InkWell(
@@ -226,32 +253,6 @@ class SeandfoState extends State<Pdpa> {
                   Language.pdpa('pdpasave', lgs),
                   textScaleFactor: MyClass.fontSizeApp(),
                   style: CustomTextStyle.buttonTxt(context, 5),
-                ),
-              ),
-            ),
-          ),
-          const Expanded(
-            child: Text(''),
-          ),
-          Container(
-            width: displayWidth(context) * 0.4,
-            height: displayHeight(context) * 0.06,
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(25.0),
-              color: MyColor.color('R'),
-            ),
-            padding: const EdgeInsets.only(right: 5),
-            child: InkWell(
-              onTap: () {
-                Platform.isIOS
-                    ? FlutterExitApp.exitApp(iosForceExit: true)
-                    : FlutterExitApp.exitApp();
-              },
-              child: Center(
-                child: Text(
-                  Language.pdpa('pdpacancel', lgs),
-                  textScaleFactor: MyClass.fontSizeApp(),
-                  style: CustomTextStyle.defaultTxt1(context, 5, 'w'),
                 ),
               ),
             ),

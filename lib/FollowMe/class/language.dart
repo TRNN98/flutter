@@ -1305,7 +1305,7 @@ class Language {
       return l == 'en' ? "Accept" : "ยอมรับ";
     }
     if (m == 'pdpacancel') {
-      return l == 'en' ? "UnAccept" : "ยกเลิก";
+      return l == 'en' ? "UnAccept" : "ไม่ยอมรับ";
     }
     if (m == 'alertpdpa') {
       return l == 'en'

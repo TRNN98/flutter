@@ -25,9 +25,9 @@ class MyColor {
     } else if (data.toString() == 'buttonnext') {
       return const Color(0xFFBA8C26);
     } else if (data.toString() == 'slide1') {
-      return Colors.white;
+      return const Color(0xFF0051CA);
     } else if (data.toString() == 'slide2') {
-      return const Color(0xFFBA8C26);
+      return Color.fromARGB(255, 251, 251, 251);
     } else if (data.toString() == 'imgprofile') {
       return const Color(0xFFF5D512);
     } else if (data.toString() == 'detailhead') {
@@ -70,6 +70,10 @@ class MyColor {
       return Colors.white;
     } else if (data.toString() == 'w') {
       return const Color(0xFFFFFFFF);
+    } else if (data.toString() == 'bl') {
+      return const Color(0xFF0051CA);
+    }else if (data.toString() == 'bl1') {
+      return const Color(0xFF63DEFF);
     }
   }
 

@@ -74,9 +74,9 @@ class CustomTextStyle {
 
     return Theme.of(context).textTheme.bodyLarge!.copyWith(
           fontFamily: "prompt",
-          fontWeight: FontWeight.w500,
+          fontWeight: FontWeight.bold,
           // fontSize: displayWidth(context) * 0.06 + number,
-          color: const Color(0xFFBA8C26),
+          color: const Color(0xFF0051CA),
 
           fontSize: tabletMode
               ? displayWidth(context) * 0.06 + number
@@ -92,7 +92,7 @@ class CustomTextStyle {
           fontFamily: "prompt",
           fontWeight: FontWeight.w500,
           // fontSize: displayWidth(context) * 0.07 + number,
-          color: const Color(0xFFD27A28),
+          color: const Color(0xFF0051CA),
           shadows: <Shadow>[
             const Shadow(
                 color: Color(0xFF000000), offset: Offset.zero, blurRadius: 1.0)
@@ -112,7 +112,7 @@ class CustomTextStyle {
           fontFamily: "prompt",
           fontWeight: FontWeight.w500,
           // fontSize: displayWidth(context) * 0.06 + number,
-          color: const Color(0xFFBA8C26),
+          color: const Color(0xFF0051CA),
 
           fontSize: tabletMode
               ? displayWidth(context) * 0.06 + number
@@ -200,7 +200,7 @@ class CustomTextStyle {
 
     return Theme.of(context).textTheme.bodyLarge!.copyWith(
           fontFamily: "prompt",
-          fontWeight: FontWeight.w500,
+          fontWeight: FontWeight.bold,
           // fontSize: displayWidth(context) * 0.04 + number,
           fontSize: tabletMode
               ? displayWidth(context) * 0.03 + number
@@ -400,7 +400,7 @@ class CustomTextStyle {
         fontSize: tabletMode
             ? displayWidth(context) * 0.030 + number
             : displayWidth(context) * 0.040 + number,
-        color: const Color(0xFFBA8C26));
+        color: const Color(0xFF0051CA));
   }
 
   static ClipPath headcolor(BuildContext context, double number) {
@@ -434,6 +434,24 @@ class CustomTextStyle {
         fontSize: displayWidth(context) * 0.1 + number,
         // fontSize: tabletMode ? 25 + number : 15 + number,
         color: const Color(0xFFFF0000));
+  }
+
+  static TextStyle defaultTxtPaint(
+      BuildContext context, double number, Color, double Width) {
+    bool tabletMode = MediaQuery.of(context).size.width > 600;
+
+    return Theme.of(context).textTheme.bodyText1!.copyWith(
+        fontFamily: "prompt",
+        fontWeight: FontWeight.bold,
+        // fontSize: displayWidth(context) * (Platform.isAndroid ? 0.035 : 0.040) +
+        //     number,
+        fontSize: tabletMode
+            ? displayWidth(context) * 0.030 + number
+            : displayWidth(context) * 0.040 + number,
+        foreground: Paint()
+          ..style = PaintingStyle.stroke
+          ..strokeWidth = Width as double
+          ..color = MyColor.color(Color));
   }
 }
 
