@@ -23,7 +23,7 @@ class MyColor {
     } else if (data.toString() == 'buttonRegis') {
       return const Color(0xFFF5AF0B);
     } else if (data.toString() == 'buttonnext') {
-      return const Color(0xFFBA8C26);
+      return const Color(0xFF979797);
     } else if (data.toString() == 'slide1') {
       return Colors.white;
     } else if (data.toString() == 'slide2') {
@@ -70,6 +70,8 @@ class MyColor {
       return Colors.white;
     } else if (data.toString() == 'w') {
       return const Color(0xFFFFFFFF);
+    } else if (data.toString() == 'TxtBlue') {
+      return const Color(0xFF003B93);
     }
   }
 

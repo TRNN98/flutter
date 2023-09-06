@@ -84,6 +84,9 @@ class Language {
     if (m == 'welfarereceive') {
       return l == 'en' ? "Welfare Receive" : "สวัสดิการ สคส 60 ปี";
     }
+    if (m == 'requestforwelfare') {
+      return l == '' ? "ขอทุนสวัสดิการ" : "ขอทุนสวัสดิการ";
+    }
   }
 
   static shareLg(m, l) {
