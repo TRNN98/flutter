@@ -42,6 +42,11 @@ final List<Menu> menus = <Menu>[
       title: "dividend", img: 'assets/imgs/dividend.png', page: '/dividend'),
   const Menu(title: "gain", img: 'assets/imgs/gain.png', page: '/gain'),
   const Menu(
+      title: "requestforwelfare",
+      img: 'assets/imgs/RequestWelfare.png',
+      page: '/requestforwelfare'),
+
+  /* const Menu(
       title: "welfare", img: 'assets/imgs/welfare.png', page: '/welfare'),
   const Menu(
       title: "cremation", img: 'assets/imgs/cremation.png', page: '/cremation'),
@@ -61,7 +66,7 @@ final List<Menu> menus = <Menu>[
   const Menu(
       title: "grouplife", img: 'assets/imgs/grouplife.png', page: '/grouplife'),
   const Menu(
-      title: "welmaster", img: 'assets/imgs/welmaster.png', page: '/welmaster'),
+      title: "welmaster", img: 'assets/imgs/welmaster.png', page: '/welmaster'),*/
   // const Menu(title: "", img: '', page: ''),
 ];
 

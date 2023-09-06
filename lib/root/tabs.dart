@@ -19,9 +19,9 @@ import 'package:udtscc/FollowMe/pages/news/news.dart';
 import 'package:udtscc/FollowMe/pages/offset/offset.dart';
 import 'package:udtscc/FollowMe/pages/paymentbirthday/paymentbirthday.dart';
 import 'package:udtscc/FollowMe/pages/profile/profile.dart';
+import 'package:udtscc/FollowMe/pages/requestforwelfare/requestforwelfare.dart';
 import 'package:udtscc/FollowMe/pages/retire/retire.dart';
 import 'package:udtscc/FollowMe/pages/share/share.dart';
-import 'package:udtscc/FollowMe/pages/welfare/welfare.dart';
 import 'package:udtscc/FollowMe/pages/welfarereceive/welfarereceive.dart';
 import 'package:udtscc/FollowMe/pages/welmaster/welmaster.dart';
 import 'package:udtscc/FollowMe/services/network.dart';
@@ -40,6 +40,7 @@ import 'package:flutter/material.dart';
 
 import 'dart:async';
 
+import '../FollowMe/pages/requestforwelfare/welfare.dart';
 import '../promoney/pages/banks/tran_bank/tran_bank.dart';
 import '../promoney/pages/banks/withdraw_bank/withdraw_bank.dart';
 import '../promoney/pages/banks/withdraw_loan/withdraw_loan.dart';
@@ -340,7 +341,8 @@ class TabsState extends State<Tabs> with SingleTickerProviderStateMixin {
       //     ),
       '/trackStatus': (BuildContext context) => TrackStatus(
           param: widget.param, imei: getdevicealls.model.toString()),
-      // '/editprofile': (BuildContext context) => EditProfile(param: param),
+      '/requestforwelfare': (BuildContext context) =>
+          RequestWelfare(widget.param),
     };
 
     return MaterialApp(
