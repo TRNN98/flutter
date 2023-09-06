@@ -66,7 +66,7 @@ class CustomTextStyle {
             ? displayWidth(context) * 0.04 + number
             : displayWidth(context) * 0.06 + number,
         // fontSize: tabletMode ? 40 + number : 25 + number,
-        color: const Color(0xFFFFFFFF));
+        color: const Color(0xFF2192FF));
   }
 
   static TextStyle titleIntoTxt(BuildContext context, double number) {

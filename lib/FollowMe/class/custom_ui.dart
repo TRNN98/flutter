@@ -91,6 +91,9 @@ class CustomUI {
   static AppBar appbarUi(title, fontsizeapps, context) {
     bool tabletMode = MediaQuery.of(context).size.width > 600;
     return AppBar(
+      iconTheme: const IconThemeData(
+        color: Color(0xFF2192FF),
+      ),
       centerTitle: true,
       bottom: PreferredSize(
         preferredSize: Size.fromHeight(Platform.isAndroid
@@ -100,23 +103,7 @@ class CustomUI {
                 : 0),
         child: Container(),
       ),
-      shadowColor: const Color(0x99000000),
-      elevation: 10,
-      flexibleSpace: Container(
-        decoration: BoxDecoration(
-          borderRadius: const BorderRadius.only(
-              bottomLeft: Radius.circular(25),
-              bottomRight: Radius.circular(25)),
-          gradient: LinearGradient(
-            begin: Alignment.topCenter,
-            end: Alignment.bottomCenter,
-            colors: <Color>[
-              MyColor.color('buttongra'),
-              MyColor.color('buttongra1'),
-            ],
-          ),
-        ),
-      ),
+      shadowColor: Color.fromARGB(0, 0, 0, 0),
       backgroundColor: Colors.transparent,
       title: Text(title,
           textScaleFactor: MyClass.blocFontSizeApp(fontsizeapps),
