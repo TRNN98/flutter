@@ -54,9 +54,6 @@ class _RequestWelfareState extends State<RequestWelfare>
             child: SafeArea(
               child: Column(
                 children: <Widget>[
-                  // lineSizedBox(context, -15),
-                  // CustomUI.appbarDetailUi(
-                  //     'assets/imgs/RequestWelfare.png', context),
                   lineSizedBox(context, -15),
                   const SizedBox(
                     height: 10,
@@ -131,17 +128,21 @@ class _RequestWelfareState extends State<RequestWelfare>
                                 ),
                               ],
                             ),
+                            lineSizedBox(context, -15),
                             Column(
+                              mainAxisAlignment: MainAxisAlignment.start,
+                              crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 Text("สวัสดิการที่ได้รับ",
                                     textScaleFactor:
                                         MyClass.blocFontSizeApp(_fontsizeapps),
-                                    style: CustomTextStyle.dataHTxt(
+                                    textAlign: TextAlign.start,
+                                    style: CustomTextStyle.dataHeadTitleCTxt(
                                         context, 5, 'Bl')),
                                 lineSizedBox(context, -30),
                                 Stack(
                                   children: [
-                                    _about(context, widget.param),
+                                    _welfare(context, widget.param),
                                   ],
                                 ),
                               ],
@@ -164,69 +165,80 @@ class _RequestWelfareState extends State<RequestWelfare>
     );
   }
 
-  InkWell _about(context, Param param) {
-    return InkWell(
-      onTap: () {
-        Navigator.push(
-          context,
-          MaterialPageRoute(
-            builder: (context) => Welfare(param),
-          ),
-        );
-      },
-      child: Container(
-        // padding: const EdgeInsets.only(top: 5, left: 10, right: 10, bottom: 5),
-        height: MediaQuery.of(context).size.height * 0.11,
-        child: Card(
-          elevation: 5,
-          color: MyColor.color('SettingBackground'),
-          child: ClipPath(
-            clipper: ShapeBorderClipper(
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(50),
-              ),
+  Column _welfare(context, Param param) {
+    return Column(
+      children: [
+        Container(
+          decoration: BoxDecoration(
+            boxShadow: [
+              BoxShadow(
+                  color: Colors.grey.withOpacity(0.3),
+                  offset: Offset.fromDirection(0, 2.0),
+                  blurRadius: 6.0,
+                  spreadRadius: 1.0)
+            ],
+            borderRadius: const BorderRadius.all(
+              Radius.circular(20.0),
             ),
-            child: Container(
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.start,
-                children: [
+            color: MyColor.color('datatitle'),
+          ),
+          padding: const EdgeInsets.all(10),
+          child: Column(
+            children: <Widget>[
+              Row(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: <Widget>[
                   Expanded(
                       flex: 1,
-                      child: Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: Image.asset(
-                          'assets/imgs/w1.png',
-                          fit: BoxFit.fitWidth,
-                        ),
+                      child: Image.asset(
+                        'assets/imgs/w1.png',
+                        fit: BoxFit.fitHeight,
                       )),
-                  Padding(
-                    padding: const EdgeInsets.only(left: 15),
-                    child: Text(
-                      'สวัสดิการการสมาชิกเจ็บป่วย',
-                      textScaleFactor: MyClass.blocFontSizeApp(_fontsizeapps),
-                      style: CustomTextStyle.dataHeadDataCTxt(context, 2, 'Bl'),
-                      overflow: TextOverflow.ellipsis,
-                      maxLines: 1,
-                    ),
-                  ),
                   Expanded(
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.end,
-                      children: [
-                        Icon(
-                          Icons.keyboard_arrow_right,
-                          size: iconnext(context, 0),
-                          color: MyColor.color('buttonnext'),
-                        ),
-                      ],
+                    flex: 5,
+                    child: Padding(
+                      padding: const EdgeInsets.only(left: 8.0),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            'สวัสดิการการสมาชิกเจ็บป่วย',
+                            textAlign: TextAlign.left,
+                            textScaleFactor: MyClass.blocFontSizeApp(
+                                widget.param.fontsizeapps),
+                            style: CustomTextStyle.dataHeadTitleCTxt(
+                                context, 2, 'BlH'),
+                            overflow: TextOverflow.ellipsis,
+                            maxLines: 1,
+                          ),
+                          Text(
+                            "\t\t06 มิ.ย. 2566",
+                            textAlign: TextAlign.left,
+                            textScaleFactor: MyClass.blocFontSizeApp(
+                                widget.param.fontsizeapps),
+                            style: CustomTextStyle.dataTxt(context, 3),
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.only(left: 5),
+                            child: Text(
+                              'จ่ายครั้งละ 2,000 บาท ปีละไม่เกิน 2 ครั้งหากป่วยเกิน 3 วัน ได้รับอีกวันละ 300 บาท แต่ไม่เกิน 5 วัน',
+                              textAlign: TextAlign.start,
+                              textScaleFactor:
+                                  MyClass.blocFontSizeApp(_fontsizeapps),
+                              style: CustomTextStyle.dataHTxt(context, 2, 'Bl'),
+                            ),
+                          ),
+                        ],
+                      ),
                     ),
-                  ),
+                  )
                 ],
               ),
-            ),
+            ],
           ),
         ),
-      ),
+      ],
     );
   }
 }

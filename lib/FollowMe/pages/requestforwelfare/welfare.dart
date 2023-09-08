@@ -8,8 +8,11 @@ import 'package:udtscc/FollowMe/class/mycolor.dart';
 import 'package:udtscc/FollowMe/class/sizes.dart';
 import 'package:udtscc/FollowMe/class/textstyle.dart';
 import 'package:udtscc/FollowMe/class/widget.dart';
+import 'package:udtscc/FollowMe/pages/requestforwelfare/welfare_type.dart';
 import 'package:udtscc/FollowMe/services/network.dart';
 import 'package:flutter/material.dart';
+
+import '../settings/security/checksecurity.dart';
 
 double _fontsizeapps = 1.0;
 
@@ -41,9 +44,10 @@ class WelfareState extends State<Welfare> {
     bool tabletMode = MediaQuery.of(context).size.width > 600;
     List<Welfares> h_welfare = <Welfares>[
       Welfares(
-          images: 'assets/imgs/w1.png',
-          title: 'สวัสดิการสงเคราะห์สมาชิกประสบอัคคีภัย และภัยธรรมชาติอื่นๆ',
-          type: 0),
+        images: 'assets/imgs/w1.png',
+        title: 'สวัสดิการสงเคราะห์สมาชิกประสบอัคคีภัย และภัยธรรมชาติอื่นๆ',
+        type: 0,
+      ),
       Welfares(
           images: 'assets/imgs/w2.png',
           title: "สวัสดิการการสมาชิกเจ็บป่วย",
@@ -110,16 +114,18 @@ class WelfareState extends State<Welfare> {
                     ),
                     child: Text("เลือกรายการ",
                         textScaleFactor: MyClass.blocFontSizeApp(_fontsizeapps),
-                        style: CustomTextStyle.dataHTxt(context, 5, 'Bl')),
+                        style: CustomTextStyle.dataHeadTitleCTxt(
+                            context, 5, 'Bl')),
                   ),
                   Padding(
                     padding: EdgeInsets.only(
                       top: displayHeight(context) * 0.09,
                     ),
                     child: _genmemu(
-                        image: h_welfare,
-                        welfare: h_welfare,
-                        tabletMode: tabletMode),
+                      image: h_welfare,
+                      welfare: h_welfare,
+                      tabletMode: tabletMode,
+                    ),
                   ),
                 ],
               ),
@@ -130,69 +136,79 @@ class WelfareState extends State<Welfare> {
     );
   }
 
-  ListView _genmemu({image, welfare, tabletMode, page}) => ListView.builder(
+  ListView _genmemu({image, welfare, tabletMode}) => ListView.builder(
         itemCount: welfare.length,
         itemBuilder: (BuildContext context, int index) {
           return InkWell(
             onTap: () {
               Navigator.push(
                 context,
-                MaterialPageRoute(builder: (context) => page),
+                MaterialPageRoute(
+                  builder: (context) => TypeWelfare(
+                      // type: welfare[index].type.toString(),
+                      param: widget.param,
+                      title: welfare[index].title),
+                ),
               );
             },
             child: Column(
               children: [
-                Container(
-                  padding: const EdgeInsets.only(
-                      top: 5, left: 10, right: 10, bottom: 5),
-                  height: MediaQuery.of(context).size.height * 0.11,
-                  child: Card(
-                    elevation: 0,
-                    color: Color(0x00FFFFFF),
-                    child: ClipPath(
-                      clipper: ShapeBorderClipper(
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(5.0),
-                        ),
+                Padding(
+                  padding: EdgeInsets.only(
+                    left: paddinglist(context, 0),
+                    right: paddinglist(context, 0),
+                    bottom: paddinglist(context, 0),
+                  ),
+                  child: Container(
+                    padding: const EdgeInsets.only(
+                        top: 5, left: 10, right: 10, bottom: 5),
+                    height: MediaQuery.of(context).size.height * 0.09,
+                    decoration: BoxDecoration(
+                      boxShadow: [
+                        BoxShadow(
+                            color: Colors.grey.withOpacity(0.3),
+                            offset: Offset.fromDirection(0, 2.0),
+                            blurRadius: 6.0,
+                            spreadRadius: 1.0)
+                      ],
+                      borderRadius: const BorderRadius.all(
+                        Radius.circular(20.0),
                       ),
-                      child: Container(
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(25.0),
-                          color: MyColor.color('w'),
-                        ),
-                        child: Row(
-                          children: [
-                            Expanded(
-                                flex: 1,
-                                child: Padding(
-                                  padding: const EdgeInsets.all(8.0),
-                                  child: Image.asset(
-                                    welfare[index].images,
-                                    fit: BoxFit.fitWidth,
-                                  ),
-                                )),
-                            Expanded(
-                              flex: 5,
-                              child: Text(
-                                welfare[index].title,
-                                textScaleFactor:
-                                    MyClass.blocFontSizeApp(_fontsizeapps),
-                                style: CustomTextStyle.dataHeadDataCTxt(
-                                    context, 2, 'Bl'),
-                                overflow: TextOverflow.ellipsis,
-                                maxLines: 1,
-                              ),
-                            ),
-                            Expanded(
+                      color: MyColor.color('datatitle'),
+                    ),
+                    child: ClipPath(
+                      child: Row(
+                        children: [
+                          Expanded(
                               flex: 1,
-                              child: Icon(
-                                Icons.keyboard_arrow_right,
-                                size: iconnext(context, 0),
-                                color: MyColor.color('buttonnext'),
-                              ),
+                              child: Padding(
+                                padding: const EdgeInsets.all(8.0),
+                                child: Image.asset(
+                                  welfare[index].images,
+                                  fit: BoxFit.fitWidth,
+                                ),
+                              )),
+                          Expanded(
+                            flex: 5,
+                            child: Text(
+                              welfare[index].title,
+                              textScaleFactor:
+                                  MyClass.blocFontSizeApp(_fontsizeapps),
+                              style: CustomTextStyle.dataHeadDataCTxt(
+                                  context, 2, 'Bl'),
+                              overflow: TextOverflow.ellipsis,
+                              maxLines: 1,
                             ),
-                          ],
-                        ),
+                          ),
+                          Expanded(
+                            flex: 1,
+                            child: Icon(
+                              Icons.keyboard_arrow_right,
+                              size: iconnext(context, 0),
+                              color: MyColor.color('buttonnext'),
+                            ),
+                          ),
+                        ],
                       ),
                     ),
                   ),
