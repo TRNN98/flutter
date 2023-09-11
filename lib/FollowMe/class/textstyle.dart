@@ -201,6 +201,7 @@ class CustomTextStyle {
     return Theme.of(context).textTheme.bodyLarge!.copyWith(
           fontFamily: "prompt",
           fontWeight: FontWeight.bold,
+
           // fontSize: displayWidth(context) * 0.04 + number,
           fontSize: tabletMode
               ? displayWidth(context) * 0.03 + number
@@ -354,13 +355,13 @@ class CustomTextStyle {
 
     return Theme.of(context).textTheme.bodyLarge!.copyWith(
         fontFamily: "prompt",
-        fontWeight: FontWeight.w500,
+        fontWeight: FontWeight.bold,
         // fontSize: displayWidth(context) * (Platform.isAndroid ? 0.050 : 0.055) +
         //     number,
         fontSize: tabletMode
             ? displayWidth(context) * 0.045 + number
             : displayWidth(context) * 0.055 + number,
-        color: c == 'R' ? const Color(0xFFFF0000) : const Color(0xFFBA8C26));
+        color: c == 'R' ? const Color(0xFFFF0000) : const Color(0xFF003B93));
   }
 
   static TextStyle buttonTxt(BuildContext context, double number) {
@@ -441,17 +442,26 @@ class CustomTextStyle {
     bool tabletMode = MediaQuery.of(context).size.width > 600;
 
     return Theme.of(context).textTheme.bodyText1!.copyWith(
-        fontFamily: "prompt",
-        fontWeight: FontWeight.bold,
-        // fontSize: displayWidth(context) * (Platform.isAndroid ? 0.035 : 0.040) +
-        //     number,
-        fontSize: tabletMode
-            ? displayWidth(context) * 0.030 + number
-            : displayWidth(context) * 0.040 + number,
-        foreground: Paint()
-          ..style = PaintingStyle.stroke
-          ..strokeWidth = Width as double
-          ..color = MyColor.color(Color));
+          fontFamily: "prompt",
+          fontWeight: FontWeight.bold,
+          shadows: <Shadow>[
+            Shadow(
+              color: MyColor.color('Shadow'),
+              offset: Offset(2, 2),
+              blurRadius: 15,
+            )
+          ],
+
+          // fontSize: displayWidth(context) * (Platform.isAndroid ? 0.035 : 0.040) +
+          //     number,
+          fontSize: tabletMode
+              ? displayWidth(context) * 0.030 + number
+              : displayWidth(context) * 0.040 + number,
+          foreground: Paint()
+            ..style = PaintingStyle.stroke
+            ..strokeWidth = Width as double
+            ..color = MyColor.color(Color),
+        );
   }
 }
 
