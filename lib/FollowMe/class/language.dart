@@ -954,7 +954,7 @@ class Language {
     }
 
     if (m == 'changePin') {
-      return l == 'en' ? "Change Pin" : "เปลี่ยนรหัส PIN";
+      return l == 'en' ? "Change Pin" : "เปลี่ยนPIN CODE";
     }
     if (m == 'forgotPassword1') {
       return l == 'en' ? "Forgot password" : "ลืมรหัสผ่าน";
@@ -969,7 +969,7 @@ class Language {
     if (m == 'changePinDetail') {
       return l == 'en'
           ? "\t\tTo change the PIN Code, you must first enter the old password. And then change to the new code you need"
-          : "\t\tการเปลี่ยนรหัส PIN ท่านจะต้องใส่ PIN เดิมก่อน แล้วจึงทำการตั้งรหัส PIN ใหม่";
+          : "\t\tการเปลี่ยนPIN CODE ท่านจะต้องใส่ PIN เดิมก่อน แล้วจึงทำการตั้งPIN CODE ใหม่";
     }
     if (m == 'forgotPasswordDetail') {
       return l == 'en'
@@ -1022,28 +1022,28 @@ class Language {
 
   static pinLg(m, l) {
     if (m == 'pinCode') {
-      return l == 'en' ? "Please enter the PIN Code" : "กรุณาใส่รหัส PIN";
+      return l == 'en' ? "Please enter the PIN Code" : "กรุณาใส่PIN CODE";
     }
     if (m == 'pleaseTryAgain') {
       return l == 'en'
           ? "Wrong password, please try again"
-          : "รหัส PIN ไม่ถูกต้องกรุณาลองใหม่อีกครั้ง";
+          : "PIN CODE ไม่ถูกต้องกรุณาลองใหม่อีกครั้ง";
     }
     if (m == 'originalPINCode') {
       return l == 'en'
           ? "Please enter the original PIN Code"
-          : "กรุณาใส่รหัส PIN เดิม";
+          : "กรุณาใส่PIN CODE เดิม";
     }
     if (m == 'incorrectOriginalPINCode') {
       return l == 'en'
           ? "The original PIN Code is incorrect"
-          : "รหัส PIN เดิม ไม่ถูกต้อง";
+          : "PIN CODE เดิม ไม่ถูกต้อง";
     }
     if (m == 'setPassword') {
-      return l == 'en' ? "Set password" : "กรุณาตั้งรหัส PIN";
+      return l == 'en' ? "Set password" : "กรุณาตั้งPIN CODE";
     }
     if (m == 'confirmPassword') {
-      return l == 'en' ? "Confirm password" : "ยืนยันรหัส PIN";
+      return l == 'en' ? "Confirm password" : "ยืนยันPIN CODE";
     }
     if (m == 'confirmPasswords') {
       return l == 'en' ? "Confirm password" : "ยืนยันรหัสผ่าน";
@@ -1051,7 +1051,7 @@ class Language {
     if (m == 'confirmPleaseTryAgain') {
       return l == 'en'
           ? "Wrong password confirmation. Please try again"
-          : "ยืนยันรหัส PIN ไม่ถูกต้องกรุณาลองใหม่อีกครั้ง";
+          : "ยืนยันPIN CODE ไม่ถูกต้องกรุณาลองใหม่อีกครั้ง";
     }
     if (m == 'confirmTouchIDAndFaceID') {
       return l == 'en'
@@ -1061,7 +1061,7 @@ class Language {
     if (m == 'incorrectconfirmTouchIDAndFaceID') {
       return l == 'en'
           ? "The password was wrong. Please try again"
-          : "รหัส PIN เปิดใช้งานผิดโปรดลองอีกครั้ง";
+          : "PIN CODE เปิดใช้งานผิดโปรดลองอีกครั้ง";
     }
     if (m == 'delete') {
       return l == 'en' ? "Delete" : "ลบ";
@@ -1135,7 +1135,7 @@ class Language {
       return l == 'en' ? "Password" : "รหัสผ่าน";
     }
     if (m == 'confirmPassword') {
-      return l == 'en' ? "Confirm password" : "ยืนยันรหัส PIN";
+      return l == 'en' ? "Confirm password" : "ยืนยันPIN CODE";
     }
     if (m == 'pleaseConfirmPassword') {
       return l == 'en' ? "Please confirm password" : "กรุณายืนยันรหัสผ่าน";
