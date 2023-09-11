@@ -74,8 +74,14 @@ class MyColor {
       return const Color(0xFF0051CA);
     } else if (data.toString() == 'bl1') {
       return const Color(0xFF63DEFF);
+    } else if (data.toString() == 'bl2') {
+      return const Color(0xFF3CE8FF);
     } else if (data.toString() == 'TxtBlue') {
       return const Color(0xFF003B93);
+    } else if (data.toString() == 'TxtBlue') {
+      return const Color(0xFF003B93);
+    } else if (data.toString() == 'Shadow') {
+      return Color.fromARGB(113, 0, 0, 0);
     }
   }
 
