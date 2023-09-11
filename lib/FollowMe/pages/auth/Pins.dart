@@ -303,15 +303,38 @@ class PinsState extends State<Pins> {
                       ? displayHeight(context) * 0.0275
                       : displayHeight(context) * 0.0275,
                 ),
-                Text(MyClass.company('th'),
-                    textScaleFactor: MyClass.fontSizeApp(),
-                    textAlign: TextAlign.center,
-                    style: CustomTextStyle.dataHeadTitleCTxt(context, 3, 'Go')),
-                Text(MyClass.company('en'),
-                    textScaleFactor: MyClass.fontSizeApp(),
-                    textAlign: TextAlign.center,
-                    style:
-                        CustomTextStyle.dataHeadTitleCTxt(context, -2, 'Go')),
+                Stack(
+                  children: [
+                    Text(
+                      MyClass.company('th'),
+                      textScaleFactor: MyClass.fontSizeApp(),
+                      textAlign: TextAlign.center,
+                      style:
+                          CustomTextStyle.defaultTxtPaint(context, 7, "bl2", 2),
+                    ),
+                    Text(MyClass.company('th'),
+                        textScaleFactor: MyClass.fontSizeApp(),
+                        textAlign: TextAlign.center,
+                        style: CustomTextStyle.dataHeadTitleCTxt(
+                            context, 7, 'bl')),
+                  ],
+                ),
+                Stack(
+                  children: [
+                    Text(
+                      MyClass.company('en'),
+                      textScaleFactor: MyClass.fontSizeApp(),
+                      textAlign: TextAlign.center,
+                      style: CustomTextStyle.defaultTxtPaint(
+                          context, -2, "bl2", 2),
+                    ),
+                    Text(MyClass.company('en'),
+                        textScaleFactor: MyClass.fontSizeApp(),
+                        textAlign: TextAlign.center,
+                        style: CustomTextStyle.dataHeadTitleCTxt(
+                            context, -2, 'bl')),
+                  ],
+                ),
                 const SizedBox(
                   height: 15,
                 ),
@@ -465,16 +488,16 @@ class PinsState extends State<Pins> {
             shape: BoxShape.circle,
             boxShadow: [
               BoxShadow(
-                color: MyColor.color('button'),
-                blurRadius: 1,
+                color: MyColor.color('Bl'),
+                // blurRadius: 1,
                 spreadRadius: 1,
-                offset: const Offset(0, -2),
+                offset: const Offset(0, 0),
               ),
               BoxShadow(
-                color: MyColor.color('button'),
-                blurRadius: 1,
-                spreadRadius: 1,
-                offset: const Offset(0, 2),
+                color: MyColor.color('Shadow'),
+                blurRadius: 7,
+                spreadRadius: 0,
+                offset: const Offset(1, 5),
               )
             ]),
         child: Center(
@@ -845,9 +868,18 @@ class PinsState extends State<Pins> {
           height: 22,
           child: Container(
             decoration: BoxDecoration(
-                shape: BoxShape.circle,
-                border: Border.all(color: const Color(0xFFBA8C26), width: 2.0),
-                color: const Color(0xFFBA8C26)),
+              boxShadow: [
+                BoxShadow(
+                  color: MyColor.color('Shadow'),
+                  blurRadius: 5,
+                  spreadRadius: 0,
+                  offset: const Offset(1, 4),
+                )
+              ],
+              shape: BoxShape.circle,
+              // border: Border.all(color: const Color(0xFF0B0D43), width: 2.0),
+              color: const Color(0xFF0051CA),
+            ),
           ));
     } else {
       return SizedBox(
@@ -855,6 +887,14 @@ class PinsState extends State<Pins> {
         height: 22,
         child: Container(
           decoration: BoxDecoration(
+              boxShadow: [
+                BoxShadow(
+                  color: MyColor.color('Shadow'),
+                  blurRadius: 5,
+                  spreadRadius: 0,
+                  offset: const Offset(1, 4),
+                )
+              ],
               shape: BoxShape.circle,
               border: Border.all(color: const Color(0xFFE4E4E4), width: 2.0),
               color: const Color(0xFFE4E4E4)),

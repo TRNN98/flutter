@@ -69,13 +69,13 @@ class SeandfoState extends State<Pdpa> {
                         Text(
                           "เงื่อนไขการลงทะเบียน",
                           textScaleFactor: MyClass.fontSizeApp(),
-                          style: CustomTextStyle.defaultTxt1(context, 15, "w"),
+                          style: CustomTextStyle.defaultTxtPaint(
+                              context, 15, "bl", 3),
                         ),
                         Text(
                           "เงื่อนไขการลงทะเบียน",
                           textScaleFactor: MyClass.fontSizeApp(),
-                          style: CustomTextStyle.defaultTxtPaint(
-                              context, 15, "bl", -1),
+                          style: CustomTextStyle.defaultTxt1(context, 15, "w"),
                         ),
                       ],
                     ),
