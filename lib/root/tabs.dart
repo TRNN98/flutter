@@ -358,7 +358,7 @@ class TabsState extends State<Tabs> with SingleTickerProviderStateMixin {
           scale: animation,
           child: FloatingActionButton(
             elevation: 8,
-            backgroundColor: HexColor('#BA8C26'),
+            backgroundColor: HexColor('#63DEFF'),
             child: Image.asset(
               'assets/imgPro/menuPro.png',
               width: 40,
@@ -387,7 +387,7 @@ class TabsState extends State<Tabs> with SingleTickerProviderStateMixin {
                     nameList[index].toString(),
                     textScaleFactor: MyClass.fontSizeApp(),
                     style: CustomTextStyle.defaultTxt1(
-                        context, tabletMode ? -15 : -6, isActive ? 'Go' : 'Bl'),
+                        context, tabletMode ? -15 : -6, isActive ? 'Bl' : 'Bl'),
                   ),
                 )
               ],

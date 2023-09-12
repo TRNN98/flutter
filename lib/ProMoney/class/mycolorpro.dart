@@ -48,6 +48,12 @@ class MyColorPro {
       return const Color(0xff3ca247);
     } else if (data.toString() == 'ktb') {
       return const Color(0xff00a3e4);
+    } else if (data.toString() == 'bt_bl1') {
+      return const Color(0xff63DEFF);
+    } else if (data.toString() == 'bt_bl2') {
+      return const Color(0xffD1FDFF);
+    } else if (data.toString() == 'H_txt') {
+      return const Color(0xff2192FF);
     }
   }
 }

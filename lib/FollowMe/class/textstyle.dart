@@ -40,7 +40,7 @@ class CustomTextStyle {
         fontSize: tabletMode
             ? displayWidth(context) * 0.05 + number
             : displayWidth(context) * 0.06 + number,
-        color: const Color(0xFFFFFFFF));
+        color: const Color(0xFF2192FF));
   }
 
   // static TextStyle defaultTxt1(BuildContext context, double number) {

@@ -224,10 +224,11 @@ class CustomUI {
           padding: EdgeInsets.only(top: Platform.isAndroid ? 26 : 13),
           child: IconButton(
             icon: msgstatus.toString() == '0'
-                ? const Icon(Icons.notifications, color: Colors.white)
+                ? const Icon(Icons.notifications, color: Color(0xFF2192FF))
                 : Badge(
                     label: Text(msgstatus.toString()),
-                    child: const Icon(Icons.notifications, color: Colors.white),
+                    child: const Icon(Icons.notifications,
+                        color: Color(0xFF2192FF)),
                   ),
             onPressed: () {
               Navigator.push(
@@ -242,7 +243,7 @@ class CustomUI {
         Padding(
           padding: EdgeInsets.only(top: Platform.isAndroid ? 26 : 13),
           child: IconButton(
-            icon: const Icon(Icons.settings, color: Colors.white),
+            icon: const Icon(Icons.settings, color: Color(0xFF2192FF)),
             onPressed: () {
               Navigator.push(
                 context,
@@ -257,7 +258,8 @@ class CustomUI {
           padding:
               EdgeInsets.only(top: Platform.isAndroid ? 26 : 13, right: 15),
           child: IconButton(
-            icon: const Icon(Icons.power_settings_new, color: Colors.white),
+            icon:
+                const Icon(Icons.power_settings_new, color: Color(0xFF2192FF)),
             onPressed: () {
               showDialog(
                   context: context,
@@ -584,22 +586,22 @@ class _AppBarUiMainMenuState extends State<AppBarUiMainMenu> {
   @override
   Widget build(BuildContext context) {
     return AppBar(
-      shadowColor: const Color(0x99000000),
-      elevation: 10,
+      // shadowColor: const Color(0x99000000),
       backgroundColor: Colors.transparent,
+      elevation: 0.0,
       flexibleSpace: Container(
-        decoration: BoxDecoration(
-            borderRadius: const BorderRadius.only(
-                bottomLeft: Radius.circular(25),
-                bottomRight: Radius.circular(25)),
-            gradient: LinearGradient(
-              begin: Alignment.topCenter,
-              end: Alignment.bottomCenter,
-              colors: <Color>[
-                MyColor.color('buttongra'),
-                MyColor.color('buttongra1'),
-              ],
-            )),
+        // decoration: BoxDecoration(
+        //     borderRadius: const BorderRadius.only(
+        //         bottomLeft: Radius.circular(25),
+        //         bottomRight: Radius.circular(25)),
+        //     gradient: LinearGradient(
+        //       begin: Alignment.topCenter,
+        //       end: Alignment.bottomCenter,
+        //       colors: <Color>[
+        //         MyColor.color('buttongra'),
+        //         MyColor.color('buttongra1'),
+        //       ],
+        //     )),
         child: Padding(
           padding: Platform.isAndroid
               ? const EdgeInsets.only(top: 15, left: 15, bottom: 15)
@@ -615,7 +617,7 @@ class _AppBarUiMainMenuState extends State<AppBarUiMainMenu> {
                           backgroundColor: Colors.transparent,
                           backgroundImage:
                               const AssetImage('assets/imgs/boy.jpg'),
-                          child: ClipOval(
+                          child: CircleAvatar(
                             child: Image.network(
                               widget.url,
                               errorBuilder: (context, error, stackTrace) {
@@ -623,6 +625,7 @@ class _AppBarUiMainMenuState extends State<AppBarUiMainMenu> {
                                     '${MyClass.hostApp()}/public/member/profile/boy.jpg');
                               },
                             ),
+                            onBackgroundImageError: (__, _) {},
                           ),
                         ),
                       ),
@@ -703,10 +706,11 @@ class _AppBarUiMainMenuState extends State<AppBarUiMainMenu> {
           padding: EdgeInsets.only(top: Platform.isAndroid ? 25 : 25),
           child: IconButton(
             icon: _msgstatus.toString() == '0'
-                ? const Icon(Icons.notifications, color: Colors.white)
+                ? const Icon(Icons.notifications, color: Color(0xFF2192FF))
                 : Badge(
                     label: Text(_msgstatus.toString()),
-                    child: const Icon(Icons.notifications, color: Colors.white),
+                    child: const Icon(Icons.notifications,
+                        color: Color(0xFF2192FF)),
                   ),
             onPressed: () {
               Navigator.push(
@@ -721,7 +725,7 @@ class _AppBarUiMainMenuState extends State<AppBarUiMainMenu> {
         Padding(
           padding: EdgeInsets.only(top: Platform.isAndroid ? 25 : 25),
           child: IconButton(
-            icon: const Icon(Icons.settings, color: Colors.white),
+            icon: const Icon(Icons.settings, color: Color(0xFF2192FF)),
             onPressed: () {
               Navigator.push(
                 widget.context,
@@ -736,7 +740,8 @@ class _AppBarUiMainMenuState extends State<AppBarUiMainMenu> {
           padding:
               EdgeInsets.only(top: Platform.isAndroid ? 25 : 25, right: 15),
           child: IconButton(
-            icon: const Icon(Icons.power_settings_new, color: Colors.white),
+            icon:
+                const Icon(Icons.power_settings_new, color: Color(0xFF2192FF)),
             onPressed: () {
               showDialog(
                   context: context,

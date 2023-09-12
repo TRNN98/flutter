@@ -26,22 +26,22 @@ class CustomUIPro {
         child: Container(),
       ),
       shadowColor: const Color(0x99000000),
-      elevation: 10,
+      elevation: 0.0,
       leadingWidth: 80,
       backgroundColor: Colors.transparent,
       flexibleSpace: Container(
-        decoration: BoxDecoration(
-            borderRadius: const BorderRadius.only(
-                bottomLeft: Radius.circular(25),
-                bottomRight: Radius.circular(25)),
-            gradient: LinearGradient(
-              begin: Alignment.topCenter,
-              end: Alignment.bottomCenter,
-              colors: <Color>[
-                MyColor.color('buttongra'),
-                MyColor.color('buttongra1'),
-              ],
-            )),
+        // decoration: BoxDecoration(
+        //     borderRadius: const BorderRadius.only(
+        //         bottomLeft: Radius.circular(25),
+        //         bottomRight: Radius.circular(25)),
+        //     gradient: LinearGradient(
+        //       begin: Alignment.topCenter,
+        //       end: Alignment.bottomCenter,
+        //       colors: <Color>[
+        //         MyColor.color('buttongra'),
+        //         MyColor.color('buttongra1'),
+        //       ],
+        //     )),
         child: Padding(
           padding: Platform.isAndroid
               ? const EdgeInsets.only(top: 30, left: 15, bottom: 15)
@@ -136,7 +136,7 @@ class CustomUIPro {
                 padding: EdgeInsets.only(
                     top: Platform.isAndroid ? 26 : 13, right: 15),
                 child: IconButton(
-                  icon: const Icon(Icons.link, color: Colors.white),
+                  icon: const Icon(Icons.link, color: Color(0xFF2192FF)),
                   onPressed: () {
                     Navigator.push(
                       context,
@@ -203,7 +203,7 @@ class CustomUIPro {
     bool tabletMode = MediaQuery.of(context).size.width > 600;
 
     return AppBar(
-      iconTheme: const IconThemeData(color: Colors.white),
+      iconTheme: const IconThemeData(color: Color(0xFF2192FF)),
       centerTitle: false,
       bottom: PreferredSize(
         preferredSize: Size.fromHeight(Platform.isAndroid
@@ -214,21 +214,21 @@ class CustomUIPro {
         child: Container(),
       ),
       shadowColor: const Color(0x99000000),
-      elevation: 10,
+      elevation: 0,
       flexibleSpace: Container(
-        decoration: BoxDecoration(
-            borderRadius: const BorderRadius.only(
-                bottomLeft: Radius.circular(25),
-                bottomRight: Radius.circular(25)),
-            gradient: LinearGradient(
-              begin: Alignment.topCenter,
-              end: Alignment.bottomCenter,
-              colors: <Color>[
-                MyColor.color('buttongra'),
-                MyColor.color('buttongra1'),
-              ],
-            )),
-      ),
+          // decoration: BoxDecoration(
+          //     borderRadius: const BorderRadius.only(
+          //         bottomLeft: Radius.circular(25),
+          //         bottomRight: Radius.circular(25)),
+          //     gradient: LinearGradient(
+          //       begin: Alignment.topCenter,
+          //       end: Alignment.bottomCenter,
+          //       colors: <Color>[
+          //         MyColor.color('buttongra'),
+          //         MyColor.color('buttongra1'),
+          //       ],
+          //     )),
+          ),
       backgroundColor: const Color(0x00000000),
       title: Container(
         alignment: Alignment.topCenter,
@@ -254,7 +254,7 @@ class CustomUIPro {
                 Text(
                   LanguagePro.menuPro(name, l),
                   textScaleFactor: MyClassPro.fontSizeApp(f),
-                  style: CustomTextStylePro.defaultTxtC(context, 6, 'w'),
+                  style: CustomTextStylePro.defaultTxtC(context, 6, 'H_txt'),
                 )
               ],
             ),

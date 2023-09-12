@@ -389,7 +389,7 @@ class MyClass {
   static loading() {
     // return colactionloading(2);
     return const SpinKitChasingDots(
-      color: Color(0xFFBA8C26),
+      color: Color(0xFF66C8FF),
       // size: 50.0,
     );
   }

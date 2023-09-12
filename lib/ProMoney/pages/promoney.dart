@@ -310,12 +310,12 @@ class PromoneyState extends State<Promoney> {
                                                 borderRadius:
                                                     const BorderRadius.all(
                                                         Radius.circular(20)),
-                                                gradient: LinearGradient(
+                                                gradient: const LinearGradient(
                                                   begin: Alignment.bottomLeft,
                                                   end: Alignment.topRight,
                                                   colors: <Color>[
-                                                    MyColorPro.color('gr'),
-                                                    MyColorPro.color('gr1'),
+                                                    Color(0xFF47A5FF),
+                                                    Color(0xFF66C8FF),
                                                   ],
                                                 )),
                                             child: card,
@@ -337,7 +337,7 @@ class PromoneyState extends State<Promoney> {
                                       decoration: BoxDecoration(
                                         shape: BoxShape.circle,
                                         color: _currentIndex == index
-                                            ? const Color(0xFFBA8C26)
+                                            ? const Color(0xFF2192FF)
                                             : Colors.white,
                                       ),
                                     );

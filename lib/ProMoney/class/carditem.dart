@@ -40,58 +40,64 @@ class AccountItem extends StatelessWidget {
           padding: const EdgeInsets.only(top: 0, left: 10),
           child: Row(
             children: [
-              Icon(
-                Icons.account_balance_wallet,
-                color: MyColorPro.color('w'),
-              ),
-              const Text('   '),
+              Image.asset('assets/imgPro/account_wallet.png', scale: 1.5),
+              // Icon(
+              //   Icons.account_balance_wallet,
+              //   color: MyColorPro.color('w'),
+              // ),
+              const Text('  '),
               Expanded(
-                child: Text(
-                  title!,
-                  textScaleFactor: MyClassPro.fontSizeApp(fontsizeapps),
-                  style: CustomTextStylePro.cardWTxt(context, -4),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      title!,
+                      textScaleFactor: MyClassPro.fontSizeApp(fontsizeapps),
+                      style: CustomTextStylePro.cardWTxt(context, -4),
+                    ),
+                    type == 'SAVING'
+                        ? Row(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Expanded(
+                                child: Text(
+                                  accountId!,
+                                  textScaleFactor:
+                                      MyClassPro.fontSizeApp(fontsizeapps),
+                                  textAlign: TextAlign.left,
+                                  style:
+                                      CustomTextStylePro.cardWTxt(context, -4),
+                                ),
+                              ),
+                              Expanded(
+                                child: Text(
+                                  accountDesc!,
+                                  textScaleFactor:
+                                      MyClassPro.fontSizeApp(fontsizeapps),
+                                  textAlign: TextAlign.right,
+                                  style:
+                                      CustomTextStylePro.cardWTxt(context, -4),
+                                ),
+                              ),
+                            ],
+                          )
+                        : Row(
+                            children: [
+                              Text(
+                                accountId!,
+                                textScaleFactor:
+                                    MyClassPro.fontSizeApp(fontsizeapps),
+                                style: CustomTextStylePro.cardWTxt(context, -3),
+                              ),
+                            ],
+                          ),
+                  ],
                 ),
               ),
             ],
           ),
         ),
-        type == 'SAVING'
-            ? Padding(
-                padding: const EdgeInsets.only(top: 5, left: 10, right: 10),
-                child: Row(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Expanded(
-                      child: Text(
-                        accountId!,
-                        textScaleFactor: MyClassPro.fontSizeApp(fontsizeapps),
-                        textAlign: TextAlign.left,
-                        style: CustomTextStylePro.cardWTxt(context, -4),
-                      ),
-                    ),
-                    Expanded(
-                      child: Text(
-                        accountDesc!,
-                        textScaleFactor: MyClassPro.fontSizeApp(fontsizeapps),
-                        textAlign: TextAlign.right,
-                        style: CustomTextStylePro.cardWTxt(context, -4),
-                      ),
-                    ),
-                  ],
-                ),
-              )
-            : Padding(
-                padding: const EdgeInsets.only(top: 5, left: 10),
-                child: Row(
-                  children: [
-                    Text(
-                      accountId!,
-                      textScaleFactor: MyClassPro.fontSizeApp(fontsizeapps),
-                      style: CustomTextStylePro.cardWTxt(context, -3),
-                    ),
-                  ],
-                ),
-              ),
         Padding(
           padding: const EdgeInsets.only(top: 5, left: 10, right: 10),
           child: Divider(

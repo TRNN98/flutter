@@ -350,31 +350,27 @@ class LinkAccountState extends State<LinkAccount> {
           child: Text(''),
         ),
         Container(
-          width: displayWidth(context) * 0.375,
-          height: displayHeight(context) * 0.06,
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(25.0),
-            gradient: LinearGradient(
-              colors: <Color>[
-                MyColor.color('button'),
-                MyColor.color('button'),
-              ],
-            ),
-          ),
-          padding: const EdgeInsets.only(right: 5),
-          child: InkWell(
-            onTap: () {
-              Navigator.pop(context);
-            },
-            child: Center(
-              child: Text(
-                'ย้อนกลับ',
-                textScaleFactor: MyClass.fontSizeApp(),
-                style: CustomTextStyle.buttonTxt(context, 0),
+            width: displayWidth(context) * 0.375,
+            height: displayHeight(context) * 0.06,
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(25.0),
+              gradient: LinearGradient(
+                colors: <Color>[MyColor.color('w'), MyColor.color('w')],
               ),
             ),
-          ),
-        ),
+            padding: const EdgeInsets.only(right: 5),
+            child: InkWell(
+              onTap: () {
+                Navigator.pop(context);
+              },
+              child: Center(
+                child: Text(
+                  'ย้อนกลับ',
+                  textScaleFactor: MyClass.fontSizeApp(),
+                  style: CustomTextStyle.buttonCTxt(context, 0, 'Bl'),
+                ),
+              ),
+            )),
         const Expanded(
           child: Text(''),
         ),

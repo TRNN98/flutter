@@ -76,12 +76,20 @@ class MyColor {
       return const Color(0xFF63DEFF);
     } else if (data.toString() == 'bl2') {
       return const Color(0xFF3CE8FF);
-    } else if (data.toString() == 'TxtBlue') {
-      return const Color(0xFF003B93);
+    } else if (data.toString() == 'bl3') {
+      return Color(0xFFD1FDFF);
     } else if (data.toString() == 'TxtBlue') {
       return const Color(0xFF003B93);
     } else if (data.toString() == 'Shadow') {
       return Color.fromARGB(113, 0, 0, 0);
+    } else if (data.toString() == 'TxtBl') {
+      return Color(0xFF047AE2);
+    } else if (data.toString() == 'detailhead1') {
+      return Color(0xFF47A5FF);
+    } else if (data.toString() == 'detailhead2') {
+      return Color(0xFF66C8FF);
+    } else if (data.toString() == 'TxtBt') {
+      return Color(0xFF2192FF);
     }
   }
 

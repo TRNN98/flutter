@@ -156,8 +156,8 @@ class MainMenuState extends State<MainMenu> {
                 decoration: BoxDecoration(
                   image: DecorationImage(
                     image: tabletMode
-                        ? const AssetImage("assets/imgs/bg1.jpeg")
-                        : const AssetImage("assets/imgs/bg1.jpeg"),
+                        ? const AssetImage("assets/imgs/bg1.jpg")
+                        : const AssetImage("assets/imgs/bg1.jpg"),
                     fit: BoxFit.cover,
                   ),
                 ),

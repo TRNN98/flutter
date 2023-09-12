@@ -507,10 +507,10 @@ class MyClassPro {
             Navigator.of(context).pop(),
           },
           width: displayWidth(context) * 0.3,
-          color: MyColorPro.color('buttonBar'),
+          color: MyColorPro.color('bt_bl1'),
           child: Text(
             "ปิด",
-            style: CustomTextStyle.buttonTxt(context, 0),
+            style: CustomTextStyle.buttonCTxt(context, 0, 'w'),
           ),
         ),
       ],

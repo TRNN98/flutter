@@ -183,14 +183,21 @@ class HistoryState extends State<History> {
       width: displayWidth(context) * 0.7,
       height: displayHeight(context) * 0.06,
       decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(30.0),
-        gradient: LinearGradient(
-          colors: <Color>[
-            MyColor.color('button'),
-            MyColor.color('button'),
-          ],
-        ),
-      ),
+          borderRadius: BorderRadius.circular(30.0),
+          gradient: LinearGradient(
+            colors: <Color>[
+              MyColor.color('bl1'),
+              MyColor.color('bl3'),
+            ],
+          ),
+          boxShadow: [
+            BoxShadow(
+              color: MyColor.color('Shadow'),
+              blurRadius: 7,
+              spreadRadius: 0,
+              offset: const Offset(1, 5),
+            )
+          ]),
       padding: const EdgeInsets.only(right: 5),
       child: InkWell(
         onTap: () async {
@@ -231,7 +238,7 @@ class HistoryState extends State<History> {
           child: Text(
             LanguagePro.history('selectMonth', widget.param.lgs),
             textScaleFactor: MyClassPro.fontSizeApp(widget.param.fontsizeapps),
-            style: CustomTextStyle.buttonTxt(context, 0),
+            style: CustomTextStyle.buttonCTxt(context, 0, 'TxtBt'),
           ),
         ),
       ),
@@ -242,7 +249,10 @@ class HistoryState extends State<History> {
     return Container(
       padding: const EdgeInsets.all(12),
       decoration: BoxDecoration(
-        color: MyColor.color('detailhead'),
+        gradient: LinearGradient(colors: [
+          MyColor.color('detailhead1'),
+          MyColor.color('detailhead2')
+        ]),
         boxShadow: [
           BoxShadow(
               color: Colors.grey.withOpacity(0.3),
@@ -257,10 +267,10 @@ class HistoryState extends State<History> {
           Expanded(
             child: Text(
               LanguagePro.history('historyDetail', lgs),
-              textAlign: TextAlign.center,
+              textAlign: TextAlign.start,
               textScaleFactor:
                   MyClass.blocFontSizeApp(widget.param.fontsizeapps),
-              style: CustomTextStyle.headTitleTxt(context, 2),
+              style: CustomTextStyle.defaultTxt1(context, 2, 'TxtBlue'),
             ),
           ),
         ],
