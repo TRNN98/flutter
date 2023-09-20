@@ -151,7 +151,7 @@ void main() {
           } else if (device == 'windows') {
             expectDylibIsBundledWindows(exampleDirectory, buildMode);
           }
-          if (device == hostOs && device != 'windows') {
+          if (device == hostOs) {
             expectCCompilerIsConfigured(exampleDirectory);
           }
         });
@@ -209,13 +209,7 @@ void main() {
           } else if (buildSubcommand == 'windows') {
             expectDylibIsBundledWindows(exampleDirectory, buildMode);
           }
-          if (buildSubcommand != 'windows') {
-            // Both package:native_toolchain_c and flutter_tools use vswhere so
-            // don't pass the information here. Passing the information
-            // would require copying the logic for finding cl.exe and
-            // vcvars to flutter_tools.
-            expectCCompilerIsConfigured(exampleDirectory);
-          }
+          expectCCompilerIsConfigured(exampleDirectory);
         });
       });
     }
