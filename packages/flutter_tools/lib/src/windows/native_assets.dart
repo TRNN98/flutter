@@ -75,14 +75,17 @@ Future<CCompilerConfig> cCompilerConfigWindows() async {
   );
 
   return CCompilerConfig(
-    cc: visualStudio.clPath?.toFileUri(),
-    ld: visualStudio.linkPath?.toFileUri(),
-    ar: visualStudio.libPath?.toFileUri(),
-    envScript: visualStudio.vcvarsPath?.toFileUri(),
+    cc: _toOptionalFileUri(visualStudio.clPath),
+    ld: _toOptionalFileUri(visualStudio.linkPath),
+    ar: _toOptionalFileUri(visualStudio.libPath),
+    envScript: _toOptionalFileUri(visualStudio.vcvarsPath),
     envScriptArgs: <String>[],
   );
 }
 
-extension on String {
-  Uri toFileUri() => Uri.file(this);
+Uri? _toOptionalFileUri(String? string) {
+  if (string == null) {
+    return null;
+  }
+  return Uri.file(string);
 }
