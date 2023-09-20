@@ -46,17 +46,17 @@ Future<Iterable<Asset>> dryRunNativeAssetsIOSInternal(
   Uri projectUri,
   NativeAssetsBuildRunner buildRunner,
 ) async {
-  const OS targetOs = OS.iOS;
-  globals.logger.printTrace('Dry running native assets for $targetOs.');
+  const OS targetOS = OS.iOS;
+  globals.logger.printTrace('Dry running native assets for $targetOS.');
   final List<Asset> nativeAssets = (await buildRunner.dryRun(
     linkModePreference: LinkModePreference.dynamic,
-    targetOs: targetOs,
+    targetOS: targetOS,
     workingDirectory: projectUri,
     includeParentEnvironment: true,
   ))
       .assets;
   ensureNoLinkModeStatic(nativeAssets);
-  globals.logger.printTrace('Dry running native assets for $targetOs done.');
+  globals.logger.printTrace('Dry running native assets for $targetOS done.');
   final Iterable<Asset> assetTargetLocations = _assetTargetLocations(nativeAssets).values;
   return assetTargetLocations;
 }
@@ -80,8 +80,8 @@ Future<List<Uri>> buildNativeAssetsIOS({
   final List<Target> targets = darwinArchs.map(_getNativeTarget).toList();
   final native_assets_cli.BuildMode buildModeCli = nativeAssetsBuildMode(buildMode);
 
-  const OS targetOs = OS.iOS;
-  final Uri buildUri_ = nativeAssetsBuildUri(projectUri, targetOs);
+  const OS targetOS = OS.iOS;
+  final Uri buildUri_ = nativeAssetsBuildUri(projectUri, targetOS);
   final IOSSdk iosSdk = _getIOSSdk(environmentType);
 
   globals.logger.printTrace('Building native assets for $targets $buildModeCli.');

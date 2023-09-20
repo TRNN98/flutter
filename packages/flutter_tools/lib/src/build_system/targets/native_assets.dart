@@ -12,7 +12,6 @@ import '../../base/platform.dart';
 import '../../build_info.dart';
 import '../../dart/package_map.dart';
 import '../../ios/native_assets.dart';
-import '../../linux/native_assets.dart';
 import '../../macos/native_assets.dart';
 import '../../macos/xcode.dart';
 import '../../native_assets.dart';
@@ -121,12 +120,13 @@ class NativeAssets extends Target {
         );
       case TargetPlatform.linux_arm64:
       case TargetPlatform.linux_x64:
+      case TargetPlatform.windows_x64:
         final String? environmentBuildMode = environment.defines[kBuildMode];
         if (environmentBuildMode == null) {
           throw MissingDefineException(kBuildMode, name);
         }
         final BuildMode buildMode = BuildMode.fromCliName(environmentBuildMode);
-        (_, dependencies) = await buildNativeAssetsLinux(
+        (_, dependencies) = await buildNativeAssetsLinuxWindows(
           targetPlatform: targetPlatform,
           buildMode: buildMode,
           projectUri: projectUri,
@@ -145,8 +145,8 @@ class NativeAssets extends Target {
             buildRunner: buildRunner,
             flutterTester: true,
           );
-        } else if (const LocalPlatform().isLinux) {
-          (_, dependencies) = await buildNativeAssetsLinux(
+        } else if (const LocalPlatform().isLinux || const LocalPlatform().isWindows) {
+          (_, dependencies) = await buildNativeAssetsLinuxWindows(
             buildMode: BuildMode.debug,
             projectUri: projectUri,
             yamlParentDirectory: environment.buildDir.uri,
@@ -168,7 +168,6 @@ class NativeAssets extends Target {
       case TargetPlatform.fuchsia_arm64:
       case TargetPlatform.fuchsia_x64:
       case TargetPlatform.web_javascript:
-      case TargetPlatform.windows_x64:
         // TODO(dacoharkes): Implement other OSes. https://github.com/flutter/flutter/issues/129757
         // Write the file we claim to have in the [outputs].
         await writeNativeAssetsYaml(<Asset>[], environment.buildDir.uri, fileSystem);
