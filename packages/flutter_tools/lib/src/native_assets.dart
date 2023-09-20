@@ -103,10 +103,8 @@ class NativeAssetsBuildRunnerImpl implements NativeAssetsBuildRunner {
 
   @override
   Future<bool> hasPackageConfig() {
-    final File packageConfigJson = fileSystem
-        .directory(projectUri.toFilePath())
-        .childDirectory('.dart_tool')
-        .childFile('package_config.json');
+    final File packageConfigJson =
+        fileSystem.directory(projectUri.toFilePath()).childDirectory('.dart_tool').childFile('package_config.json');
     return packageConfigJson.exists();
   }
 
@@ -422,19 +420,35 @@ Future<Uri?> dryRunNativeAssetsMultipeOSes({
   final Iterable<Asset> nativeAssetPaths = <Asset>[
     if (targetPlatforms.contains(build_info.TargetPlatform.darwin) ||
         (targetPlatforms.contains(build_info.TargetPlatform.tester) && OS.current == OS.macOS))
-      ...await dryRunNativeAssetsMacOSInternal(fileSystem, projectUri, false, buildRunner),
+      ...await dryRunNativeAssetsMacOSInternal(
+        fileSystem,
+        projectUri,
+        false,
+        buildRunner,
+      ),
     if (targetPlatforms.contains(build_info.TargetPlatform.linux_arm64) ||
         targetPlatforms.contains(build_info.TargetPlatform.linux_x64) ||
-        (targetPlatforms.contains(build_info.TargetPlatform.tester) &&
-            OS.current == OS.linux))
-      ...await _dryRunNativeAssetsSingleArchitectureInternal(
-          fileSystem, projectUri, false, buildRunner, OS.linux),
+        (targetPlatforms.contains(build_info.TargetPlatform.tester) && OS.current == OS.linux))
+      ...await dryRunNativeAssetsLinuxInternal(
+        fileSystem,
+        projectUri,
+        false,
+        buildRunner,
+      ),
     if (targetPlatforms.contains(build_info.TargetPlatform.windows_x64) ||
-        (targetPlatforms.contains(build_info.TargetPlatform.tester) &&
-            OS.current == OS.windows))
-      ...await _dryRunNativeAssetsSingleArchitectureInternal(
-          fileSystem, projectUri, false, buildRunner, OS.windows),
-    if (targetPlatforms.contains(build_info.TargetPlatform.ios)) ...await dryRunNativeAssetsIOSInternal(fileSystem, projectUri, buildRunner)
+        (targetPlatforms.contains(build_info.TargetPlatform.tester) && OS.current == OS.windows))
+      ...await dryRunNativeAssetsWindowsInternal(
+        fileSystem,
+        projectUri,
+        false,
+        buildRunner,
+      ),
+    if (targetPlatforms.contains(build_info.TargetPlatform.ios))
+      ...await dryRunNativeAssetsIOSInternal(
+        fileSystem,
+        projectUri,
+        buildRunner,
+      )
   ];
   final Uri nativeAssetsUri = await writeNativeAssetsYaml(nativeAssetPaths, buildUri_, fileSystem);
   return nativeAssetsUri;
@@ -447,41 +461,11 @@ Uri buildUriMultiple(Uri projectUri) {
   return projectUri.resolve('$buildDir/native_assets/multiple/');
 }
 
-Future<Uri?> dryRunNativeAssetsLinux({
-  required NativeAssetsBuildRunner buildRunner,
-  required Uri projectUri,
-  bool flutterTester = false,
-  required FileSystem fileSystem,
-}) {
-  return _dryRunNativeAssetsSingleArchitecture(
-    buildRunner: buildRunner,
-    projectUri: projectUri,
-    flutterTester: flutterTester,
-    fileSystem: fileSystem,
-    os: OS.linux,
-  );
-}
-
-Future<Uri?> dryRunNativeAssetsWindows({
-  required NativeAssetsBuildRunner buildRunner,
-  required Uri projectUri,
-  bool flutterTester = false,
-  required FileSystem fileSystem,
-}) {
-  return _dryRunNativeAssetsSingleArchitecture(
-    buildRunner: buildRunner,
-    projectUri: projectUri,
-    flutterTester: flutterTester,
-    fileSystem: fileSystem,
-    os: OS.windows,
-  );
-}
-
 /// Dry run the native builds.
 ///
 /// This does not build native assets, it only simulates what the final paths
 /// of all assets will be so that this can be embedded in the kernel file.
-Future<Uri?> _dryRunNativeAssetsSingleArchitecture({
+Future<Uri?> dryRunNativeAssetsSingleArchitecture({
   required NativeAssetsBuildRunner buildRunner,
   required Uri projectUri,
   bool flutterTester = false,
@@ -493,8 +477,7 @@ Future<Uri?> _dryRunNativeAssetsSingleArchitecture({
   }
 
   final Uri buildUri_ = nativeAssetsBuildUri(projectUri, os);
-  final Iterable<Asset> nativeAssetPaths =
-      await _dryRunNativeAssetsSingleArchitectureInternal(
+  final Iterable<Asset> nativeAssetPaths = await dryRunNativeAssetsSingleArchitectureInternal(
     fileSystem,
     projectUri,
     flutterTester,
@@ -509,7 +492,7 @@ Future<Uri?> _dryRunNativeAssetsSingleArchitecture({
   return nativeAssetsUri;
 }
 
-Future<Iterable<Asset>> _dryRunNativeAssetsSingleArchitectureInternal(
+Future<Iterable<Asset>> dryRunNativeAssetsSingleArchitectureInternal(
   FileSystem fileSystem,
   Uri projectUri,
   bool flutterTester,
@@ -529,8 +512,10 @@ Future<Iterable<Asset>> _dryRunNativeAssetsSingleArchitectureInternal(
   ensureNoLinkModeStatic(nativeAssets);
   globals.logger.printTrace('Dry running native assets for $targetOS done.');
   final Uri? absolutePath = flutterTester ? buildUri_ : null;
-  final Map<Asset, Asset> assetTargetLocations =
-      _assetTargetLocationsLinuxWindows(nativeAssets, absolutePath);
+  final Map<Asset, Asset> assetTargetLocations = _assetTargetLocationsSingleArchitecture(
+    nativeAssets,
+    absolutePath,
+  );
   final Iterable<Asset> nativeAssetPaths = assetTargetLocations.values;
   return nativeAssetPaths;
 }
@@ -542,7 +527,7 @@ Future<Iterable<Asset>> _dryRunNativeAssetsSingleArchitectureInternal(
 /// If [flutterTester] is true, absolute paths are emitted in the native
 /// assets mapping. This can be used for JIT mode without sandbox on the host.
 /// This is used in `flutter test` and `flutter run -d flutter-tester`.
-Future<(Uri? nativeAssetsYaml, List<Uri> dependencies)> buildNativeAssetsLinuxWindows({
+Future<(Uri? nativeAssetsYaml, List<Uri> dependencies)> buildNativeAssetsSingleArchitecture({
   required NativeAssetsBuildRunner buildRunner,
   build_info.TargetPlatform? targetPlatform,
   required Uri projectUri,
@@ -551,8 +536,7 @@ Future<(Uri? nativeAssetsYaml, List<Uri> dependencies)> buildNativeAssetsLinuxWi
   Uri? yamlParentDirectory,
   required FileSystem fileSystem,
 }) async {
-  final Target target =
-      targetPlatform != null ? _getNativeTargetLinuxWindows(targetPlatform) : Target.current;
+  final Target target = targetPlatform != null ? _getNativeTarget(targetPlatform) : Target.current;
   final OS targetOS = target.os;
   final Uri buildUri_ = nativeAssetsBuildUri(projectUri, targetOS);
   final Directory buildDir = fileSystem.directory(buildUri_);
@@ -561,8 +545,11 @@ Future<(Uri? nativeAssetsYaml, List<Uri> dependencies)> buildNativeAssetsLinuxWi
     await buildDir.create(recursive: true);
   }
   if (await hasNoPackageConfig(buildRunner) || await isDisabledAndNoNativeAssets(buildRunner)) {
-    final Uri nativeAssetsYaml =
-        await writeNativeAssetsYaml(<Asset>[], yamlParentDirectory ?? buildUri_, fileSystem);
+    final Uri nativeAssetsYaml = await writeNativeAssetsYaml(
+      <Asset>[],
+      yamlParentDirectory ?? buildUri_,
+      fileSystem,
+    );
     return (nativeAssetsYaml, <Uri>[]);
   }
 
@@ -582,9 +569,8 @@ Future<(Uri? nativeAssetsYaml, List<Uri> dependencies)> buildNativeAssetsLinuxWi
   ensureNoLinkModeStatic(nativeAssets);
   globals.logger.printTrace('Building native assets for $target done.');
   final Uri? absolutePath = flutterTester ? buildUri_ : null;
-  final Map<Asset, Asset> assetTargetLocations =
-      _assetTargetLocationsLinuxWindows(nativeAssets, absolutePath);
-  await _copyNativeAssetsLinuxWindows(
+  final Map<Asset, Asset> assetTargetLocations = _assetTargetLocationsSingleArchitecture(nativeAssets, absolutePath);
+  await _copyNativeAssetsSingleArchitecture(
     buildUri_,
     assetTargetLocations,
     buildMode,
@@ -598,14 +584,18 @@ Future<(Uri? nativeAssetsYaml, List<Uri> dependencies)> buildNativeAssetsLinuxWi
   return (nativeAssetsUri, dependencies.toList());
 }
 
-Map<Asset, Asset> _assetTargetLocationsLinuxWindows(
+Map<Asset, Asset> _assetTargetLocationsSingleArchitecture(
   List<Asset> nativeAssets,
   Uri? absolutePath,
-) =>
-    <Asset, Asset>{
-      for (final Asset asset in nativeAssets)
-        asset: _targetLocationSingleArchitecture(asset, absolutePath),
-    };
+) {
+  return <Asset, Asset>{
+    for (final Asset asset in nativeAssets)
+      asset: _targetLocationSingleArchitecture(
+        asset,
+        absolutePath,
+      ),
+  };
+}
 
 Asset _targetLocationSingleArchitecture(Asset asset, Uri? absolutePath) {
   final AssetPath path = asset.path;
@@ -632,7 +622,10 @@ Asset _targetLocationSingleArchitecture(Asset asset, Uri? absolutePath) {
 }
 
 /// Extract the [Target] from a [TargetPlatform].
-Target _getNativeTargetLinuxWindows(build_info.TargetPlatform targetPlatform) {
+///
+/// Does not cover MacOS, iOS, and Android as these pass the architecture
+/// in other enums.
+Target _getNativeTarget(build_info.TargetPlatform targetPlatform) {
   switch (targetPlatform) {
     case build_info.TargetPlatform.linux_x64:
       return Target.linuxX64;
@@ -655,7 +648,7 @@ Target _getNativeTargetLinuxWindows(build_info.TargetPlatform targetPlatform) {
   }
 }
 
-Future<void> _copyNativeAssetsLinuxWindows(
+Future<void> _copyNativeAssetsSingleArchitecture(
   Uri buildUri,
   Map<Asset, Asset> assetTargetLocations,
   build_info.BuildMode buildMode,

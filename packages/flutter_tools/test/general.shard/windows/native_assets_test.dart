@@ -15,6 +15,7 @@ import 'package:flutter_tools/src/dart/package_map.dart';
 import 'package:flutter_tools/src/features.dart';
 import 'package:flutter_tools/src/globals.dart' as globals;
 import 'package:flutter_tools/src/native_assets.dart';
+import 'package:flutter_tools/src/windows/native_assets.dart';
 import 'package:native_assets_cli/native_assets_cli.dart' hide BuildMode, Target;
 import 'package:native_assets_cli/native_assets_cli.dart' as native_assets_cli;
 import 'package:package_config/package_config_types.dart';
@@ -71,7 +72,7 @@ void main() {
   testUsingContext('build with no package config', overrides: <Type, Generator>{
     ProcessManager: () => FakeProcessManager.empty(),
   }, () async {
-    await buildNativeAssetsLinuxWindows(
+    await buildNativeAssetsWindows(
       projectUri: projectUri,
       buildMode: BuildMode.debug,
       fileSystem: fileSystem,
@@ -177,7 +178,7 @@ void main() {
     await packageConfig.parent.create();
     await packageConfig.create();
     expect(
-      () => buildNativeAssetsLinuxWindows(
+      () => buildNativeAssetsWindows(
         projectUri: projectUri,
         buildMode: BuildMode.debug,
         fileSystem: fileSystem,
@@ -201,7 +202,7 @@ void main() {
     final File packageConfig = environment.projectDir.childFile('.dart_tool/package_config.json');
     await packageConfig.parent.create();
     await packageConfig.create();
-    final (Uri? nativeAssetsYaml, _) = await buildNativeAssetsLinuxWindows(
+    final (Uri? nativeAssetsYaml, _) = await buildNativeAssetsWindows(
       targetPlatform: TargetPlatform.windows_x64,
       projectUri: projectUri,
       buildMode: BuildMode.debug,
@@ -241,7 +242,7 @@ void main() {
       final File dylibAfterCompiling = fileSystem.file('bar.dll');
       // The mock doesn't create the file, so create it here.
       await dylibAfterCompiling.create();
-      final (Uri? nativeAssetsYaml, _) = await buildNativeAssetsLinuxWindows(
+      final (Uri? nativeAssetsYaml, _) = await buildNativeAssetsWindows(
         targetPlatform: TargetPlatform.windows_x64,
         projectUri: projectUri,
         buildMode: BuildMode.debug,

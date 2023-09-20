@@ -16,9 +16,11 @@ import '../bundle.dart';
 import '../compile.dart';
 import '../flutter_plugins.dart';
 import '../globals.dart' as globals;
+import '../linux/native_assets.dart';
 import '../macos/native_assets.dart';
 import '../native_assets.dart';
 import '../project.dart';
+import '../windows/native_assets.dart';
 import 'test_time_recorder.dart';
 
 /// A request to the [TestCompiler] for recompilation.
@@ -182,8 +184,16 @@ class TestCompiler {
           fileSystem: globals.fs,
           buildRunner: buildRunner,
         );
-      } else if (globals.platform.isLinux || globals.platform.isWindows) {
-        (nativeAssetsYaml, _) = await buildNativeAssetsLinuxWindows(
+      } else if (globals.platform.isLinux) {
+        (nativeAssetsYaml, _) = await buildNativeAssetsLinux(
+          buildMode: BuildMode.debug,
+          projectUri: projectUri,
+          flutterTester: true,
+          fileSystem: globals.fs,
+          buildRunner: buildRunner,
+        );
+      } else if (globals.platform.isWindows) {
+        (nativeAssetsYaml, _) = await buildNativeAssetsWindows(
           buildMode: BuildMode.debug,
           projectUri: projectUri,
           flutterTester: true,
