@@ -258,9 +258,7 @@ class ShareState extends State<Share> {
                     blurRadius: 6.0,
                     spreadRadius: 1.0)
               ],
-              borderRadius: const BorderRadius.only(
-                  topLeft: Radius.circular(20.0),
-                  topRight: Radius.circular(20.0)),
+              borderRadius: const BorderRadius.all(Radius.circular(10.0)),
               color: MyColor.color('datatitle'),
             ),
             padding: const EdgeInsets.all(20),
@@ -275,7 +273,7 @@ class ShareState extends State<Share> {
                               'shareContractInformation', widget.param.lgs),
                           textScaleFactor: MyClass.blocFontSizeApp(
                               widget.param.fontsizeapps),
-                          style: CustomTextStyle.dataHTxt(context, 5, 'Go')),
+                          style: CustomTextStyle.dataHTxt(context, 5, 'Bl')),
                     ),
                   ],
                 ),
@@ -284,14 +282,15 @@ class ShareState extends State<Share> {
                   children: <Widget>[
                     Expanded(
                         child: Text(
-                            Language.shareLg('member', widget.param.lgs) +
-                                ' : ',
+                            Language.shareLg('member', widget.param.lgs),
+                            textAlign: TextAlign.start,
                             textScaleFactor: MyClass.blocFontSizeApp(
                                 widget.param.fontsizeapps),
                             style:
                                 CustomTextStyle.dataHeadTitleTxt(context, 1))),
                     Expanded(
                         child: Text(widget.param.membershipNo,
+                            textAlign: TextAlign.end,
                             textScaleFactor: MyClass.blocFontSizeApp(
                                 widget.param.fontsizeapps),
                             style:
@@ -301,14 +300,15 @@ class ShareState extends State<Share> {
                 Row(
                   children: <Widget>[
                     Expanded(
-                        child: Text(
-                            Language.shareLg('name', widget.param.lgs) + ' : ',
+                        child: Text(Language.shareLg('name', widget.param.lgs),
+                            textAlign: TextAlign.start,
                             textScaleFactor: MyClass.blocFontSizeApp(
                                 widget.param.fontsizeapps),
                             style:
                                 CustomTextStyle.dataHeadTitleTxt(context, 1))),
                     Expanded(
                         child: Text(widget.param.name,
+                            textAlign: TextAlign.end,
                             textScaleFactor: MyClass.blocFontSizeApp(
                                 widget.param.fontsizeapps),
                             style:
@@ -318,14 +318,15 @@ class ShareState extends State<Share> {
                 Row(
                   children: <Widget>[
                     Expanded(
-                        child: Text(
-                            Language.shareLg('share', widget.param.lgs) + ' : ',
+                        child: Text(Language.shareLg('share', widget.param.lgs),
+                            textAlign: TextAlign.start,
                             textScaleFactor: MyClass.blocFontSizeApp(
                                 widget.param.fontsizeapps),
                             style:
                                 CustomTextStyle.dataHeadTitleTxt(context, 1))),
                     Expanded(
                         child: Text(MyClass.formatNumber(amount),
+                            textAlign: TextAlign.end,
                             textScaleFactor: MyClass.blocFontSizeApp(
                                 widget.param.fontsizeapps),
                             style:
@@ -336,14 +337,15 @@ class ShareState extends State<Share> {
                   children: <Widget>[
                     Expanded(
                         child: Text(
-                            Language.shareLg('period', widget.param.lgs) +
-                                ' : ',
+                            Language.shareLg('period', widget.param.lgs),
+                            textAlign: TextAlign.start,
                             textScaleFactor: MyClass.blocFontSizeApp(
                                 widget.param.fontsizeapps),
                             style:
                                 CustomTextStyle.dataHeadTitleTxt(context, 1))),
                     Expanded(
                         child: Text(period,
+                            textAlign: TextAlign.end,
                             textScaleFactor: MyClass.blocFontSizeApp(
                                 widget.param.fontsizeapps),
                             style:
@@ -354,14 +356,15 @@ class ShareState extends State<Share> {
                   children: <Widget>[
                     Expanded(
                         child: Text(
-                            Language.shareLg('monthlyShare', widget.param.lgs) +
-                                ' : ',
+                            Language.shareLg('monthlyShare', widget.param.lgs),
+                            textAlign: TextAlign.start,
                             textScaleFactor: MyClass.blocFontSizeApp(
                                 widget.param.fontsizeapps),
                             style:
                                 CustomTextStyle.dataHeadTitleTxt(context, 1))),
                     Expanded(
                         child: Text(stock,
+                            textAlign: TextAlign.end,
                             textScaleFactor: MyClass.blocFontSizeApp(
                                 widget.param.fontsizeapps),
                             style:
@@ -379,14 +382,17 @@ class ShareState extends State<Share> {
   Container _head(context, lgs) {
     return Container(
       decoration: BoxDecoration(
-        color: MyColor.color('detailhead'),
-        boxShadow: [
-          BoxShadow(
-              color: Colors.grey.withOpacity(0.3),
-              offset: Offset.fromDirection(0, 2.0),
-              blurRadius: 6.0,
-              spreadRadius: 1.0)
-        ],
+        gradient: LinearGradient(
+          begin: Alignment.centerLeft,
+          end: Alignment.centerRight,
+          tileMode: TileMode.clamp,
+          colors: <Color>[
+            MyColor.color('detailhead1'),
+            MyColor.color('detailhead2')
+          ],
+        ),
+        borderRadius: const BorderRadius.only(
+            topLeft: Radius.circular(10.0), topRight: Radius.circular(10.0)),
       ),
       padding: const EdgeInsets.symmetric(vertical: 10),
       child: Row(
@@ -394,33 +400,30 @@ class ShareState extends State<Share> {
         children: <Widget>[
           Expanded(
             flex: 1,
-            child: Text(
-              Language.shareLg('date', lgs),
-              textAlign: TextAlign.center,
-              textScaleFactor:
-                  MyClass.blocFontSizeApp(widget.param.fontsizeapps),
-              style: CustomTextStyle.headTitleTxt(context, -1),
-            ),
+            child: Text(Language.shareLg('date', lgs),
+                textAlign: TextAlign.center,
+                textScaleFactor:
+                    MyClass.blocFontSizeApp(widget.param.fontsizeapps),
+                style:
+                    CustomTextStyle.dataHeadTitleCTxt(context, -1, 'TxtBlue')),
           ),
           Expanded(
             flex: 1,
-            child: Text(
-              Language.shareLg('period1', lgs),
-              textAlign: TextAlign.center,
-              textScaleFactor:
-                  MyClass.blocFontSizeApp(widget.param.fontsizeapps),
-              style: CustomTextStyle.headTitleTxt(context, -1),
-            ),
+            child: Text(Language.shareLg('period1', lgs),
+                textAlign: TextAlign.center,
+                textScaleFactor:
+                    MyClass.blocFontSizeApp(widget.param.fontsizeapps),
+                style:
+                    CustomTextStyle.dataHeadTitleCTxt(context, -1, 'TxtBlue')),
           ),
           Expanded(
             flex: 1,
-            child: Text(
-              Language.shareLg('amount', lgs),
-              textAlign: TextAlign.center,
-              textScaleFactor:
-                  MyClass.blocFontSizeApp(widget.param.fontsizeapps),
-              style: CustomTextStyle.headTitleTxt(context, -1),
-            ),
+            child: Text(Language.shareLg('amount', lgs),
+                textAlign: TextAlign.center,
+                textScaleFactor:
+                    MyClass.blocFontSizeApp(widget.param.fontsizeapps),
+                style:
+                    CustomTextStyle.dataHeadTitleCTxt(context, -1, 'TxtBlue')),
           ),
         ],
       ),

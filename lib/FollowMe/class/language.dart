@@ -85,7 +85,7 @@ class Language {
       return l == 'en' ? "Welfare Receive" : "สวัสดิการ สคส 60 ปี";
     }
     if (m == 'requestforwelfare') {
-      return l == '' ? "ขอทุนสวัสดิการ" : "ขอทุนสวัสดิการ";
+      return l == '' ? "สวัสดิการ" : "สวัสดิการ";
     }
   }
 
@@ -657,6 +657,15 @@ class Language {
     }
     if (m == 'status') {
       return l == 'en' ? "Status" : "สถานะ";
+    }
+  }
+
+  static UploadDoc(m, l) {
+    if (m == 'UploadDocument') {
+      return l == 'en' ? "อัพโหลดหลักฐาน" : "อัพโหลดหลักฐาน";
+    }
+    if (m == 'ShareMonth') {
+      return l == 'en' ? "Sstatus" : "หุ้นเรียกเก็บ";
     }
   }
 
