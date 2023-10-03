@@ -136,83 +136,164 @@ class KeptDetailState extends State<KeptDetail> {
             padding: const EdgeInsets.only(top: 0),
             separatorBuilder: (context, index) => Divider(
               color: MyColor.color('linelist'),
+              height: 0,
             ),
             itemCount: kept.length,
             itemBuilder: (BuildContext context, int index) {
-              return Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                mainAxisSize: MainAxisSize.min,
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: <Widget>[
-                  Expanded(
-                    flex: 6,
-                    child: Padding(
-                      padding: const EdgeInsets.only(left: 20),
+              return _buildExpandableTile(kept[index]);
+            },
+          ),
+        ),
+      );
+
+  Widget _buildExpandableTile(kept) {
+    return kept.keepingTypeName == 'ค่าหุ้นรายเดือน'
+        ? ListTile(
+            title: Column(
+              children: [
+                Row(
+                  children: [
+                    Expanded(
+                      flex: 3,
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                         mainAxisSize: MainAxisSize.min,
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: <Widget>[
                           Text(
-                            kept[index].keepingTypeName,
-                            textAlign: TextAlign.left,
+                            kept.keepingTypeName,
+                            textAlign: TextAlign.start,
                             textScaleFactor:
                                 MyClass.blocFontSizeApp(_fontsizeapps),
-                            style: CustomTextStyle.dataBoldTxt(context, -1),
+                            style: CustomTextStyle.dataBoldTxt(context, 1),
                           ),
                           Text(
-                            kept[index].receiveDescription,
+                            kept.receiveDescription,
                             textAlign: TextAlign.left,
                             textScaleFactor:
                                 MyClass.blocFontSizeApp(_fontsizeapps),
-                            style: CustomTextStyle.dataTxt(context, 0),
+                            style: CustomTextStyle.dataTxt(context, 1),
                           ),
                         ],
                       ),
                     ),
-                  ),
-                  Expanded(
-                    flex: 5,
-                    child: Padding(
-                      padding: const EdgeInsets.only(right: 15),
+                    Expanded(
+                      flex: 4,
                       child: Text(
-                        MyClass.formatNumber(kept[index].principalOfLoan),
-                        textAlign: TextAlign.right,
+                        MyClass.checkNull(kept.principalOfLoan),
+                        textAlign: TextAlign.end,
                         textScaleFactor: MyClass.blocFontSizeApp(_fontsizeapps),
-                        style: CustomTextStyle.dataTxt(context, 0),
+                        style: CustomTextStyle.dataBoldTxt(context, 1),
                       ),
                     ),
-                  ),
-                  Expanded(
-                    flex: 5,
-                    child: Padding(
-                      padding: const EdgeInsets.only(right: 15),
-                      child: Text(
-                        MyClass.formatNumber(kept[index].interest),
-                        textAlign: TextAlign.right,
-                        textScaleFactor: MyClass.blocFontSizeApp(_fontsizeapps),
-                        style: CustomTextStyle.dataTxt(context, 0),
+                  ],
+                )
+              ],
+            ),
+          )
+        : ExpansionTile(
+            title: Column(
+              children: [
+                Row(
+                  children: [
+                    Expanded(
+                      flex: 3,
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                        mainAxisSize: MainAxisSize.min,
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: <Widget>[
+                          Text(
+                            kept.keepingTypeName,
+                            textAlign: TextAlign.start,
+                            textScaleFactor:
+                                MyClass.blocFontSizeApp(_fontsizeapps),
+                            style: CustomTextStyle.dataBoldTxt(context, 1),
+                          ),
+                          Text(
+                            kept.receiveDescription,
+                            textAlign: TextAlign.left,
+                            textScaleFactor:
+                                MyClass.blocFontSizeApp(_fontsizeapps),
+                            style: CustomTextStyle.dataTxt(context, 1),
+                          ),
+                        ],
                       ),
                     ),
-                  ),
-                  Expanded(
-                    flex: 5,
-                    child: Padding(
-                      padding: const EdgeInsets.only(right: 15),
+                    Expanded(
+                      flex: 2,
                       child: Text(
-                        MyClass.formatNumber(kept[index].moneyAmount),
-                        textAlign: TextAlign.right,
+                        MyClass.checkNull(kept.principalOfLoan),
+                        textAlign: TextAlign.end,
                         textScaleFactor: MyClass.blocFontSizeApp(_fontsizeapps),
-                        style: CustomTextStyle.dataTxt(context, 0),
+                        style: CustomTextStyle.dataBoldTxt(context, 1),
                       ),
                     ),
+                  ],
+                )
+              ],
+            ),
+            children: [
+                ListTile(
+                  title: Column(
+                    children: [
+                      Row(children: [
+                        Expanded(
+                          flex: 2,
+                          child: Text(
+                            Language.keptLg('principal', widget.param.lgs),
+                            textAlign: TextAlign.start,
+                            textScaleFactor:
+                                MyClass.blocFontSizeApp(_fontsizeapps),
+                            style: CustomTextStyle.dataBoldTxt(context, 1),
+                          ),
+                        ),
+                        Expanded(
+                          flex: 2,
+                          child: Padding(
+                            padding: const EdgeInsets.only(right: 5),
+                            child: Text(
+                              MyClass.checkNull(kept.principalOfLoan),
+                              textAlign: TextAlign.end,
+                              textScaleFactor:
+                                  MyClass.blocFontSizeApp(_fontsizeapps),
+                              style: CustomTextStyle.dataTxt(context, 1),
+                            ),
+                          ),
+                        ),
+                      ]),
+                      Row(
+                        children: [
+                          Expanded(
+                            flex: 2,
+                            child: Text(
+                              Language.keptLg('interest', widget.param.lgs),
+                              textAlign: TextAlign.start,
+                              textScaleFactor:
+                                  MyClass.blocFontSizeApp(_fontsizeapps),
+                              style: CustomTextStyle.dataBoldTxt(context, 1),
+                            ),
+                          ),
+                          Expanded(
+                            flex: 2,
+                            child: Padding(
+                              padding: const EdgeInsets.only(right: 5),
+                              child: Text(
+                                MyClass.checkNull(kept.interest),
+                                textAlign: TextAlign.end,
+                                textScaleFactor:
+                                    MyClass.blocFontSizeApp(_fontsizeapps),
+                                style: CustomTextStyle.dataTxt(context, 1),
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ],
                   ),
-                ],
-              );
-            },
-          ),
-        ),
-      );
+                )
+              ]);
+  }
 
   Container _subdataHeadcolor() {
     return Container(
@@ -221,9 +302,7 @@ class KeptDetailState extends State<KeptDetail> {
         children: <Widget>[
           Container(
             decoration: BoxDecoration(
-              borderRadius: const BorderRadius.only(
-                  topLeft: Radius.circular(10.0),
-                  topRight: Radius.circular(10.0)),
+              borderRadius: const BorderRadius.all(Radius.circular(10.0)),
               color: MyColor.color('datatitle'),
             ),
             padding: const EdgeInsets.all(10),
@@ -232,29 +311,37 @@ class KeptDetailState extends State<KeptDetail> {
                 Row(
                   children: [
                     Expanded(
-                        child: Center(
-                            child: Text(
-                                Language.keptLg('member', widget.param.lgs) +
-                                    ' : ' +
-                                    widget.param.membershipNo,
-                                textScaleFactor:
-                                    MyClass.blocFontSizeApp(_fontsizeapps),
-                                style: CustomTextStyle.dataHeadTitleTxt(
-                                    context, 2)))),
+                        child: Text(Language.keptLg('member', widget.param.lgs),
+                            textAlign: TextAlign.start,
+                            textScaleFactor:
+                                MyClass.blocFontSizeApp(_fontsizeapps),
+                            style:
+                                CustomTextStyle.dataHeadTitleTxt(context, 2))),
+                    Expanded(
+                        child: Text(widget.param.membershipNo,
+                            textAlign: TextAlign.end,
+                            textScaleFactor:
+                                MyClass.blocFontSizeApp(_fontsizeapps),
+                            style:
+                                CustomTextStyle.dataHeadTitleTxt(context, 2))),
                   ],
                 ),
                 Row(
                   children: [
                     Expanded(
-                        child: Center(
-                            child: Text(
-                                Language.keptLg('name', widget.param.lgs) +
-                                    ' : ' +
-                                    widget.param.name,
-                                textScaleFactor:
-                                    MyClass.blocFontSizeApp(_fontsizeapps),
-                                style: CustomTextStyle.dataHeadTitleTxt(
-                                    context, 2)))),
+                        child: Text(Language.keptLg('name', widget.param.lgs),
+                            textAlign: TextAlign.start,
+                            textScaleFactor:
+                                MyClass.blocFontSizeApp(_fontsizeapps),
+                            style:
+                                CustomTextStyle.dataHeadTitleTxt(context, 2))),
+                    Expanded(
+                        child: Text(widget.param.name,
+                            textAlign: TextAlign.end,
+                            textScaleFactor:
+                                MyClass.blocFontSizeApp(_fontsizeapps),
+                            style:
+                                CustomTextStyle.dataHeadTitleTxt(context, 2))),
                   ],
                 ),
                 Row(
@@ -282,38 +369,97 @@ class KeptDetailState extends State<KeptDetail> {
                   thickness: 2,
                   color: MyColor.color('divider'),
                 ),
+                Row(
+                  children: [
+                    Expanded(
+                        child: Text(
+                            Language.keptLg('receiptDate', widget.param.lgs),
+                            textScaleFactor:
+                                MyClass.blocFontSizeApp(_fontsizeapps),
+                            style:
+                                CustomTextStyle.dataHeadTitleTxt(context, 1))),
+                    Expanded(
+                        child: Text(
+                      jsonDecode(widget.data)[0]['receiptDate'],
+                      // MyClass.convertDate(
+                      //     jsonDecode(widget.data)[0]['receiptDate']),
+                      textScaleFactor: MyClass.blocFontSizeApp(_fontsizeapps),
+                      style: CustomTextStyle.dataHeadTitleTxt(context, 1),
+                      textAlign: TextAlign.end,
+                    )),
+                  ],
+                ),
                 Row(children: <Widget>[
                   Expanded(
                       child: Text(
-                          Language.keptLg('receiptNumber', widget.param.lgs) +
-                              ' : ' +
-                              jsonDecode(widget.data)[0]['receiptNo'],
+                          Language.keptLg('receiptNumber', widget.param.lgs),
+                          // MyClass.formatRef(
+                          //     jsonDecode(widget.data)[0]['receiptNo']),
                           textScaleFactor:
                               MyClass.blocFontSizeApp(_fontsizeapps),
-                          style:
-                              CustomTextStyle.dataHeadTitleTxt(context, -2))),
+                          style: CustomTextStyle.dataHeadTitleTxt(context, 1))),
                   Expanded(
                       child: Text(
-                          Language.keptLg('receiptDate', widget.param.lgs) +
-                              ' : ' +
-                              jsonDecode(widget.data)[0]['receiptDate'],
-                          textScaleFactor:
-                              MyClass.blocFontSizeApp(_fontsizeapps),
-                          style:
-                              CustomTextStyle.dataHeadTitleTxt(context, -2))),
+                    jsonDecode(widget.data)[0]['receiptNo'],
+                    // MyClass.formatRef(
+                    //     jsonDecode(widget.data)[0]['receiptNo']),
+                    textScaleFactor: MyClass.blocFontSizeApp(_fontsizeapps),
+                    style: CustomTextStyle.dataHeadTitleTxt(context, 1),
+                    textAlign: TextAlign.end,
+                  )),
                 ]),
                 Row(children: <Widget>[
                   Expanded(
                       child: Text(
-                          Language.keptLg('billedCharge', widget.param.lgs) +
-                              ' : ' +
-                              MyClass.formatNumber(
-                                  jsonDecode(widget.data)[0]['moneyAmount']),
+                          Language.keptLg('billedCharge', widget.param.lgs),
                           textScaleFactor:
                               MyClass.blocFontSizeApp(_fontsizeapps),
-                          style:
-                              CustomTextStyle.dataHeadTitleTxt(context, -2))),
+                          style: CustomTextStyle.dataHeadTitleTxt(context, 1))),
+                  Expanded(
+                      child: Text(
+                    MyClass.checkNull(
+                        jsonDecode(widget.data)[0]['moneyAmount']),
+                    textScaleFactor: MyClass.blocFontSizeApp(_fontsizeapps),
+                    style: CustomTextStyle.dataHeadTitleTxt(context, 1),
+                    textAlign: TextAlign.end,
+                  )),
                 ]),
+                Row(children: <Widget>[
+                  Expanded(
+                      child: Text(
+                          Language.keptLg('totalPaid', widget.param.lgs),
+                          textScaleFactor:
+                              MyClass.blocFontSizeApp(_fontsizeapps),
+                          style: CustomTextStyle.dataHeadTitleTxt(context, 1))),
+                  Expanded(
+                      child: Text(
+                    MyClass.checkNull(
+                        jsonDecode(widget.data)[0]['moneyAmount']),
+                    textScaleFactor: MyClass.blocFontSizeApp(_fontsizeapps),
+                    style: CustomTextStyle.dataHeadTitleTxt(context, 1),
+                    textAlign: TextAlign.end,
+                  )),
+                ]),
+                Row(
+                  children: [
+                    Expanded(
+                        child: Text(
+                            Language.keptLg('StatusReceipt', widget.param.lgs),
+                            textScaleFactor:
+                                MyClass.blocFontSizeApp(_fontsizeapps),
+                            style:
+                                CustomTextStyle.dataHeadTitleTxt(context, 1))),
+                    Expanded(
+                        child: Text(
+                      jsonDecode(widget.data)[0]['postRun'] == '0'
+                          ? "รอนำส่ง"
+                          : "ชำระแล้ว",
+                      textScaleFactor: MyClass.blocFontSizeApp(_fontsizeapps),
+                      style: CustomTextStyle.dataHeadTitleTxt(context, 1),
+                      textAlign: TextAlign.end,
+                    )),
+                  ],
+                ),
               ],
             ),
           ),
@@ -326,7 +472,19 @@ class KeptDetailState extends State<KeptDetail> {
 Container _head(context, lgs) {
   return Container(
     padding: const EdgeInsets.all(12),
-    color: MyColor.color('detailhead'),
+    decoration: BoxDecoration(
+      gradient: LinearGradient(
+        begin: Alignment.centerLeft,
+        end: Alignment.centerRight,
+        tileMode: TileMode.decal,
+        colors: <Color>[
+          MyColor.color('detailhead1'),
+          MyColor.color('detailhead2')
+        ],
+      ),
+      borderRadius: const BorderRadius.only(
+          topLeft: Radius.circular(10.0), topRight: Radius.circular(10.0)),
+    ),
     child: Row(
       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
       mainAxisSize: MainAxisSize.max,
@@ -334,39 +492,31 @@ Container _head(context, lgs) {
       children: <Widget>[
         Expanded(
           flex: 3,
-          child: Text(
-            Language.keptLg('detail', lgs),
-            textAlign: TextAlign.center,
-            textScaleFactor: MyClass.blocFontSizeApp(_fontsizeapps),
-            style: CustomTextStyle.headTitleTxt(context, -1),
-          ),
+          child: Text(Language.keptLg('detail', lgs),
+              textAlign: TextAlign.center,
+              textScaleFactor: MyClass.blocFontSizeApp(_fontsizeapps),
+              style: CustomTextStyle.dataHeadTitleCTxt(context, -1, 'TxtBlue')),
         ),
         Expanded(
           flex: 2,
-          child: Text(
-            Language.keptLg('principal', lgs),
-            textAlign: TextAlign.center,
-            textScaleFactor: MyClass.blocFontSizeApp(_fontsizeapps),
-            style: CustomTextStyle.headTitleTxt(context, -1),
-          ),
+          child: Text(Language.keptLg('principal', lgs),
+              textAlign: TextAlign.center,
+              textScaleFactor: MyClass.blocFontSizeApp(_fontsizeapps),
+              style: CustomTextStyle.dataHeadTitleCTxt(context, -1, 'TxtBlue')),
         ),
         Expanded(
           flex: 3,
-          child: Text(
-            Language.keptLg('interest', lgs),
-            textAlign: TextAlign.center,
-            textScaleFactor: MyClass.blocFontSizeApp(_fontsizeapps),
-            style: CustomTextStyle.headTitleTxt(context, -1),
-          ),
+          child: Text(Language.keptLg('interest', lgs),
+              textAlign: TextAlign.center,
+              textScaleFactor: MyClass.blocFontSizeApp(_fontsizeapps),
+              style: CustomTextStyle.dataHeadTitleCTxt(context, -1, 'TxtBlue')),
         ),
         Expanded(
           flex: 2,
-          child: Text(
-            Language.keptLg('amount', lgs),
-            textAlign: TextAlign.center,
-            textScaleFactor: MyClass.blocFontSizeApp(_fontsizeapps),
-            style: CustomTextStyle.headTitleTxt(context, -1),
-          ),
+          child: Text(Language.keptLg('amount', lgs),
+              textAlign: TextAlign.center,
+              textScaleFactor: MyClass.blocFontSizeApp(_fontsizeapps),
+              style: CustomTextStyle.dataHeadTitleCTxt(context, -1, 'TxtBlue')),
         ),
       ],
     ),

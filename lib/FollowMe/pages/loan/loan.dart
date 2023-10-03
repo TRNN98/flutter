@@ -241,9 +241,7 @@ Center _subdatahead(member, name, context, lgs) {
                   blurRadius: 6.0,
                   spreadRadius: 1.0)
             ],
-            borderRadius: const BorderRadius.only(
-                topLeft: Radius.circular(20.0),
-                topRight: Radius.circular(20.0)),
+            borderRadius: const BorderRadius.all(Radius.circular(10.0)),
             color: MyColor.color('datatitle'),
           ),
           padding: const EdgeInsets.all(20),
@@ -252,12 +250,14 @@ Center _subdatahead(member, name, context, lgs) {
               Row(
                 children: <Widget>[
                   Expanded(
-                      child: Text(Language.loanLg('member', lgs) + ' : ',
+                      child: Text(Language.loanLg('member', lgs),
+                          textAlign: TextAlign.start,
                           textScaleFactor:
                               MyClass.blocFontSizeApp(_fontsizeapps),
                           style: CustomTextStyle.dataHeadTitleTxt(context, 0))),
                   Expanded(
                       child: Text(member,
+                          textAlign: TextAlign.end,
                           textScaleFactor:
                               MyClass.blocFontSizeApp(_fontsizeapps),
                           style: CustomTextStyle.dataHeadDataTxt(context, 0))),
@@ -266,12 +266,14 @@ Center _subdatahead(member, name, context, lgs) {
               Row(
                 children: <Widget>[
                   Expanded(
-                      child: Text(Language.loanLg('name', lgs) + ' : ',
+                      child: Text(Language.loanLg('name', lgs),
+                          textAlign: TextAlign.start,
                           textScaleFactor:
                               MyClass.blocFontSizeApp(_fontsizeapps),
                           style: CustomTextStyle.dataHeadTitleTxt(context, 0))),
                   Expanded(
                       child: Text(name,
+                          textAlign: TextAlign.end,
                           textScaleFactor:
                               MyClass.blocFontSizeApp(_fontsizeapps),
                           style: CustomTextStyle.dataHeadDataTxt(context, 0))),
@@ -288,14 +290,17 @@ Center _subdatahead(member, name, context, lgs) {
 Container _head(context, lgs) {
   return Container(
     decoration: BoxDecoration(
-      color: MyColor.color('detailhead'),
-      boxShadow: [
-        BoxShadow(
-            color: Colors.grey.withOpacity(0.3),
-            offset: Offset.fromDirection(0, 2.0),
-            blurRadius: 6.0,
-            spreadRadius: 1.0)
-      ],
+      gradient: LinearGradient(
+        begin: Alignment.centerLeft,
+        end: Alignment.centerRight,
+        tileMode: TileMode.decal,
+        colors: <Color>[
+          MyColor.color('detailhead1'),
+          MyColor.color('detailhead2')
+        ],
+      ),
+      borderRadius: const BorderRadius.only(
+          topLeft: Radius.circular(10.0), topRight: Radius.circular(10.0)),
     ),
     padding: const EdgeInsets.all(12),
     child: Row(
@@ -303,12 +308,10 @@ Container _head(context, lgs) {
       children: <Widget>[
         Expanded(
           flex: 1,
-          child: Text(
-            Language.loanLg('detail', lgs),
-            textAlign: TextAlign.center,
-            textScaleFactor: MyClass.blocFontSizeApp(_fontsizeapps),
-            style: CustomTextStyle.headTitleTxt(context, 0),
-          ),
+          child: Text(Language.loanLg('detail', lgs),
+              textAlign: TextAlign.center,
+              textScaleFactor: MyClass.blocFontSizeApp(_fontsizeapps),
+              style: CustomTextStyle.dataHeadTitleCTxt(context, -1, 'TxtBlue')),
         ),
         const Expanded(
           flex: 1,
@@ -316,12 +319,10 @@ Container _head(context, lgs) {
         ),
         Expanded(
           flex: 1,
-          child: Text(
-            Language.loanLg('amountLoan', lgs),
-            textAlign: TextAlign.center,
-            textScaleFactor: MyClass.blocFontSizeApp(_fontsizeapps),
-            style: CustomTextStyle.headTitleTxt(context, 0),
-          ),
+          child: Text(Language.loanLg('amountLoan', lgs),
+              textAlign: TextAlign.center,
+              textScaleFactor: MyClass.blocFontSizeApp(_fontsizeapps),
+              style: CustomTextStyle.dataHeadTitleCTxt(context, -1, 'TxtBlue')),
         ),
       ],
     ),

@@ -87,6 +87,14 @@ class Language {
     if (m == 'requestforwelfare') {
       return l == '' ? "สวัสดิการ" : "สวัสดิการ";
     }
+    if (m == 'UploadDocument') {
+      return l == 'en' ? "อัพโหลดหลักฐาน" : "อัพโหลดหลักฐาน";
+    }
+    if (m == 'MemberSeminar') {
+      return l == 'en' ? "การสัมมนาสมาชิก" : "การสัมมนาสมาชิก";
+    }
+
+    // การสัมมนาสมาชิก
   }
 
   static shareLg(m, l) {
@@ -383,7 +391,7 @@ class Language {
       return l == 'en' ? "Fiscal year" : "ปีบัญชี";
     }
     if (m == 'getMoney') {
-      return l == 'en' ? "Get money" : "รวม";
+      return l == 'en' ? "Get money" : "รวมรับสุทธิ";
     }
     if (m == 'detail') {
       return l == 'en' ? "Detail" : "รายละเอียด";
@@ -479,12 +487,16 @@ class Language {
       return l == 'en' ? "Receipt" : "ใบเสร็จรับเงิน";
     }
     if (m == 'billingStatement') {
-      return l == 'en' ? "Billing statement" : "ใบแจงยอดเรียกเก็บ ";
+      return l == 'en' ? "Billing statement" : "ใบแจ้งยอดเรียกเก็บ ";
     }
     if (m == 'canNotPrint') {
       return l == 'en'
           ? "Still can't print the receipt. Because the transaction has not yet been posted"
           : "ยังไม่สามารถพิมพ์ใบเสร็จได้ เนื่องจากยังไม่ผ่านรายการ";
+    }
+
+    if (m == 'totalPaid') {
+      return l == 'en' ? "Total" : "รวมได้รับชำระ";
     }
   }
 
@@ -664,8 +676,17 @@ class Language {
     if (m == 'UploadDocument') {
       return l == 'en' ? "อัพโหลดหลักฐาน" : "อัพโหลดหลักฐาน";
     }
-    if (m == 'ShareMonth') {
-      return l == 'en' ? "Sstatus" : "หุ้นเรียกเก็บ";
+  }
+
+  static memberSeminar(m, l) {
+    if (m == 'memberSeminar') {
+      return l == 'en' ? "การสัมมนาสมาชิก" : "การสัมมนาสมาชิก";
+    }
+    if (m == 'history') {
+      return l == 'en' ? "history" : "ประวัติการสัมมนาสมาชิก";
+    }
+    if (m == 'date') {
+      return l == 'en' ? "Date" : "วันที่สัมมนา";
     }
   }
 

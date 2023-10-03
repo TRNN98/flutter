@@ -160,9 +160,14 @@ class GainState extends State<Gain> {
         children: <Widget>[
           Container(
             decoration: BoxDecoration(
-              borderRadius: const BorderRadius.only(
-                  topLeft: Radius.circular(10.0),
-                  topRight: Radius.circular(10.0)),
+              boxShadow: [
+                BoxShadow(
+                    color: Colors.grey.withOpacity(0.3),
+                    offset: Offset.fromDirection(0, 2.0),
+                    blurRadius: 6.0,
+                    spreadRadius: 1.0)
+              ],
+              borderRadius: const BorderRadius.all(Radius.circular(10.0)),
               color: MyColor.color('datatitle'),
             ),
             padding: const EdgeInsets.all(20),
@@ -171,35 +176,37 @@ class GainState extends State<Gain> {
                 Row(
                   children: <Widget>[
                     Expanded(
-                        child: Text(
-                            Language.loanLg('member', widget.param.lgs) + ' : ',
+                        child: Text(Language.loanLg('member', widget.param.lgs),
+                            textAlign: TextAlign.start,
                             textScaleFactor:
                                 MyClass.blocFontSizeApp(_fontsizeapps),
                             style:
-                                CustomTextStyle.dataHeadTitleTxt(context, 0))),
+                                CustomTextStyle.dataHeadTitleTxt(context, 2))),
                     Expanded(
                         child: Text(widget.param.membershipNo,
+                            textAlign: TextAlign.end,
                             textScaleFactor:
                                 MyClass.blocFontSizeApp(_fontsizeapps),
                             style:
-                                CustomTextStyle.dataHeadDataTxt(context, 0))),
+                                CustomTextStyle.dataHeadDataTxt(context, 2))),
                   ],
                 ),
                 Row(
                   children: <Widget>[
                     Expanded(
-                        child: Text(
-                            Language.loanLg('name', widget.param.lgs) + ' : ',
+                        child: Text(Language.loanLg('name', widget.param.lgs),
+                            textAlign: TextAlign.start,
                             textScaleFactor:
                                 MyClass.blocFontSizeApp(_fontsizeapps),
                             style:
-                                CustomTextStyle.dataHeadTitleTxt(context, 0))),
+                                CustomTextStyle.dataHeadTitleTxt(context, 2))),
                     Expanded(
                         child: Text(widget.param.name,
+                            textAlign: TextAlign.end,
                             textScaleFactor:
                                 MyClass.blocFontSizeApp(_fontsizeapps),
                             style:
-                                CustomTextStyle.dataHeadDataTxt(context, 0))),
+                                CustomTextStyle.dataHeadDataTxt(context, 2))),
                   ],
                 ),
               ],
@@ -213,8 +220,20 @@ class GainState extends State<Gain> {
 
 Container _head(context, lgs) {
   return Container(
-    padding: const EdgeInsets.all(15),
-    color: MyColor.color('detailhead'),
+    padding: const EdgeInsets.all(12),
+    decoration: BoxDecoration(
+      gradient: LinearGradient(
+        begin: Alignment.centerLeft,
+        end: Alignment.centerRight,
+        tileMode: TileMode.decal,
+        colors: <Color>[
+          MyColor.color('detailhead1'),
+          MyColor.color('detailhead2')
+        ],
+      ),
+      borderRadius: const BorderRadius.only(
+          topLeft: Radius.circular(10.0), topRight: Radius.circular(10.0)),
+    ),
     child: Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: <Widget>[
@@ -224,7 +243,7 @@ Container _head(context, lgs) {
             Language.gainLg('gain', lgs),
             textAlign: TextAlign.left,
             textScaleFactor: MyClass.blocFontSizeApp(_fontsizeapps),
-            style: CustomTextStyle.headTitleTxt(context, 0),
+            style: CustomTextStyle.dataHeadTitleCTxt(context, 0, 'TxtBlue'),
           ),
         ),
         Expanded(
@@ -233,7 +252,7 @@ Container _head(context, lgs) {
             Language.gainLg('relationship', lgs),
             textAlign: TextAlign.right,
             textScaleFactor: MyClass.blocFontSizeApp(_fontsizeapps),
-            style: CustomTextStyle.headTitleTxt(context, 0),
+            style: CustomTextStyle.dataHeadTitleCTxt(context, 0, 'TxtBlue'),
           ),
         ),
       ],

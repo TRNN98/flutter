@@ -202,14 +202,17 @@ class DepositMovementState extends State<DepositMovement> {
     return Container(
       padding: const EdgeInsets.all(12),
       decoration: BoxDecoration(
-        color: MyColor.color('detailhead'),
-        boxShadow: [
-          BoxShadow(
-              color: Colors.grey.withOpacity(0.3),
-              offset: Offset.fromDirection(0, 2.0),
-              blurRadius: 6.0,
-              spreadRadius: 1.0)
-        ],
+        gradient: LinearGradient(
+          begin: Alignment.centerLeft,
+          end: Alignment.centerRight,
+          tileMode: TileMode.decal,
+          colors: <Color>[
+            MyColor.color('detailhead1'),
+            MyColor.color('detailhead2')
+          ],
+        ),
+        borderRadius: const BorderRadius.only(
+            topLeft: Radius.circular(10.0), topRight: Radius.circular(10.0)),
       ),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.center,
@@ -255,9 +258,7 @@ class DepositMovementState extends State<DepositMovement> {
                     blurRadius: 6.0,
                     spreadRadius: 1.0)
               ],
-              borderRadius: const BorderRadius.only(
-                  topLeft: Radius.circular(20.0),
-                  topRight: Radius.circular(20.0)),
+              borderRadius: const BorderRadius.all(Radius.circular(10.0)),
               color: MyColor.color('datatitle'),
             ),
             padding: const EdgeInsets.all(20),
@@ -266,14 +267,15 @@ class DepositMovementState extends State<DepositMovement> {
                 Row(
                   children: <Widget>[
                     Expanded(
-                        child: Text(
-                            Language.loanLg('member', widget.param.lgs) + ' : ',
+                        child: Text(Language.loanLg('member', widget.param.lgs),
+                            textAlign: TextAlign.start,
                             textScaleFactor:
                                 MyClass.blocFontSizeApp(_fontsizeapps),
                             style:
                                 CustomTextStyle.dataHeadTitleTxt(context, 0))),
                     Expanded(
                         child: Text(widget.param.membershipNo,
+                            textAlign: TextAlign.end,
                             textScaleFactor:
                                 MyClass.blocFontSizeApp(_fontsizeapps),
                             style:
@@ -283,14 +285,15 @@ class DepositMovementState extends State<DepositMovement> {
                 Row(
                   children: <Widget>[
                     Expanded(
-                        child: Text(
-                            Language.loanLg('name', widget.param.lgs) + ' : ',
+                        child: Text(Language.loanLg('name', widget.param.lgs),
+                            textAlign: TextAlign.start,
                             textScaleFactor:
                                 MyClass.blocFontSizeApp(_fontsizeapps),
                             style:
                                 CustomTextStyle.dataHeadTitleTxt(context, 0))),
                     Expanded(
                         child: Text(widget.param.name,
+                            textAlign: TextAlign.end,
                             textScaleFactor:
                                 MyClass.blocFontSizeApp(_fontsizeapps),
                             style:
@@ -301,14 +304,15 @@ class DepositMovementState extends State<DepositMovement> {
                   children: <Widget>[
                     Expanded(
                         child: Text(
-                            Language.deposit('balanceH', widget.param.lgs) +
-                                ' : ',
+                            Language.deposit('balanceH', widget.param.lgs),
+                            textAlign: TextAlign.start,
                             textScaleFactor:
                                 MyClass.blocFontSizeApp(_fontsizeapps),
                             style:
                                 CustomTextStyle.dataHeadTitleTxt(context, 0))),
                     Expanded(
                         child: Text(MyClass.formatNumber(widget.depositBalance),
+                            textAlign: TextAlign.end,
                             textScaleFactor:
                                 MyClass.blocFontSizeApp(_fontsizeapps),
                             style:

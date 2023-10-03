@@ -60,9 +60,8 @@ class DepositDetailState extends State<DepositDetail> {
                               blurRadius: 6.0,
                               spreadRadius: 1.0)
                         ],
-                        borderRadius: const BorderRadius.only(
-                            topLeft: Radius.circular(0.0),
-                            topRight: Radius.circular(0.0)),
+                        borderRadius:
+                            const BorderRadius.all(Radius.circular(10.0)),
                         color: MyColor.color('datatitle'),
                       ),
                       child: Column(
@@ -78,7 +77,7 @@ class DepositDetailState extends State<DepositDetail> {
                                     textScaleFactor:
                                         MyClass.blocFontSizeApp(_fontsizeapps),
                                     style: CustomTextStyle.dataHTxt(
-                                        context, 5, 'Go')),
+                                        context, 5, 'Bl')),
                               ),
                             ],
                           ),
@@ -91,9 +90,8 @@ class DepositDetailState extends State<DepositDetail> {
                                 child: Container(
                                     alignment: Alignment.centerLeft,
                                     child: Text(
-                                        Language.deposit('accountType',
-                                                widget.param.lgs) +
-                                            " : ",
+                                        Language.deposit(
+                                            'accountType', widget.param.lgs),
                                         textScaleFactor:
                                             MyClass.blocFontSizeApp(
                                                 _fontsizeapps),
@@ -105,12 +103,13 @@ class DepositDetailState extends State<DepositDetail> {
                                 child: Text(
                                     jsonDecode(widget.data)[0]
                                         ['deposit_type_name'],
+                                    textAlign: TextAlign.end,
                                     // MyClass.formatcontactaccoutn(
                                     //     jsonDecode(widget.data)[0]
                                     //         ['deposit_account_no']),
                                     textScaleFactor:
                                         MyClass.blocFontSizeApp(_fontsizeapps),
-                                    style: CustomTextStyle.dataBoldTxt(
+                                    style: CustomTextStyle.dataW300Txt(
                                         context, 0)),
                               ),
                             ],
@@ -124,9 +123,8 @@ class DepositDetailState extends State<DepositDetail> {
                                 child: Container(
                                     alignment: Alignment.centerLeft,
                                     child: Text(
-                                        Language.deposit('accountNumber',
-                                                widget.param.lgs) +
-                                            " : ",
+                                        Language.deposit(
+                                            'accountNumber', widget.param.lgs),
                                         textScaleFactor:
                                             MyClass.blocFontSizeApp(
                                                 _fontsizeapps),
@@ -138,12 +136,13 @@ class DepositDetailState extends State<DepositDetail> {
                                 child: Text(
                                     jsonDecode(widget.data)[0]
                                         ['deposit_account_no'],
+                                    textAlign: TextAlign.end,
                                     // MyClass.formatcontactaccoutn(
                                     //     jsonDecode(widget.data)[0]
                                     //         ['deposit_account_no']),
                                     textScaleFactor:
                                         MyClass.blocFontSizeApp(_fontsizeapps),
-                                    style: CustomTextStyle.dataBoldTxt(
+                                    style: CustomTextStyle.dataW300Txt(
                                         context, 0)),
                               ),
                             ],
@@ -158,9 +157,8 @@ class DepositDetailState extends State<DepositDetail> {
                                 child: Container(
                                     alignment: Alignment.centerLeft,
                                     child: Text(
-                                        Language.deposit('accountName',
-                                                widget.param.lgs) +
-                                            " : ",
+                                        Language.deposit(
+                                            'accountName', widget.param.lgs),
                                         textScaleFactor:
                                             MyClass.blocFontSizeApp(
                                                 _fontsizeapps),
@@ -172,9 +170,10 @@ class DepositDetailState extends State<DepositDetail> {
                                 child: Text(
                                     jsonDecode(widget.data)[0]
                                         ['deposit_account_name'],
+                                    textAlign: TextAlign.end,
                                     textScaleFactor:
                                         MyClass.blocFontSizeApp(_fontsizeapps),
-                                    style: CustomTextStyle.dataBoldTxt(
+                                    style: CustomTextStyle.dataW300Txt(
                                         context, 0)),
                               ),
                             ],
@@ -189,8 +188,7 @@ class DepositDetailState extends State<DepositDetail> {
                                     alignment: Alignment.centerLeft,
                                     child: Text(
                                         Language.deposit('accountOpeningDate',
-                                                widget.param.lgs) +
-                                            " : ",
+                                            widget.param.lgs),
                                         textScaleFactor:
                                             MyClass.blocFontSizeApp(
                                                 _fontsizeapps),
@@ -202,11 +200,12 @@ class DepositDetailState extends State<DepositDetail> {
                                 child: Text(
                                     jsonDecode(widget.data)[0]
                                         ['deposit_opened_date'],
+                                    textAlign: TextAlign.end,
                                     // MyClass.convertDate(jsonDecode(widget.data)[0]
                                     //     ['deposit_opened_date']),
                                     textScaleFactor:
                                         MyClass.blocFontSizeApp(_fontsizeapps),
-                                    style: CustomTextStyle.dataBoldTxt(
+                                    style: CustomTextStyle.dataW300Txt(
                                         context, 0)),
                               ),
                             ],
@@ -221,8 +220,7 @@ class DepositDetailState extends State<DepositDetail> {
                                     alignment: Alignment.centerLeft,
                                     child: Text(
                                         Language.deposit('remainingAmount',
-                                                widget.param.lgs) +
-                                            " : ",
+                                            widget.param.lgs),
                                         textScaleFactor:
                                             MyClass.blocFontSizeApp(
                                                 _fontsizeapps),
@@ -235,9 +233,10 @@ class DepositDetailState extends State<DepositDetail> {
                                     MyClass.formatNumber(
                                         jsonDecode(widget.data)[0]
                                             ['deposit_balance']),
+                                    textAlign: TextAlign.end,
                                     textScaleFactor:
                                         MyClass.blocFontSizeApp(_fontsizeapps),
-                                    style: CustomTextStyle.dataBoldTxt(
+                                    style: CustomTextStyle.dataW300Txt(
                                         context, 0)),
                               ),
                             ],
@@ -252,8 +251,7 @@ class DepositDetailState extends State<DepositDetail> {
                                     alignment: Alignment.centerLeft,
                                     child: Text(
                                         Language.deposit('amountWithdrawn',
-                                                widget.param.lgs) +
-                                            " : ",
+                                            widget.param.lgs),
                                         textScaleFactor:
                                             MyClass.blocFontSizeApp(
                                                 _fontsizeapps),
@@ -266,9 +264,10 @@ class DepositDetailState extends State<DepositDetail> {
                                     MyClass.formatNumber(
                                         jsonDecode(widget.data)[0]
                                             ['withdrawable_amount']),
+                                    textAlign: TextAlign.end,
                                     textScaleFactor:
                                         MyClass.blocFontSizeApp(_fontsizeapps),
-                                    style: CustomTextStyle.dataBoldTxt(
+                                    style: CustomTextStyle.dataW300Txt(
                                         context, 0)),
                               ),
                             ],
@@ -283,8 +282,7 @@ class DepositDetailState extends State<DepositDetail> {
                                     alignment: Alignment.centerLeft,
                                     child: Text(
                                         Language.deposit('currentInterestRate',
-                                                widget.param.lgs) +
-                                            " : ",
+                                            widget.param.lgs),
                                         textScaleFactor:
                                             MyClass.blocFontSizeApp(
                                                 _fontsizeapps),
@@ -297,9 +295,10 @@ class DepositDetailState extends State<DepositDetail> {
                                     MyClass.formatNumber(
                                         jsonDecode(widget.data)[0]
                                             ['accumulate_interest']),
+                                    textAlign: TextAlign.end,
                                     textScaleFactor:
                                         MyClass.blocFontSizeApp(_fontsizeapps),
-                                    style: CustomTextStyle.dataBoldTxt(
+                                    style: CustomTextStyle.dataW300Txt(
                                         context, 0)),
                               ),
                             ],
@@ -329,8 +328,8 @@ class DepositDetailState extends State<DepositDetail> {
         borderRadius: BorderRadius.circular(25.0),
         gradient: LinearGradient(
           colors: <Color>[
-            MyColor.color('buttongra'),
-            MyColor.color('buttongra1'),
+            MyColor.color('bl1'),
+            MyColor.color('bl3'),
           ],
         ),
       ),
@@ -352,7 +351,7 @@ class DepositDetailState extends State<DepositDetail> {
           child: Text(
             Language.deposit('seeMovements', widget.param.lgs),
             textScaleFactor: MyClass.blocFontSizeApp(_fontsizeapps),
-            style: CustomTextStyle.buttonTxt(context, 0),
+            style: CustomTextStyle.loginBoldTxt(context, -8, 'TxtBt'),
           ),
         ),
       ),
@@ -373,9 +372,7 @@ class DepositDetailState extends State<DepositDetail> {
                     blurRadius: 6.0,
                     spreadRadius: 1.0)
               ],
-              borderRadius: const BorderRadius.only(
-                  topLeft: Radius.circular(20.0),
-                  topRight: Radius.circular(20.0)),
+              borderRadius: const BorderRadius.all(Radius.circular(10.0)),
               color: MyColor.color('datatitle'),
             ),
             padding: const EdgeInsets.all(20),
@@ -384,14 +381,15 @@ class DepositDetailState extends State<DepositDetail> {
                 Row(
                   children: <Widget>[
                     Expanded(
-                        child: Text(
-                            Language.loanLg('member', widget.param.lgs) + ' : ',
+                        child: Text(Language.loanLg('member', widget.param.lgs),
+                            textAlign: TextAlign.start,
                             textScaleFactor:
                                 MyClass.blocFontSizeApp(_fontsizeapps),
                             style:
                                 CustomTextStyle.dataHeadTitleTxt(context, 0))),
                     Expanded(
                         child: Text(widget.param.membershipNo,
+                            textAlign: TextAlign.end,
                             textScaleFactor:
                                 MyClass.blocFontSizeApp(_fontsizeapps),
                             style:
@@ -401,14 +399,15 @@ class DepositDetailState extends State<DepositDetail> {
                 Row(
                   children: <Widget>[
                     Expanded(
-                        child: Text(
-                            Language.loanLg('name', widget.param.lgs) + ' : ',
+                        child: Text(Language.loanLg('name', widget.param.lgs),
+                            textAlign: TextAlign.start,
                             textScaleFactor:
                                 MyClass.blocFontSizeApp(_fontsizeapps),
                             style:
                                 CustomTextStyle.dataHeadTitleTxt(context, 0))),
                     Expanded(
                         child: Text(widget.param.name,
+                            textAlign: TextAlign.end,
                             textScaleFactor:
                                 MyClass.blocFontSizeApp(_fontsizeapps),
                             style:

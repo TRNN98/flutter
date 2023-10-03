@@ -98,7 +98,7 @@ class DividendState extends State<Dividend> {
         ),
         child: Scrollbar(
           child: ListView.separated(
-            padding: const EdgeInsets.only(top: 0),
+            padding: const EdgeInsets.only(top: 10),
             separatorBuilder: (context, index) => Divider(
               color: MyColor.color('linelist'),
             ),
@@ -133,82 +133,26 @@ class DividendState extends State<Dividend> {
                   children: <Widget>[
                     Expanded(
                       flex: 1,
-                      child: Padding(
-                        padding: const EdgeInsets.only(left: 35),
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                          mainAxisSize: MainAxisSize.min,
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: <Widget>[
-                            Text(
-                              (div[index].accountYear).toString(),
-                              textAlign: TextAlign.center,
-                              textScaleFactor:
-                                  MyClass.blocFontSizeApp(_fontsizeapps),
-                              style: CustomTextStyle.dataHTxt(context, 0, 'Or'),
-                            ),
-                          ],
-                        ),
+                      child: Text(
+                        (div[index].accountYear).toString(),
+                        textAlign: TextAlign.center,
+                        textScaleFactor: MyClass.blocFontSizeApp(_fontsizeapps),
+                        style: CustomTextStyle.dataHTxt(context, 1, 'Or'),
                       ),
                     ),
                     Expanded(
                       flex: 1,
-                      child: Padding(
-                        padding: const EdgeInsets.only(right: 10),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.end,
-                          children: <Widget>[
-                            Text(
-                              MyClass.formatNumber(
-                                  div[index].dividend.toString()),
-                              textScaleFactor:
-                                  MyClass.blocFontSizeApp(_fontsizeapps),
-                              style: CustomTextStyle.dataHTxt(context, -1, 'G'),
-                            ),
-                          ],
-                        ),
+                      child: Text(
+                        MyClass.formatNumber(div[index].totalPaid.toString()),
+                        textAlign: TextAlign.center,
+                        textScaleFactor: MyClass.blocFontSizeApp(_fontsizeapps),
+                        style: CustomTextStyle.dataHTxt(context, 1, 'G'),
                       ),
                     ),
-                    Expanded(
-                      flex: 1,
-                      child: Padding(
-                        padding: const EdgeInsets.only(right: 17),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.end,
-                          children: <Widget>[
-                            Text(
-                              MyClass.formatNumber(
-                                  div[index].averageReturn.toString()),
-                              textScaleFactor:
-                                  MyClass.blocFontSizeApp(_fontsizeapps),
-                              style: CustomTextStyle.dataHTxt(context, -1, 'G'),
-                            ),
-                          ],
-                        ),
-                      ),
-                    ),
-                    Expanded(
-                      flex: 1,
-                      child: Padding(
-                        padding: const EdgeInsets.only(right: 0),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.end,
-                          children: <Widget>[
-                            Text(
-                              MyClass.formatNumber(
-                                  div[index].totalPaid.toString()),
-                              textScaleFactor:
-                                  MyClass.blocFontSizeApp(_fontsizeapps),
-                              style: CustomTextStyle.dataHTxt(context, -1, 'G'),
-                            ),
-                            Icon(
-                              Icons.keyboard_arrow_right,
-                              size: iconnext(context, 0),
-                              color: MyColor.color('buttonnext'),
-                            ),
-                          ],
-                        ),
-                      ),
+                    Icon(
+                      Icons.keyboard_arrow_right,
+                      size: iconnext(context, 0),
+                      color: MyColor.color('buttonnext'),
                     ),
                   ],
                 ),
@@ -224,9 +168,14 @@ class DividendState extends State<Dividend> {
         children: <Widget>[
           Container(
             decoration: BoxDecoration(
-              borderRadius: const BorderRadius.only(
-                  topLeft: Radius.circular(10.0),
-                  topRight: Radius.circular(10.0)),
+              boxShadow: [
+                BoxShadow(
+                    color: Colors.grey.withOpacity(0.3),
+                    offset: Offset.fromDirection(0, 2.0),
+                    blurRadius: 6.0,
+                    spreadRadius: 1.0)
+              ],
+              borderRadius: const BorderRadius.all(Radius.circular(10.0)),
               color: MyColor.color('datatitle'),
             ),
             padding: const EdgeInsets.all(20),
@@ -235,14 +184,15 @@ class DividendState extends State<Dividend> {
                 Row(
                   children: <Widget>[
                     Expanded(
-                        child: Text(
-                            Language.loanLg('member', widget.param.lgs) + ' : ',
+                        child: Text(Language.loanLg('member', widget.param.lgs),
+                            textAlign: TextAlign.start,
                             textScaleFactor:
                                 MyClass.blocFontSizeApp(_fontsizeapps),
                             style:
                                 CustomTextStyle.dataHeadTitleTxt(context, 0))),
                     Expanded(
                         child: Text(widget.param.membershipNo,
+                            textAlign: TextAlign.end,
                             textScaleFactor:
                                 MyClass.blocFontSizeApp(_fontsizeapps),
                             style:
@@ -252,14 +202,15 @@ class DividendState extends State<Dividend> {
                 Row(
                   children: <Widget>[
                     Expanded(
-                        child: Text(
-                            Language.loanLg('name', widget.param.lgs) + ' : ',
+                        child: Text(Language.loanLg('name', widget.param.lgs),
+                            textAlign: TextAlign.start,
                             textScaleFactor:
                                 MyClass.blocFontSizeApp(_fontsizeapps),
                             style:
                                 CustomTextStyle.dataHeadTitleTxt(context, 0))),
                     Expanded(
                         child: Text(widget.param.name,
+                            textAlign: TextAlign.end,
                             textScaleFactor:
                                 MyClass.blocFontSizeApp(_fontsizeapps),
                             style:
@@ -277,8 +228,20 @@ class DividendState extends State<Dividend> {
 
 Container _head(context, lgs) {
   return Container(
-    padding: const EdgeInsets.all(12),
-    color: MyColor.color('detailhead'),
+    decoration: BoxDecoration(
+      gradient: LinearGradient(
+        begin: Alignment.centerLeft,
+        end: Alignment.centerRight,
+        tileMode: TileMode.clamp,
+        colors: <Color>[
+          MyColor.color('detailhead1'),
+          MyColor.color('detailhead2')
+        ],
+      ),
+      borderRadius: const BorderRadius.only(
+          topLeft: Radius.circular(10.0), topRight: Radius.circular(10.0)),
+    ),
+    padding: const EdgeInsets.symmetric(vertical: 10),
     child: Row(
       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
       mainAxisSize: MainAxisSize.max,
@@ -296,29 +259,16 @@ Container _head(context, lgs) {
         Expanded(
           flex: 1,
           child: Text(
-            Language.dividendLg('dividend', lgs),
-            textAlign: TextAlign.center,
-            textScaleFactor: MyClass.blocFontSizeApp(_fontsizeapps),
-            style: CustomTextStyle.headTitleTxt(context, 0),
-          ),
-        ),
-        Expanded(
-          flex: 1,
-          child: Text(
-            Language.dividendLg('averageRefund', lgs),
-            textAlign: TextAlign.center,
-            textScaleFactor: MyClass.blocFontSizeApp(_fontsizeapps),
-            style: CustomTextStyle.headTitleTxt(context, 0),
-          ),
-        ),
-        Expanded(
-          flex: 1,
-          child: Text(
             Language.dividendLg('getMoney', lgs),
             textAlign: TextAlign.center,
             textScaleFactor: MyClass.blocFontSizeApp(_fontsizeapps),
             style: CustomTextStyle.headTitleTxt(context, 0),
           ),
+        ),
+        Icon(
+          Icons.keyboard_arrow_right,
+          size: iconnext(context, 0),
+          color: Colors.transparent,
         ),
       ],
     ),

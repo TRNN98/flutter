@@ -208,9 +208,7 @@ class DepositState extends State<Deposit> {
                     blurRadius: 6.0,
                     spreadRadius: 1.0)
               ],
-              borderRadius: const BorderRadius.only(
-                  topLeft: Radius.circular(20.0),
-                  topRight: Radius.circular(20.0)),
+              borderRadius: const BorderRadius.all(Radius.circular(10.0)),
               color: MyColor.color('datatitle'),
             ),
             padding: const EdgeInsets.all(20),
@@ -219,14 +217,15 @@ class DepositState extends State<Deposit> {
                 Row(
                   children: <Widget>[
                     Expanded(
-                        child: Text(
-                            Language.loanLg('member', widget.param.lgs) + ' : ',
+                        child: Text(Language.loanLg('member', lgs),
+                            textAlign: TextAlign.start,
                             textScaleFactor:
                                 MyClass.blocFontSizeApp(_fontsizeapps),
                             style:
                                 CustomTextStyle.dataHeadTitleTxt(context, 0))),
                     Expanded(
-                        child: Text(widget.param.membershipNo,
+                        child: Text(member,
+                            textAlign: TextAlign.end,
                             textScaleFactor:
                                 MyClass.blocFontSizeApp(_fontsizeapps),
                             style:
@@ -236,14 +235,15 @@ class DepositState extends State<Deposit> {
                 Row(
                   children: <Widget>[
                     Expanded(
-                        child: Text(
-                            Language.loanLg('name', widget.param.lgs) + ' : ',
+                        child: Text(Language.loanLg('name', lgs),
+                            textAlign: TextAlign.start,
                             textScaleFactor:
                                 MyClass.blocFontSizeApp(_fontsizeapps),
                             style:
                                 CustomTextStyle.dataHeadTitleTxt(context, 0))),
                     Expanded(
-                        child: Text(widget.param.name,
+                        child: Text(name,
+                            textAlign: TextAlign.end,
                             textScaleFactor:
                                 MyClass.blocFontSizeApp(_fontsizeapps),
                             style:
@@ -263,26 +263,27 @@ Container _head(context, lgs) {
   return Container(
     padding: const EdgeInsets.all(12),
     decoration: BoxDecoration(
-      color: MyColor.color('detailhead'),
-      boxShadow: [
-        BoxShadow(
-            color: Colors.grey.withOpacity(0.3),
-            offset: Offset.fromDirection(0, 2.0),
-            blurRadius: 6.0,
-            spreadRadius: 1.0)
-      ],
+      gradient: LinearGradient(
+        begin: Alignment.centerLeft,
+        end: Alignment.centerRight,
+        tileMode: TileMode.decal,
+        colors: <Color>[
+          MyColor.color('detailhead1'),
+          MyColor.color('detailhead2')
+        ],
+      ),
+      borderRadius: const BorderRadius.only(
+          topLeft: Radius.circular(10.0), topRight: Radius.circular(10.0)),
     ),
     child: Row(
       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
       children: <Widget>[
         Expanded(
           flex: 1,
-          child: Text(
-            Language.deposit('detail', lgs),
-            textAlign: TextAlign.center,
-            textScaleFactor: MyClass.blocFontSizeApp(_fontsizeapps),
-            style: CustomTextStyle.headTitleTxt(context, 0),
-          ),
+          child: Text(Language.deposit('detail', lgs),
+              textAlign: TextAlign.center,
+              textScaleFactor: MyClass.blocFontSizeApp(_fontsizeapps),
+              style: CustomTextStyle.dataHeadTitleCTxt(context, 0, 'TxtBlue')),
         ),
         const Expanded(
           flex: 1,
@@ -290,12 +291,10 @@ Container _head(context, lgs) {
         ),
         Expanded(
           flex: 1,
-          child: Text(
-            Language.deposit('amount', lgs),
-            textAlign: TextAlign.center,
-            textScaleFactor: MyClass.blocFontSizeApp(_fontsizeapps),
-            style: CustomTextStyle.headTitleTxt(context, 0),
-          ),
+          child: Text(Language.deposit('amount', lgs),
+              textAlign: TextAlign.center,
+              textScaleFactor: MyClass.blocFontSizeApp(_fontsizeapps),
+              style: CustomTextStyle.dataHeadTitleCTxt(context, 0, 'TxtBlue')),
         ),
       ],
     ),

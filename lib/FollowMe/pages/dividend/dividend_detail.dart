@@ -176,29 +176,37 @@ class DividendDetailState extends State<DividendDetail> {
                 Row(
                   children: [
                     Expanded(
-                        child: Center(
-                            child: Text(
-                                Language.keptLg('member', widget.param.lgs) +
-                                    ' : ' +
-                                    widget.param.membershipNo,
-                                textScaleFactor: MyClass.blocFontSizeApp(
-                                    widget.param.fontsizeapps),
-                                style: CustomTextStyle.dataHeadTitleTxt(
-                                    context, 2)))),
+                        child: Text(Language.keptLg('member', widget.param.lgs),
+                            textAlign: TextAlign.start,
+                            textScaleFactor: MyClass.blocFontSizeApp(
+                                widget.param.fontsizeapps),
+                            style:
+                                CustomTextStyle.dataHeadTitleTxt(context, 2))),
+                    Expanded(
+                        child: Text(widget.param.membershipNo,
+                            textAlign: TextAlign.end,
+                            textScaleFactor: MyClass.blocFontSizeApp(
+                                widget.param.fontsizeapps),
+                            style:
+                                CustomTextStyle.dataHeadTitleTxt(context, 2))),
                   ],
                 ),
                 Row(
                   children: [
                     Expanded(
-                        child: Center(
-                            child: Text(
-                                Language.keptLg('name', widget.param.lgs) +
-                                    ' : ' +
-                                    widget.param.name,
-                                textScaleFactor: MyClass.blocFontSizeApp(
-                                    widget.param.fontsizeapps),
-                                style: CustomTextStyle.dataHeadTitleTxt(
-                                    context, 2)))),
+                        child: Text(Language.keptLg('name', widget.param.lgs),
+                            textAlign: TextAlign.start,
+                            textScaleFactor: MyClass.blocFontSizeApp(
+                                widget.param.fontsizeapps),
+                            style:
+                                CustomTextStyle.dataHeadTitleTxt(context, 2))),
+                    Expanded(
+                        child: Text(widget.param.name,
+                            textAlign: TextAlign.end,
+                            textScaleFactor: MyClass.blocFontSizeApp(
+                                widget.param.fontsizeapps),
+                            style:
+                                CustomTextStyle.dataHeadTitleTxt(context, 2))),
                   ],
                 ),
                 Row(
@@ -225,106 +233,96 @@ class DividendDetailState extends State<DividendDetail> {
                 ),
                 Row(children: <Widget>[
                   Expanded(
-                      child: Row(
-                    children: [
-                      Text(
-                          Language.dividendLg('dividend', widget.param.lgs) +
-                              ' : ',
+                      child: Text(
+                          Language.dividendLg('dividendRate', widget.param.lgs),
                           textScaleFactor: MyClass.blocFontSizeApp(
                               widget.param.fontsizeapps),
-                          style: CustomTextStyle.dataHeadTitleCTxt(
-                              context, -2, 'Bl')),
-                      Text(
-                          MyClass.formatNumber(
-                              jsonDecode(widget.data)[0]['dividend']),
-                          textScaleFactor: MyClass.blocFontSizeApp(
-                              widget.param.fontsizeapps),
-                          style: CustomTextStyle.dataHeadTitleCTxt(
-                              context, -3, 'Bl')),
-                    ],
-                  )),
+                          style: CustomTextStyle.dataHeadTitleTxt(context, 2))),
                   Expanded(
-                      child: Row(
-                    children: [
-                      Text(
-                          Language.dividendLg(
-                                  'averageRefund', widget.param.lgs) +
-                              ' : ',
-                          textScaleFactor: MyClass.blocFontSizeApp(
-                              widget.param.fontsizeapps),
-                          style: CustomTextStyle.dataHeadTitleCTxt(
-                              context, -2, 'Bl')),
-                      Text(
-                          MyClass.formatNumber(
-                              jsonDecode(widget.data)[0]['averageReturn']),
-                          textScaleFactor: MyClass.blocFontSizeApp(
-                              widget.param.fontsizeapps),
-                          style: CustomTextStyle.dataHeadTitleCTxt(
-                              context, -3, 'Bl')),
-                    ],
-                  )),
+                    child: Text(
+                      MyClass.checkNull(
+                          jsonDecode(widget.data)[0]['dividendRate']),
+                      textScaleFactor:
+                          MyClass.blocFontSizeApp(widget.param.fontsizeapps),
+                      style: CustomTextStyle.dataHeadTitleTxt(context, 2),
+                      textAlign: TextAlign.end,
+                    ),
+                  )
                 ]),
                 Row(children: <Widget>[
                   Expanded(
-                      child: Row(
-                    children: [
-                      Text(
-                          Language.dividendLg(
-                                  'dividendRate', widget.param.lgs) +
-                              ' : ',
+                      child: Text(
+                          Language.dividendLg('averageRate', widget.param.lgs),
                           textScaleFactor: MyClass.blocFontSizeApp(
                               widget.param.fontsizeapps),
-                          style: CustomTextStyle.dataHeadTitleCTxt(
-                              context, -2, 'Bl')),
-                      Text(jsonDecode(widget.data)[0]['dividendRate'],
-                          textScaleFactor: MyClass.blocFontSizeApp(
-                              widget.param.fontsizeapps),
-                          style: CustomTextStyle.dataHeadTitleCTxt(
-                              context, -3, 'Bl')),
-                    ],
-                  )),
+                          style: CustomTextStyle.dataHeadTitleTxt(context, 2))),
                   Expanded(
-                      child: Row(
-                    children: [
-                      Text(
-                          Language.dividendLg('averageRate', widget.param.lgs) +
-                              ' : ',
-                          textScaleFactor: MyClass.blocFontSizeApp(
-                              widget.param.fontsizeapps),
-                          style: CustomTextStyle.dataHeadTitleCTxt(
-                              context, -2, 'Bl')),
-                      Text(jsonDecode(widget.data)[0]['averageRate'],
-                          textScaleFactor: MyClass.blocFontSizeApp(
-                              widget.param.fontsizeapps),
-                          style: CustomTextStyle.dataHeadTitleCTxt(
-                              context, -3, 'Bl')),
-                    ],
-                  )),
+                    child: Text(
+                      MyClass.checkNull(
+                          jsonDecode(widget.data)[0]['averageRate']),
+                      textScaleFactor:
+                          MyClass.blocFontSizeApp(widget.param.fontsizeapps),
+                      style: CustomTextStyle.dataHeadTitleTxt(context, 2),
+                      textAlign: TextAlign.end,
+                    ),
+                  )
                 ]),
-                Row(
-                  children: <Widget>[
-                    Expanded(
-                        child: Row(
-                      children: [
-                        Text(
-                            Language.dividendLg(
-                                    'totalNetReceipts', widget.param.lgs) +
-                                ' : ',
-                            textScaleFactor: MyClass.blocFontSizeApp(
-                                widget.param.fontsizeapps),
-                            style: CustomTextStyle.dataHeadTitleCTxt(
-                                context, -2, 'Bl')),
-                        Text(
-                            MyClass.formatNumber(
-                                jsonDecode(widget.data)[0]['totalSum']),
-                            textScaleFactor: MyClass.blocFontSizeApp(
-                                widget.param.fontsizeapps),
-                            style: CustomTextStyle.dataHeadTitleCTxt(
-                                context, -3, 'Bl')),
-                      ],
-                    )),
-                  ],
-                ),
+                Row(children: <Widget>[
+                  Expanded(
+                      child: Text(
+                          Language.dividendLg('dividend', widget.param.lgs),
+                          textScaleFactor: MyClass.blocFontSizeApp(
+                              widget.param.fontsizeapps),
+                          style: CustomTextStyle.dataHeadTitleTxt(context, 2))),
+                  Expanded(
+                    child: Text(
+                      MyClass.formatNumber(
+                          jsonDecode(widget.data)[0]['dividend']),
+                      textScaleFactor:
+                          MyClass.blocFontSizeApp(widget.param.fontsizeapps),
+                      style: CustomTextStyle.dataHeadTitleTxt(context, 2),
+                      textAlign: TextAlign.end,
+                    ),
+                  )
+                ]),
+                Row(children: <Widget>[
+                  Expanded(
+                      child: Text(
+                          Language.dividendLg(
+                              'averageRefund', widget.param.lgs),
+                          textScaleFactor: MyClass.blocFontSizeApp(
+                              widget.param.fontsizeapps),
+                          style: CustomTextStyle.dataHeadTitleTxt(context, 2))),
+                  Expanded(
+                    child: Text(
+                      MyClass.formatNumber(
+                          jsonDecode(widget.data)[0]['averageReturn']),
+                      textScaleFactor:
+                          MyClass.blocFontSizeApp(widget.param.fontsizeapps),
+                      style: CustomTextStyle.dataHeadTitleTxt(context, 2),
+                      textAlign: TextAlign.end,
+                    ),
+                  )
+                ]),
+                Row(children: <Widget>[
+                  Expanded(
+                      child: Text(
+                          Language.dividendLg(
+                              'totalNetReceipts', widget.param.lgs),
+                          textScaleFactor: MyClass.blocFontSizeApp(
+                              widget.param.fontsizeapps),
+                          style: CustomTextStyle.dataHeadTitleTxt(context, 2))),
+                  Expanded(
+                    child: Text(
+                      MyClass.formatNumber(
+                          jsonDecode(widget.data)[0]['totalSum']),
+                      textScaleFactor:
+                          MyClass.blocFontSizeApp(widget.param.fontsizeapps),
+                      style: CustomTextStyle.dataHeadTitleTxt(context, 2),
+                      textAlign: TextAlign.end,
+                    ),
+                  )
+                ]),
               ],
             ),
           ),
@@ -337,18 +335,28 @@ class DividendDetailState extends State<DividendDetail> {
 Container _head(context, lgs, fontsizeapps) {
   return Container(
     padding: const EdgeInsets.all(12),
-    color: MyColor.color('detailhead'),
+    decoration: BoxDecoration(
+      gradient: LinearGradient(
+        begin: Alignment.centerLeft,
+        end: Alignment.centerRight,
+        tileMode: TileMode.decal,
+        colors: <Color>[
+          MyColor.color('detailhead1'),
+          MyColor.color('detailhead2')
+        ],
+      ),
+      borderRadius: const BorderRadius.only(
+          topLeft: Radius.circular(10.0), topRight: Radius.circular(10.0)),
+    ),
     child: Row(
       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
       children: <Widget>[
         Expanded(
           flex: 1,
-          child: Text(
-            Language.dividendLg('detail', lgs),
-            textScaleFactor: MyClass.blocFontSizeApp(fontsizeapps),
-            textAlign: TextAlign.center,
-            style: CustomTextStyle.headTitleTxt(context, 0),
-          ),
+          child: Text(Language.dividendLg('detail', lgs),
+              textScaleFactor: MyClass.blocFontSizeApp(fontsizeapps),
+              textAlign: TextAlign.center,
+              style: CustomTextStyle.dataHeadTitleCTxt(context, -1, 'TxtBlue')),
         ),
         const Expanded(
           flex: 1,
@@ -356,12 +364,10 @@ Container _head(context, lgs, fontsizeapps) {
         ),
         Expanded(
           flex: 1,
-          child: Text(
-            Language.dividendLg('amount', lgs),
-            textScaleFactor: MyClass.blocFontSizeApp(fontsizeapps),
-            textAlign: TextAlign.center,
-            style: CustomTextStyle.headTitleTxt(context, 0),
-          ),
+          child: Text(Language.dividendLg('amount', lgs),
+              textScaleFactor: MyClass.blocFontSizeApp(fontsizeapps),
+              textAlign: TextAlign.center,
+              style: CustomTextStyle.dataHeadTitleCTxt(context, -1, 'TxtBlue')),
         ),
       ],
     ),

@@ -22,6 +22,7 @@ import 'package:udtscc/FollowMe/pages/profile/profile.dart';
 import 'package:udtscc/FollowMe/pages/requestforwelfare/requestforwelfare.dart';
 import 'package:udtscc/FollowMe/pages/retire/retire.dart';
 import 'package:udtscc/FollowMe/pages/share/share.dart';
+import 'package:udtscc/FollowMe/pages/uploadDocument/uploadDoc.dart';
 import 'package:udtscc/FollowMe/pages/welfarereceive/welfarereceive.dart';
 import 'package:udtscc/FollowMe/pages/welmaster/welmaster.dart';
 import 'package:udtscc/FollowMe/services/network.dart';
@@ -30,7 +31,6 @@ import 'package:udtscc/promoney/models/sql/device_db.dart';
 import 'package:udtscc/promoney/pages/admin/calculate/calculate.dart';
 import 'package:udtscc/promoney/pages/admin/dilute_shares/dilute_shares.dart';
 import 'package:udtscc/promoney/pages/admin/track_status/track_status.dart';
-import 'package:udtscc/promoney/pages/auth/otp.dart';
 import 'package:udtscc/promoney/pages/banks/loan_payment/loan_payment.dart';
 import 'package:udtscc/promoney/pages/promoney.dart';
 import 'package:udtscc/promoney/sevices/network_pro.dart';
@@ -40,6 +40,7 @@ import 'package:flutter/material.dart';
 
 import 'dart:async';
 
+import '../FollowMe/pages/memberSeminar/memberSeminar.dart';
 import '../FollowMe/pages/requestforwelfare/welfare.dart';
 import '../promoney/pages/banks/tran_bank/tran_bank.dart';
 import '../promoney/pages/banks/withdraw_bank/withdraw_bank.dart';
@@ -280,6 +281,8 @@ class TabsState extends State<Tabs> with SingleTickerProviderStateMixin {
       '/new': (BuildContext context) => News(widget.param),
       '/welfare': (BuildContext context) => Welfare(widget.param),
       '/cremation': (BuildContext context) => Cremation(widget.param),
+      '/uploadDoc': (BuildContext context) => UploadDoc(widget.param),
+      '/memberSeminar': (BuildContext context) => MemberSeminar(widget.param),
       '/grouplife': (BuildContext context) => GroupLife(widget.param),
       '/creditinsure': (BuildContext context) => CreditInsure(widget.param),
       '/welmaster': (BuildContext context) => WelMaster(widget.param),
@@ -354,18 +357,28 @@ class TabsState extends State<Tabs> with SingleTickerProviderStateMixin {
       home: Scaffold(
         extendBody: true,
         body: page[_selectedPage],
-        floatingActionButton: ScaleTransition(
-          scale: animation,
-          child: FloatingActionButton(
-            elevation: 8,
-            backgroundColor: HexColor('#63DEFF'),
-            child: Image.asset(
-              'assets/imgPro/menuPro.png',
-              width: 40,
+        floatingActionButton: Container(
+          decoration: BoxDecoration(
+              shape: BoxShape.circle,
+              gradient: LinearGradient(
+                  colors: [Color(0xFF63DEFF), Color(0xFFD1FDFF)])),
+          child: ScaleTransition(
+            scale: animation,
+            child: FloatingActionButton(
+              elevation: 0,
+              // backgroundColor: HexColor('#63DEFF'),
+              backgroundColor: Colors.transparent,
+              child: Center(
+                child: Image.asset(
+                  'assets/imgPro/menuPro.png',
+                  filterQuality: FilterQuality.medium,
+                ),
+              ),
+
+              onPressed: () {
+                _device();
+              },
             ),
-            onPressed: () {
-              _device();
-            },
           ),
         ),
         floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
