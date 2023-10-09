@@ -1,15 +1,15 @@
 import 'dart:convert';
 
-import 'package:udtscc/FollowMe/models/kept/kept_detail_model.dart';
-import 'package:udtscc/FollowMe/pages/auth/pins.dart';
-import 'package:udtscc/FollowMe/class/custom_ui.dart';
-import 'package:udtscc/FollowMe/class/language.dart';
-import 'package:udtscc/FollowMe/class/myclass.dart';
-import 'package:udtscc/FollowMe/class/mycolor.dart';
-import 'package:udtscc/FollowMe/class/sizes.dart';
-import 'package:udtscc/FollowMe/class/textstyle.dart';
-import 'package:udtscc/FollowMe/class/widget.dart';
-import 'package:udtscc/FollowMe/services/network.dart';
+import 'package:mwasc/FollowMe/models/kept/kept_detail_model.dart';
+import 'package:mwasc/FollowMe/pages/auth/pins.dart';
+import 'package:mwasc/FollowMe/class/custom_ui.dart';
+import 'package:mwasc/FollowMe/class/language.dart';
+import 'package:mwasc/FollowMe/class/myclass.dart';
+import 'package:mwasc/FollowMe/class/mycolor.dart';
+import 'package:mwasc/FollowMe/class/sizes.dart';
+import 'package:mwasc/FollowMe/class/textstyle.dart';
+import 'package:mwasc/FollowMe/class/widget.dart';
+import 'package:mwasc/FollowMe/services/network.dart';
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher_string.dart';
 
@@ -316,14 +316,13 @@ class KeptDetailState extends State<KeptDetail> {
                             textScaleFactor:
                                 MyClass.blocFontSizeApp(_fontsizeapps),
                             style:
-                                CustomTextStyle.dataHeadTitleTxt(context, 2))),
+                                CustomTextStyle.dataHeadTitleTxt(context, 1))),
                     Expanded(
                         child: Text(widget.param.membershipNo,
                             textAlign: TextAlign.end,
                             textScaleFactor:
                                 MyClass.blocFontSizeApp(_fontsizeapps),
-                            style:
-                                CustomTextStyle.dataHeadTitleTxt(context, 2))),
+                            style: CustomTextStyle.dataW300Txt(context, 1))),
                   ],
                 ),
                 Row(
@@ -334,14 +333,13 @@ class KeptDetailState extends State<KeptDetail> {
                             textScaleFactor:
                                 MyClass.blocFontSizeApp(_fontsizeapps),
                             style:
-                                CustomTextStyle.dataHeadTitleTxt(context, 2))),
+                                CustomTextStyle.dataHeadTitleTxt(context, 1))),
                     Expanded(
                         child: Text(widget.param.name,
                             textAlign: TextAlign.end,
                             textScaleFactor:
                                 MyClass.blocFontSizeApp(_fontsizeapps),
-                            style:
-                                CustomTextStyle.dataHeadTitleTxt(context, 2))),
+                            style: CustomTextStyle.dataW300Txt(context, 1))),
                   ],
                 ),
                 Row(
@@ -384,7 +382,7 @@ class KeptDetailState extends State<KeptDetail> {
                       // MyClass.convertDate(
                       //     jsonDecode(widget.data)[0]['receiptDate']),
                       textScaleFactor: MyClass.blocFontSizeApp(_fontsizeapps),
-                      style: CustomTextStyle.dataHeadTitleTxt(context, 1),
+                      style: CustomTextStyle.dataW300Txt(context, 1),
                       textAlign: TextAlign.end,
                     )),
                   ],
@@ -404,7 +402,7 @@ class KeptDetailState extends State<KeptDetail> {
                     // MyClass.formatRef(
                     //     jsonDecode(widget.data)[0]['receiptNo']),
                     textScaleFactor: MyClass.blocFontSizeApp(_fontsizeapps),
-                    style: CustomTextStyle.dataHeadTitleTxt(context, 1),
+                    style: CustomTextStyle.dataW300Txt(context, 1),
                     textAlign: TextAlign.end,
                   )),
                 ]),
@@ -420,7 +418,7 @@ class KeptDetailState extends State<KeptDetail> {
                     MyClass.checkNull(
                         jsonDecode(widget.data)[0]['moneyAmount']),
                     textScaleFactor: MyClass.blocFontSizeApp(_fontsizeapps),
-                    style: CustomTextStyle.dataHeadTitleTxt(context, 1),
+                    style: CustomTextStyle.dataW300Txt(context, 1),
                     textAlign: TextAlign.end,
                   )),
                 ]),
@@ -436,7 +434,7 @@ class KeptDetailState extends State<KeptDetail> {
                     MyClass.checkNull(
                         jsonDecode(widget.data)[0]['moneyAmount']),
                     textScaleFactor: MyClass.blocFontSizeApp(_fontsizeapps),
-                    style: CustomTextStyle.dataHeadTitleTxt(context, 1),
+                    style: CustomTextStyle.dataW300Txt(context, 1),
                     textAlign: TextAlign.end,
                   )),
                 ]),
@@ -455,7 +453,7 @@ class KeptDetailState extends State<KeptDetail> {
                           ? "รอนำส่ง"
                           : "ชำระแล้ว",
                       textScaleFactor: MyClass.blocFontSizeApp(_fontsizeapps),
-                      style: CustomTextStyle.dataHeadTitleTxt(context, 1),
+                      style: CustomTextStyle.dataW300Txt(context, 1),
                       textAlign: TextAlign.end,
                     )),
                   ],
@@ -499,25 +497,15 @@ Container _head(context, lgs) {
         ),
         Expanded(
           flex: 2,
-          child: Text(Language.keptLg('principal', lgs),
-              textAlign: TextAlign.center,
-              textScaleFactor: MyClass.blocFontSizeApp(_fontsizeapps),
-              style: CustomTextStyle.dataHeadTitleCTxt(context, -1, 'TxtBlue')),
-        ),
-        Expanded(
-          flex: 3,
-          child: Text(Language.keptLg('interest', lgs),
-              textAlign: TextAlign.center,
-              textScaleFactor: MyClass.blocFontSizeApp(_fontsizeapps),
-              style: CustomTextStyle.dataHeadTitleCTxt(context, -1, 'TxtBlue')),
-        ),
-        Expanded(
-          flex: 2,
           child: Text(Language.keptLg('amount', lgs),
               textAlign: TextAlign.center,
               textScaleFactor: MyClass.blocFontSizeApp(_fontsizeapps),
               style: CustomTextStyle.dataHeadTitleCTxt(context, -1, 'TxtBlue')),
         ),
+        Icon(
+          Icons.abc,
+          color: Colors.transparent,
+        )
       ],
     ),
   );

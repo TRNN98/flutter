@@ -1,16 +1,16 @@
 import 'dart:convert';
 
-import 'package:udtscc/FollowMe/models/kept/kept_model.dart';
-import 'package:udtscc/FollowMe/pages/auth/pins.dart';
-import 'package:udtscc/FollowMe/class/custom_ui.dart';
-import 'package:udtscc/FollowMe/class/language.dart';
-import 'package:udtscc/FollowMe/class/myclass.dart';
-import 'package:udtscc/FollowMe/class/mycolor.dart';
-import 'package:udtscc/FollowMe/class/sizes.dart';
-import 'package:udtscc/FollowMe/class/textstyle.dart';
-import 'package:udtscc/FollowMe/class/widget.dart';
-import 'package:udtscc/FollowMe/pages/kept/kept_detail.dart';
-import 'package:udtscc/FollowMe/services/network.dart';
+import 'package:mwasc/FollowMe/models/kept/kept_model.dart';
+import 'package:mwasc/FollowMe/pages/auth/pins.dart';
+import 'package:mwasc/FollowMe/class/custom_ui.dart';
+import 'package:mwasc/FollowMe/class/language.dart';
+import 'package:mwasc/FollowMe/class/myclass.dart';
+import 'package:mwasc/FollowMe/class/mycolor.dart';
+import 'package:mwasc/FollowMe/class/sizes.dart';
+import 'package:mwasc/FollowMe/class/textstyle.dart';
+import 'package:mwasc/FollowMe/class/widget.dart';
+import 'package:mwasc/FollowMe/pages/kept/kept_detail.dart';
+import 'package:mwasc/FollowMe/services/network.dart';
 import 'package:flutter/material.dart';
 
 double _fontsizeapps = 1.0;
@@ -240,32 +240,32 @@ class KeptState extends State<Kept> {
                             textScaleFactor:
                                 MyClass.blocFontSizeApp(_fontsizeapps),
                             style:
-                                CustomTextStyle.dataHeadTitleTxt(context, 2))),
+                                CustomTextStyle.dataHeadTitleTxt(context, 1))),
                     Expanded(
                         child: Text(widget.param.membershipNo,
                             textAlign: TextAlign.end,
                             textScaleFactor:
                                 MyClass.blocFontSizeApp(_fontsizeapps),
-                            style:
-                                CustomTextStyle.dataHeadDataTxt(context, 2))),
+                            style: CustomTextStyle.dataW300Txt(context, 1))),
                   ],
                 ),
                 Row(
                   children: <Widget>[
                     Expanded(
+                        flex: 2,
                         child: Text(Language.loanLg('name', widget.param.lgs),
                             textAlign: TextAlign.start,
                             textScaleFactor:
                                 MyClass.blocFontSizeApp(_fontsizeapps),
                             style:
-                                CustomTextStyle.dataHeadTitleTxt(context, 2))),
+                                CustomTextStyle.dataHeadTitleTxt(context, 1))),
                     Expanded(
+                        flex: 4,
                         child: Text(widget.param.name,
                             textAlign: TextAlign.end,
                             textScaleFactor:
                                 MyClass.blocFontSizeApp(_fontsizeapps),
-                            style:
-                                CustomTextStyle.dataHeadDataTxt(context, 2))),
+                            style: CustomTextStyle.dataW300Txt(context, 1))),
                   ],
                 ),
               ],

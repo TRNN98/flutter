@@ -1,14 +1,14 @@
 import 'dart:convert';
 
-import 'package:udtscc/FollowMe/pages/auth/pins.dart';
-import 'package:udtscc/FollowMe/class/custom_ui.dart';
-import 'package:udtscc/FollowMe/class/language.dart';
-import 'package:udtscc/FollowMe/class/myclass.dart';
-import 'package:udtscc/FollowMe/class/mycolor.dart';
-import 'package:udtscc/FollowMe/class/sizes.dart';
-import 'package:udtscc/FollowMe/class/textstyle.dart';
-import 'package:udtscc/FollowMe/pages/loan/loan_guarantee.dart';
-import 'package:udtscc/FollowMe/pages/loan/loan_movement.dart';
+import 'package:mwasc/FollowMe/pages/auth/pins.dart';
+import 'package:mwasc/FollowMe/class/custom_ui.dart';
+import 'package:mwasc/FollowMe/class/language.dart';
+import 'package:mwasc/FollowMe/class/myclass.dart';
+import 'package:mwasc/FollowMe/class/mycolor.dart';
+import 'package:mwasc/FollowMe/class/sizes.dart';
+import 'package:mwasc/FollowMe/class/textstyle.dart';
+import 'package:mwasc/FollowMe/pages/loan/loan_guarantee.dart';
+import 'package:mwasc/FollowMe/pages/loan/loan_movement.dart';
 import 'package:flutter/material.dart';
 
 double _fontsizeapps = 1.0;
@@ -61,9 +61,7 @@ class LoanDetailState extends State<LoanDetail> {
                             blurRadius: 6.0,
                             spreadRadius: 1.0)
                       ],
-                      borderRadius: const BorderRadius.only(
-                          topLeft: Radius.circular(0.0),
-                          topRight: Radius.circular(0.0)),
+                      borderRadius: const BorderRadius.all(Radius.circular(20)),
                       color: MyColor.color('datatitle'),
                     ),
                     child: Column(
@@ -72,14 +70,13 @@ class LoanDetailState extends State<LoanDetail> {
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             Center(
-                              child: Text(
-                                  Language.loanLg('loanContractInformation',
-                                      widget.param.lgs),
-                                  textScaleFactor:
-                                      MyClass.blocFontSizeApp(_fontsizeapps),
-                                  style: CustomTextStyle.dataHTxt(
-                                      context, 5, 'Go')),
-                            ),
+                                child: Text(
+                                    Language.loanLg('loanContractInformation',
+                                        widget.param.lgs),
+                                    textScaleFactor:
+                                        MyClass.blocFontSizeApp(_fontsizeapps),
+                                    style: CustomTextStyle.dataHTxt(
+                                        context, 5, 'Bl'))),
                           ],
                         ),
                         lineSizedBox(context, 0),
@@ -87,28 +84,24 @@ class LoanDetailState extends State<LoanDetail> {
                           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                           children: <Widget>[
                             Expanded(
-                              child: Container(
-                                  alignment: Alignment.bottomLeft,
-                                  child: Text(
-                                      Language.loanLg('loanContractNumber',
-                                              widget.param.lgs) +
-                                          " : ",
-                                      textScaleFactor: MyClass.blocFontSizeApp(
-                                          _fontsizeapps),
-                                      style: CustomTextStyle.dataBoldTxt(
-                                          context, 0))),
+                              child: Text(
+                                  Language.loanLg(
+                                      'loanContractNumber', widget.param.lgs),
+                                  textAlign: TextAlign.start,
+                                  textScaleFactor:
+                                      MyClass.blocFontSizeApp(_fontsizeapps),
+                                  style:
+                                      CustomTextStyle.dataBoldTxt(context, 1)),
                             ),
                             Expanded(
                               child: Text(
                                   jsonDecode(widget.data)[0]
                                       ['loan_contract_no'],
-                                  // MyClass.formatcontactloan(
-                                  //     jsonDecode(widget.data)[0]
-                                  //         ['loan_contract_no']),
+                                  textAlign: TextAlign.end,
                                   textScaleFactor:
                                       MyClass.blocFontSizeApp(_fontsizeapps),
                                   style:
-                                      CustomTextStyle.dataBoldTxt(context, 0)),
+                                      CustomTextStyle.dataW300Txt(context, 1)),
                             ),
                           ],
                         ),
@@ -121,49 +114,22 @@ class LoanDetailState extends State<LoanDetail> {
                                   alignment: Alignment.bottomLeft,
                                   child: Text(
                                       Language.loanLg('contractStartDate',
-                                              widget.param.lgs) +
-                                          " : ",
+                                          widget.param.lgs),
+                                      textAlign: TextAlign.start,
                                       textScaleFactor: MyClass.blocFontSizeApp(
                                           _fontsizeapps),
                                       style: CustomTextStyle.dataBoldTxt(
-                                          context, 0))),
+                                          context, 1))),
                             ),
                             Expanded(
                               child: Text(
                                   MyClass.checkNull(jsonDecode(widget.data)[0]
                                       ['begining_of_contract']),
+                                  textAlign: TextAlign.end,
                                   textScaleFactor:
                                       MyClass.blocFontSizeApp(_fontsizeapps),
                                   style:
-                                      CustomTextStyle.dataBoldTxt(context, 0)),
-                            ),
-                          ],
-                        ),
-                        lineSizedBox(context, -25),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                          children: <Widget>[
-                            Expanded(
-                              child: Container(
-                                  alignment: Alignment.bottomLeft,
-                                  child: Text(
-                                      Language.loanLg('approvalLimit',
-                                              widget.param.lgs) +
-                                          " : ",
-                                      textScaleFactor: MyClass.blocFontSizeApp(
-                                          _fontsizeapps),
-                                      style: CustomTextStyle.dataBoldTxt(
-                                          context, 0))),
-                            ),
-                            Expanded(
-                              child: Text(
-                                  MyClass.formatNumber(
-                                      jsonDecode(widget.data)[0]
-                                          ['loan_approve_amount']),
-                                  textScaleFactor:
-                                      MyClass.blocFontSizeApp(_fontsizeapps),
-                                  style:
-                                      CustomTextStyle.dataBoldTxt(context, 0)),
+                                      CustomTextStyle.dataW300Txt(context, 1)),
                             ),
                           ],
                         ),
@@ -176,21 +142,51 @@ class LoanDetailState extends State<LoanDetail> {
                                   alignment: Alignment.bottomLeft,
                                   child: Text(
                                       Language.loanLg(
-                                              'periodAll', widget.param.lgs) +
-                                          " : ",
+                                          'approvalLimit', widget.param.lgs),
+                                      textAlign: TextAlign.start,
                                       textScaleFactor: MyClass.blocFontSizeApp(
                                           _fontsizeapps),
                                       style: CustomTextStyle.dataBoldTxt(
-                                          context, 0))),
+                                          context, 1))),
+                            ),
+                            Expanded(
+                              child: Text(
+                                  MyClass.formatNumber(
+                                      jsonDecode(widget.data)[0]
+                                          ['loan_approve_amount']),
+                                  textAlign: TextAlign.end,
+                                  textScaleFactor:
+                                      MyClass.blocFontSizeApp(_fontsizeapps),
+                                  style:
+                                      CustomTextStyle.dataW300Txt(context, 1)),
+                            ),
+                          ],
+                        ),
+                        lineSizedBox(context, -25),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                          children: <Widget>[
+                            Expanded(
+                              child: Container(
+                                  alignment: Alignment.bottomLeft,
+                                  child: Text(
+                                      Language.loanLg(
+                                          'periodAll', widget.param.lgs),
+                                      textAlign: TextAlign.start,
+                                      textScaleFactor: MyClass.blocFontSizeApp(
+                                          _fontsizeapps),
+                                      style: CustomTextStyle.dataBoldTxt(
+                                          context, 1))),
                             ),
                             Expanded(
                               child: Text(
                                   MyClass.checkNull(jsonDecode(widget.data)[0]
                                       ['loan_installment_amount']),
+                                  textAlign: TextAlign.end,
                                   textScaleFactor:
                                       MyClass.blocFontSizeApp(_fontsizeapps),
                                   style:
-                                      CustomTextStyle.dataBoldTxt(context, 0)),
+                                      CustomTextStyle.dataW300Txt(context, 1)),
                             ),
                           ],
                         ),
@@ -203,22 +199,23 @@ class LoanDetailState extends State<LoanDetail> {
                                   alignment: Alignment.bottomLeft,
                                   child: Text(
                                       Language.loanLg('paymentInInstallments',
-                                              widget.param.lgs) +
-                                          " : ",
+                                          widget.param.lgs),
+                                      textAlign: TextAlign.start,
                                       textScaleFactor: MyClass.blocFontSizeApp(
                                           _fontsizeapps),
                                       style: CustomTextStyle.dataBoldTxt(
-                                          context, 0))),
+                                          context, 1))),
                             ),
                             Expanded(
                               child: Text(
                                   MyClass.formatNumber(
                                       jsonDecode(widget.data)[0]
                                           ['period_payment_amount']),
+                                  textAlign: TextAlign.end,
                                   textScaleFactor:
                                       MyClass.blocFontSizeApp(_fontsizeapps),
                                   style:
-                                      CustomTextStyle.dataBoldTxt(context, 0)),
+                                      CustomTextStyle.dataW300Txt(context, 1)),
                             ),
                           ],
                         ),
@@ -231,22 +228,23 @@ class LoanDetailState extends State<LoanDetail> {
                                   alignment: Alignment.bottomLeft,
                                   child: Text(
                                       Language.loanLg(
-                                              'balance', widget.param.lgs) +
-                                          " : ",
+                                          'balance', widget.param.lgs),
+                                      textAlign: TextAlign.start,
                                       textScaleFactor: MyClass.blocFontSizeApp(
                                           _fontsizeapps),
                                       style: CustomTextStyle.dataBoldTxt(
-                                          context, 0))),
+                                          context, 1))),
                             ),
                             Expanded(
                               child: Text(
                                   MyClass.formatNumber(
                                       jsonDecode(widget.data)[0]
                                           ['principal_balance']),
+                                  textAlign: TextAlign.end,
                                   textScaleFactor:
                                       MyClass.blocFontSizeApp(_fontsizeapps),
                                   style:
-                                      CustomTextStyle.dataBoldTxt(context, 0)),
+                                      CustomTextStyle.dataW300Txt(context, 1)),
                             ),
                           ],
                         ),
@@ -259,21 +257,22 @@ class LoanDetailState extends State<LoanDetail> {
                                   alignment: Alignment.bottomLeft,
                                   child: Text(
                                       Language.loanLg(
-                                              'period', widget.param.lgs) +
-                                          " : ",
+                                          'period', widget.param.lgs),
+                                      textAlign: TextAlign.start,
                                       textScaleFactor: MyClass.blocFontSizeApp(
                                           _fontsizeapps),
                                       style: CustomTextStyle.dataBoldTxt(
-                                          context, 0))),
+                                          context, 1))),
                             ),
                             Expanded(
                               child: Text(
                                   MyClass.checkNull(jsonDecode(widget.data)[0]
                                       ['last_period']),
+                                  textAlign: TextAlign.end,
                                   textScaleFactor:
                                       MyClass.blocFontSizeApp(_fontsizeapps),
                                   style:
-                                      CustomTextStyle.dataBoldTxt(context, 0)),
+                                      CustomTextStyle.dataW300Txt(context, 1)),
                             ),
                           ],
                         ),
@@ -286,21 +285,22 @@ class LoanDetailState extends State<LoanDetail> {
                                   alignment: Alignment.bottomLeft,
                                   child: Text(
                                       Language.loanLg(
-                                              'payment', widget.param.lgs) +
-                                          " : ",
+                                          'payment', widget.param.lgs),
+                                      textAlign: TextAlign.start,
                                       textScaleFactor: MyClass.blocFontSizeApp(
                                           _fontsizeapps),
                                       style: CustomTextStyle.dataBoldTxt(
-                                          context, 0))),
+                                          context, 1))),
                             ),
                             Expanded(
                               child: Text(
                                   MyClass.checkNull(jsonDecode(widget.data)[0]
                                       ['loan_payment_type_code']),
+                                  textAlign: TextAlign.end,
                                   textScaleFactor:
                                       MyClass.blocFontSizeApp(_fontsizeapps),
                                   style:
-                                      CustomTextStyle.dataBoldTxt(context, 0)),
+                                      CustomTextStyle.dataW300Txt(context, 1)),
                             ),
                           ],
                         ),
@@ -332,8 +332,8 @@ class LoanDetailState extends State<LoanDetail> {
         borderRadius: BorderRadius.circular(25.0),
         gradient: LinearGradient(
           colors: <Color>[
-            MyColor.color('buttongra'),
-            MyColor.color('buttongra1'),
+            MyColor.color('bl1'),
+            MyColor.color('bl3'),
           ],
         ),
       ),
@@ -356,7 +356,7 @@ class LoanDetailState extends State<LoanDetail> {
           child: Text(
             Language.loanLg('showGuarantees', widget.param.lgs),
             textScaleFactor: MyClass.blocFontSizeApp(_fontsizeapps),
-            style: CustomTextStyle.buttonTxt(context, -1),
+            style: CustomTextStyle.loginBoldTxt(context, -8, 'TxtBt'),
           ),
         ),
       ),
@@ -371,8 +371,8 @@ class LoanDetailState extends State<LoanDetail> {
         borderRadius: BorderRadius.circular(25.0),
         gradient: LinearGradient(
           colors: <Color>[
-            MyColor.color('buttongra'),
-            MyColor.color('buttongra1'),
+            MyColor.color('bl1'),
+            MyColor.color('bl3'),
           ],
         ),
       ),
@@ -395,7 +395,7 @@ class LoanDetailState extends State<LoanDetail> {
           child: Text(
             Language.loanLg('showMovementlist', widget.param.lgs),
             textScaleFactor: MyClass.blocFontSizeApp(_fontsizeapps),
-            style: CustomTextStyle.buttonTxt(context, -1),
+            style: CustomTextStyle.loginBoldTxt(context, -8, 'TxtBt'),
           ),
         ),
       ),
@@ -416,9 +416,7 @@ class LoanDetailState extends State<LoanDetail> {
                     blurRadius: 6.0,
                     spreadRadius: 1.0)
               ],
-              borderRadius: const BorderRadius.only(
-                  topLeft: Radius.circular(20.0),
-                  topRight: Radius.circular(20.0)),
+              borderRadius: const BorderRadius.all(Radius.circular(20.0)),
               color: MyColor.color('datatitle'),
             ),
             padding: const EdgeInsets.all(20),
@@ -427,35 +425,35 @@ class LoanDetailState extends State<LoanDetail> {
                 Row(
                   children: <Widget>[
                     Expanded(
-                        child: Text(
-                            Language.loanLg('member', widget.param.lgs) + ' : ',
+                        child: Text(Language.loanLg('member', widget.param.lgs),
+                            textAlign: TextAlign.start,
                             textScaleFactor:
                                 MyClass.blocFontSizeApp(_fontsizeapps),
                             style:
-                                CustomTextStyle.dataHeadTitleTxt(context, 0))),
+                                CustomTextStyle.dataHeadTitleTxt(context, 1))),
                     Expanded(
                         child: Text(widget.param.membershipNo,
+                            textAlign: TextAlign.end,
                             textScaleFactor:
                                 MyClass.blocFontSizeApp(_fontsizeapps),
-                            style:
-                                CustomTextStyle.dataHeadDataTxt(context, 0))),
+                            style: CustomTextStyle.dataW300Txt(context, 1))),
                   ],
                 ),
                 Row(
                   children: <Widget>[
                     Expanded(
-                        child: Text(
-                            Language.loanLg('name', widget.param.lgs) + ' : ',
+                        child: Text(Language.loanLg('name', widget.param.lgs),
+                            textAlign: TextAlign.start,
                             textScaleFactor:
                                 MyClass.blocFontSizeApp(_fontsizeapps),
                             style:
-                                CustomTextStyle.dataHeadTitleTxt(context, 0))),
+                                CustomTextStyle.dataHeadTitleTxt(context, 1))),
                     Expanded(
                         child: Text(widget.param.name,
+                            textAlign: TextAlign.end,
                             textScaleFactor:
                                 MyClass.blocFontSizeApp(_fontsizeapps),
-                            style:
-                                CustomTextStyle.dataHeadDataTxt(context, 0))),
+                            style: CustomTextStyle.dataW300Txt(context, 1))),
                   ],
                 ),
               ],

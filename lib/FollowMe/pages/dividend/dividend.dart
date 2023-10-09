@@ -1,16 +1,16 @@
 import 'dart:convert';
 
-import 'package:udtscc/FollowMe/models/dividend/div_model.dart';
-import 'package:udtscc/FollowMe/pages/auth/pins.dart';
-import 'package:udtscc/FollowMe/class/custom_ui.dart';
-import 'package:udtscc/FollowMe/class/language.dart';
-import 'package:udtscc/FollowMe/class/myclass.dart';
-import 'package:udtscc/FollowMe/class/mycolor.dart';
-import 'package:udtscc/FollowMe/class/sizes.dart';
-import 'package:udtscc/FollowMe/class/textstyle.dart';
-import 'package:udtscc/FollowMe/class/widget.dart';
-import 'package:udtscc/FollowMe/pages/dividend/dividend_detail.dart';
-import 'package:udtscc/FollowMe/services/network.dart';
+import 'package:mwasc/FollowMe/models/dividend/div_model.dart';
+import 'package:mwasc/FollowMe/pages/auth/pins.dart';
+import 'package:mwasc/FollowMe/class/custom_ui.dart';
+import 'package:mwasc/FollowMe/class/language.dart';
+import 'package:mwasc/FollowMe/class/myclass.dart';
+import 'package:mwasc/FollowMe/class/mycolor.dart';
+import 'package:mwasc/FollowMe/class/sizes.dart';
+import 'package:mwasc/FollowMe/class/textstyle.dart';
+import 'package:mwasc/FollowMe/class/widget.dart';
+import 'package:mwasc/FollowMe/pages/dividend/dividend_detail.dart';
+import 'package:mwasc/FollowMe/services/network.dart';
 import 'package:flutter/material.dart';
 
 double _fontsizeapps = 1.0;
@@ -189,14 +189,13 @@ class DividendState extends State<Dividend> {
                             textScaleFactor:
                                 MyClass.blocFontSizeApp(_fontsizeapps),
                             style:
-                                CustomTextStyle.dataHeadTitleTxt(context, 0))),
+                                CustomTextStyle.dataHeadTitleTxt(context, 1))),
                     Expanded(
                         child: Text(widget.param.membershipNo,
                             textAlign: TextAlign.end,
                             textScaleFactor:
                                 MyClass.blocFontSizeApp(_fontsizeapps),
-                            style:
-                                CustomTextStyle.dataHeadDataTxt(context, 0))),
+                            style: CustomTextStyle.dataW300Txt(context, 1))),
                   ],
                 ),
                 Row(
@@ -207,14 +206,13 @@ class DividendState extends State<Dividend> {
                             textScaleFactor:
                                 MyClass.blocFontSizeApp(_fontsizeapps),
                             style:
-                                CustomTextStyle.dataHeadTitleTxt(context, 0))),
+                                CustomTextStyle.dataHeadTitleTxt(context, 1))),
                     Expanded(
                         child: Text(widget.param.name,
                             textAlign: TextAlign.end,
                             textScaleFactor:
                                 MyClass.blocFontSizeApp(_fontsizeapps),
-                            style:
-                                CustomTextStyle.dataHeadDataTxt(context, 0))),
+                            style: CustomTextStyle.dataW300Txt(context, 1))),
                   ],
                 ),
               ],
@@ -253,7 +251,7 @@ Container _head(context, lgs) {
             Language.dividendLg('fiscalYear', lgs),
             textAlign: TextAlign.center,
             textScaleFactor: MyClass.blocFontSizeApp(_fontsizeapps),
-            style: CustomTextStyle.headTitleTxt(context, 0),
+            style: CustomTextStyle.dataHeadTitleCTxt(context, 0, 'TxtBlue'),
           ),
         ),
         Expanded(
@@ -262,7 +260,7 @@ Container _head(context, lgs) {
             Language.dividendLg('getMoney', lgs),
             textAlign: TextAlign.center,
             textScaleFactor: MyClass.blocFontSizeApp(_fontsizeapps),
-            style: CustomTextStyle.headTitleTxt(context, 0),
+            style: CustomTextStyle.dataHeadTitleCTxt(context, 0, 'TxtBlue'),
           ),
         ),
         Icon(

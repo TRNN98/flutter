@@ -1,15 +1,15 @@
 import 'dart:convert';
-import 'package:udtscc/FollowMe/models/share/share_model_d.dart';
-import 'package:udtscc/FollowMe/models/share/share_model_h.dart';
-import 'package:udtscc/FollowMe/pages/auth/pins.dart';
-import 'package:udtscc/FollowMe/class/custom_ui.dart';
-import 'package:udtscc/FollowMe/class/language.dart';
-import 'package:udtscc/FollowMe/class/myclass.dart';
-import 'package:udtscc/FollowMe/class/mycolor.dart';
-import 'package:udtscc/FollowMe/class/sizes.dart';
-import 'package:udtscc/FollowMe/class/textstyle.dart';
-import 'package:udtscc/FollowMe/class/widget.dart';
-import 'package:udtscc/FollowMe/services/network.dart';
+import 'package:mwasc/FollowMe/models/share/share_model_d.dart';
+import 'package:mwasc/FollowMe/models/share/share_model_h.dart';
+import 'package:mwasc/FollowMe/pages/auth/pins.dart';
+import 'package:mwasc/FollowMe/class/custom_ui.dart';
+import 'package:mwasc/FollowMe/class/language.dart';
+import 'package:mwasc/FollowMe/class/myclass.dart';
+import 'package:mwasc/FollowMe/class/mycolor.dart';
+import 'package:mwasc/FollowMe/class/sizes.dart';
+import 'package:mwasc/FollowMe/class/textstyle.dart';
+import 'package:mwasc/FollowMe/class/widget.dart';
+import 'package:mwasc/FollowMe/services/network.dart';
 import 'package:flutter/material.dart';
 
 class Share extends StatefulWidget {
@@ -293,8 +293,7 @@ class ShareState extends State<Share> {
                             textAlign: TextAlign.end,
                             textScaleFactor: MyClass.blocFontSizeApp(
                                 widget.param.fontsizeapps),
-                            style:
-                                CustomTextStyle.dataHeadDataTxt(context, 1))),
+                            style: CustomTextStyle.dataW300Txt(context, 1))),
                   ],
                 ),
                 Row(
@@ -311,8 +310,7 @@ class ShareState extends State<Share> {
                             textAlign: TextAlign.end,
                             textScaleFactor: MyClass.blocFontSizeApp(
                                 widget.param.fontsizeapps),
-                            style:
-                                CustomTextStyle.dataHeadDataTxt(context, 1))),
+                            style: CustomTextStyle.dataW300Txt(context, 1))),
                   ],
                 ),
                 Row(
@@ -329,8 +327,7 @@ class ShareState extends State<Share> {
                             textAlign: TextAlign.end,
                             textScaleFactor: MyClass.blocFontSizeApp(
                                 widget.param.fontsizeapps),
-                            style:
-                                CustomTextStyle.dataHeadDataTxt(context, 1))),
+                            style: CustomTextStyle.dataW300Txt(context, 1))),
                   ],
                 ),
                 Row(
@@ -348,8 +345,7 @@ class ShareState extends State<Share> {
                             textAlign: TextAlign.end,
                             textScaleFactor: MyClass.blocFontSizeApp(
                                 widget.param.fontsizeapps),
-                            style:
-                                CustomTextStyle.dataHeadDataTxt(context, 1))),
+                            style: CustomTextStyle.dataW300Txt(context, 1))),
                   ],
                 ),
                 Row(
@@ -367,8 +363,7 @@ class ShareState extends State<Share> {
                             textAlign: TextAlign.end,
                             textScaleFactor: MyClass.blocFontSizeApp(
                                 widget.param.fontsizeapps),
-                            style:
-                                CustomTextStyle.dataHeadDataTxt(context, 1))),
+                            style: CustomTextStyle.dataW300Txt(context, 1))),
                   ],
                 ),
               ],

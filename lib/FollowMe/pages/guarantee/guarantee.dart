@@ -1,13 +1,13 @@
-import 'package:udtscc/FollowMe/models/guarantee/guarantee_model.dart';
-import 'package:udtscc/FollowMe/pages/auth/pins.dart';
-import 'package:udtscc/FollowMe/class/custom_ui.dart';
-import 'package:udtscc/FollowMe/class/language.dart';
-import 'package:udtscc/FollowMe/class/myclass.dart';
-import 'package:udtscc/FollowMe/class/mycolor.dart';
-import 'package:udtscc/FollowMe/class/sizes.dart';
-import 'package:udtscc/FollowMe/class/textstyle.dart';
-import 'package:udtscc/FollowMe/class/widget.dart';
-import 'package:udtscc/FollowMe/services/network.dart';
+import 'package:mwasc/FollowMe/models/guarantee/guarantee_model.dart';
+import 'package:mwasc/FollowMe/pages/auth/pins.dart';
+import 'package:mwasc/FollowMe/class/custom_ui.dart';
+import 'package:mwasc/FollowMe/class/language.dart';
+import 'package:mwasc/FollowMe/class/myclass.dart';
+import 'package:mwasc/FollowMe/class/mycolor.dart';
+import 'package:mwasc/FollowMe/class/sizes.dart';
+import 'package:mwasc/FollowMe/class/textstyle.dart';
+import 'package:mwasc/FollowMe/class/widget.dart';
+import 'package:mwasc/FollowMe/services/network.dart';
 import 'package:flutter/material.dart';
 
 double _fontsizeapps = 1.0;
@@ -60,9 +60,11 @@ class GuaranteeState extends State<Guarantee> {
                         top: paddinglist(context, 0),
                         left: paddinglist(context, 0),
                         right: paddinglist(context, 0)),
-                    child: checkpage == 0
-                        ? _head(context, widget.param.lgs, tabletMode)
-                        : _head1(context, widget.param.lgs, tabletMode),
+                    child:
+                        // checkpage == 0
+                        // ?
+                        _head(context, widget.param.lgs, tabletMode),
+                    // : _head1(context, widget.param.lgs, tabletMode),
                   ),
                   Expanded(
                     child: Padding(
@@ -211,14 +213,13 @@ class GuaranteeState extends State<Guarantee> {
                             textScaleFactor:
                                 MyClass.blocFontSizeApp(_fontsizeapps),
                             style:
-                                CustomTextStyle.dataHeadTitleTxt(context, 0))),
+                                CustomTextStyle.dataHeadTitleTxt(context, 1))),
                     Expanded(
                         child: Text(widget.param.membershipNo,
                             textAlign: TextAlign.end,
                             textScaleFactor:
                                 MyClass.blocFontSizeApp(_fontsizeapps),
-                            style:
-                                CustomTextStyle.dataHeadDataTxt(context, 0))),
+                            style: CustomTextStyle.dataW300Txt(context, 1))),
                   ],
                 ),
                 Row(
@@ -229,14 +230,13 @@ class GuaranteeState extends State<Guarantee> {
                             textScaleFactor:
                                 MyClass.blocFontSizeApp(_fontsizeapps),
                             style:
-                                CustomTextStyle.dataHeadTitleTxt(context, 0))),
+                                CustomTextStyle.dataHeadTitleTxt(context, 1))),
                     Expanded(
                         child: Text(widget.param.name,
                             textAlign: TextAlign.end,
                             textScaleFactor:
                                 MyClass.blocFontSizeApp(_fontsizeapps),
-                            style:
-                                CustomTextStyle.dataHeadDataTxt(context, 0))),
+                            style: CustomTextStyle.dataW300Txt(context, 1))),
                   ],
                 ),
               ],
