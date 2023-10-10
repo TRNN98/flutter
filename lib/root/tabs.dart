@@ -1,39 +1,39 @@
 import 'package:animated_bottom_navigation_bar/animated_bottom_navigation_bar.dart';
 import 'package:flutter_udid/flutter_udid.dart';
-import 'package:udtscc/FollowMe/class/language.dart';
-import 'package:udtscc/FollowMe/class/myclass.dart';
-import 'package:udtscc/FollowMe/class/textstyle.dart';
-import 'package:udtscc/FollowMe/pages/auth/pins.dart';
-import 'package:udtscc/FollowMe/pages/creditinsure/creditinsure.dart';
-import 'package:udtscc/FollowMe/pages/cremation/cremation.dart';
-import 'package:udtscc/FollowMe/pages/deposit/deposit.dart';
-import 'package:udtscc/FollowMe/pages/dividend/dividend.dart';
-import 'package:udtscc/FollowMe/pages/gain/gain.dart';
-import 'package:udtscc/FollowMe/pages/grouplife/grouplife.dart';
-import 'package:udtscc/FollowMe/pages/guarantee/guarantee.dart';
-import 'package:udtscc/FollowMe/pages/kept/kept.dart';
-import 'package:udtscc/FollowMe/pages/loan/loan.dart';
-import 'package:udtscc/FollowMe/pages/location/location.dart';
-import 'package:udtscc/FollowMe/pages/mainmenu.dart';
-import 'package:udtscc/FollowMe/pages/news/news.dart';
-import 'package:udtscc/FollowMe/pages/offset/offset.dart';
-import 'package:udtscc/FollowMe/pages/paymentbirthday/paymentbirthday.dart';
-import 'package:udtscc/FollowMe/pages/profile/profile.dart';
-import 'package:udtscc/FollowMe/pages/requestforwelfare/requestforwelfare.dart';
-import 'package:udtscc/FollowMe/pages/retire/retire.dart';
-import 'package:udtscc/FollowMe/pages/share/share.dart';
-import 'package:udtscc/FollowMe/pages/uploadDocument/uploadDoc.dart';
-import 'package:udtscc/FollowMe/pages/welfarereceive/welfarereceive.dart';
-import 'package:udtscc/FollowMe/pages/welmaster/welmaster.dart';
-import 'package:udtscc/FollowMe/services/network.dart';
-import 'package:udtscc/promoney/locals/device.dart';
-import 'package:udtscc/promoney/models/sql/device_db.dart';
-import 'package:udtscc/promoney/pages/admin/calculate/calculate.dart';
-import 'package:udtscc/promoney/pages/admin/dilute_shares/dilute_shares.dart';
-import 'package:udtscc/promoney/pages/admin/track_status/track_status.dart';
-import 'package:udtscc/promoney/pages/banks/loan_payment/loan_payment.dart';
-import 'package:udtscc/promoney/pages/promoney.dart';
-import 'package:udtscc/promoney/sevices/network_pro.dart';
+import 'package:mwasc/FollowMe/class/language.dart';
+import 'package:mwasc/FollowMe/class/myclass.dart';
+import 'package:mwasc/FollowMe/class/textstyle.dart';
+import 'package:mwasc/FollowMe/pages/auth/pins.dart';
+import 'package:mwasc/FollowMe/pages/creditinsure/creditinsure.dart';
+import 'package:mwasc/FollowMe/pages/cremation/cremation.dart';
+import 'package:mwasc/FollowMe/pages/deposit/deposit.dart';
+import 'package:mwasc/FollowMe/pages/dividend/dividend.dart';
+import 'package:mwasc/FollowMe/pages/gain/gain.dart';
+import 'package:mwasc/FollowMe/pages/grouplife/grouplife.dart';
+import 'package:mwasc/FollowMe/pages/guarantee/guarantee.dart';
+import 'package:mwasc/FollowMe/pages/kept/kept.dart';
+import 'package:mwasc/FollowMe/pages/loan/loan.dart';
+import 'package:mwasc/FollowMe/pages/location/location.dart';
+import 'package:mwasc/FollowMe/pages/mainmenu.dart';
+import 'package:mwasc/FollowMe/pages/news/news.dart';
+import 'package:mwasc/FollowMe/pages/offset/offset.dart';
+import 'package:mwasc/FollowMe/pages/paymentbirthday/paymentbirthday.dart';
+import 'package:mwasc/FollowMe/pages/profile/profile.dart';
+import 'package:mwasc/FollowMe/pages/requestforwelfare/requestforwelfare.dart';
+import 'package:mwasc/FollowMe/pages/retire/retire.dart';
+import 'package:mwasc/FollowMe/pages/share/share.dart';
+import 'package:mwasc/FollowMe/pages/uploadDocument/uploadDoc.dart';
+import 'package:mwasc/FollowMe/pages/welfarereceive/welfarereceive.dart';
+import 'package:mwasc/FollowMe/pages/welmaster/welmaster.dart';
+import 'package:mwasc/FollowMe/services/network.dart';
+import 'package:mwasc/promoney/locals/device.dart';
+import 'package:mwasc/promoney/models/sql/device_db.dart';
+import 'package:mwasc/promoney/pages/admin/calculate/calculate.dart';
+import 'package:mwasc/promoney/pages/admin/dilute_shares/dilute_shares.dart';
+import 'package:mwasc/promoney/pages/admin/track_status/track_status.dart';
+import 'package:mwasc/promoney/pages/banks/loan_payment/loan_payment.dart';
+import 'package:mwasc/promoney/pages/promoney.dart';
+import 'package:mwasc/promoney/sevices/network_pro.dart';
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:device_info_plus/device_info_plus.dart';
 import 'package:flutter/material.dart';
@@ -216,7 +216,7 @@ class TabsState extends State<Tabs> with SingleTickerProviderStateMixin {
     super.initState();
 
     _getDevice();
-    _getChackMem();
+    // _getChackMem();
 
     _selectedPage = 0;
 
@@ -410,7 +410,7 @@ class TabsState extends State<Tabs> with SingleTickerProviderStateMixin {
           activeIndex: _bottomNavIndex,
           notchAndCornersAnimation: animation,
           splashSpeedInMilliseconds: 300,
-          notchSmoothness: NotchSmoothness.sharpEdge,
+          notchSmoothness: NotchSmoothness.defaultEdge,
           gapLocation: GapLocation.center,
           leftCornerRadius: 32,
           rightCornerRadius: 32,

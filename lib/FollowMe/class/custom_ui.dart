@@ -1,15 +1,15 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_exit_app/flutter_exit_app.dart';
-import 'package:udtscc/FollowMe/class/mycolor.dart';
-import 'package:udtscc/FollowMe/pages/auth/pins.dart';
-import 'package:udtscc/FollowMe/class/language.dart';
-import 'package:udtscc/FollowMe/class/myclass.dart';
-import 'package:udtscc/FollowMe/class/sizes.dart';
-import 'package:udtscc/FollowMe/class/textstyle.dart';
-import 'package:udtscc/FollowMe/pages/msg/msg.dart';
-import 'package:udtscc/FollowMe/pages/settings/settings.dart';
+import 'package:mwasc/FollowMe/class/mycolor.dart';
+import 'package:mwasc/FollowMe/pages/auth/pins.dart';
+import 'package:mwasc/FollowMe/class/language.dart';
+import 'package:mwasc/FollowMe/class/myclass.dart';
+import 'package:mwasc/FollowMe/class/sizes.dart';
+import 'package:mwasc/FollowMe/class/textstyle.dart';
+import 'package:mwasc/FollowMe/pages/msg/msg.dart';
+import 'package:mwasc/FollowMe/pages/settings/settings.dart';
 import 'package:flutter/material.dart';
-import 'package:udtscc/FollowMe/services/network.dart';
+import 'package:mwasc/FollowMe/services/network.dart';
 
 import 'dart:io' show Platform;
 
@@ -43,8 +43,7 @@ class CustomUI {
       ),
       child: Container(
         decoration: BoxDecoration(
-          borderRadius: const BorderRadius.only(
-              topLeft: Radius.circular(25), topRight: Radius.circular(25)),
+          borderRadius: const BorderRadius.all(Radius.circular(10)),
           color: MyColor.color('SettingBackground'),
         ),
         child: Container(
@@ -327,16 +326,16 @@ class CustomUI {
     bool tabletMode = MediaQuery.of(context).size.width > 600;
     return Container(
       padding: EdgeInsets.only(
-          top: displayHeight(context) * (tabletMode ? 0.09 : 0.1)),
+          top: displayHeight(context) * (tabletMode ? 0.09 : 0.08)),
       alignment: Alignment.topCenter,
       child: Image.asset(
         url,
         width: tabletMode
             ? displayWidth(context) * 0.22
-            : displayWidth(context) * 0.32,
+            : displayWidth(context) * 0.37,
         height: tabletMode
             ? displayWidth(context) * 0.22
-            : displayWidth(context) * 0.32,
+            : displayWidth(context) * 0.37,
         fit: BoxFit.cover,
       ),
     );
@@ -611,13 +610,13 @@ class _AppBarUiMainMenuState extends State<AppBarUiMainMenu> {
                 ? Row(
                     children: <Widget>[
                       Container(
-                        margin: const EdgeInsets.only(right: 25),
+                        margin: const EdgeInsets.only(right: 10),
                         child: CircleAvatar(
-                          radius: 40,
+                          radius: 50,
                           backgroundColor: Colors.transparent,
                           backgroundImage:
                               const AssetImage('assets/imgs/boy.jpg'),
-                          child: CircleAvatar(
+                          child: ClipOval(
                             child: Image.network(
                               widget.url,
                               errorBuilder: (context, error, stackTrace) {
@@ -625,7 +624,6 @@ class _AppBarUiMainMenuState extends State<AppBarUiMainMenu> {
                                     '${MyClass.hostApp()}/public/member/profile/boy.jpg');
                               },
                             ),
-                            onBackgroundImageError: (__, _) {},
                           ),
                         ),
                       ),
@@ -639,13 +637,13 @@ class _AppBarUiMainMenuState extends State<AppBarUiMainMenu> {
                                 Language.menuLg('welcome', widget.param.lgs),
                                 textScaleFactor: MyClass.fontSizeApp(),
                                 style: CustomTextStyle.titleWTxt(widget.context,
-                                    widget.tabletMode ? -30 : -7)),
+                                    widget.tabletMode ? -18 : -7)),
                           ),
                           Expanded(
                             child: Text(widget.param.name,
                                 textScaleFactor: MyClass.fontSizeApp(),
                                 style: CustomTextStyle.titleWTxt(widget.context,
-                                    widget.tabletMode ? -39 : -12)),
+                                    widget.tabletMode ? -28 : -12)),
                           ),
                         ],
                       ),

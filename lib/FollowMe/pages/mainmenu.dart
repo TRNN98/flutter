@@ -3,11 +3,11 @@ import 'dart:math';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_exit_app/flutter_exit_app.dart';
-import 'package:udtscc/FollowMe/class/textstyle.dart';
-import 'package:udtscc/FollowMe/pages/auth/pins.dart';
-import 'package:udtscc/FollowMe/class/custom_ui.dart';
-import 'package:udtscc/FollowMe/class/language.dart';
-import 'package:udtscc/FollowMe/class/myclass.dart';
+import 'package:mwasc/FollowMe/class/textstyle.dart';
+import 'package:mwasc/FollowMe/pages/auth/pins.dart';
+import 'package:mwasc/FollowMe/class/custom_ui.dart';
+import 'package:mwasc/FollowMe/class/language.dart';
+import 'package:mwasc/FollowMe/class/myclass.dart';
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 
@@ -45,6 +45,14 @@ final List<Menu> menus = <Menu>[
       title: "requestforwelfare",
       img: 'assets/imgs/RequestWelfare.png',
       page: '/requestforwelfare'),
+  const Menu(
+      title: "UploadDocument",
+      img: 'assets/imgs/uploadDoc.png',
+      page: '/uploadDoc'),
+  const Menu(
+      title: "MemberSeminar",
+      img: 'assets/imgs/MemberSeminar.png',
+      page: '/memberSeminar'),
 
   /* const Menu(
       title: "welfare", img: 'assets/imgs/welfare.png', page: '/welfare'),

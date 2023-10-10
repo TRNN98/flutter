@@ -1,6 +1,6 @@
 import 'dart:io';
 
-import 'package:udtscc/FollowMe/models/sql/pdpa_db.dart';
+import 'package:mwasc/FollowMe/models/sql/pdpa_db.dart';
 import 'package:sqflite/sqflite.dart';
 import 'package:path/path.dart';
 

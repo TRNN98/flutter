@@ -1,37 +1,37 @@
 import 'dart:convert';
-import 'package:udtscc/FollowMe/models/grouplife/grouplife_model.dart';
-import 'package:udtscc/FollowMe/models/auth/pin_json.dart';
-import 'package:udtscc/FollowMe/models/creditinsure/creditinsure_model.dart';
-import 'package:udtscc/FollowMe/models/deposit/dep_model.dart';
-import 'package:udtscc/FollowMe/models/deposit/dep_model_h.dart';
-import 'package:udtscc/FollowMe/models/deposit/dep_detail_model.dart';
-import 'package:udtscc/FollowMe/models/dividend/div_detail_model.dart';
-import 'package:udtscc/FollowMe/models/dividend/div_model.dart';
-import 'package:udtscc/FollowMe/models/gain/gain_model.dart';
-import 'package:udtscc/FollowMe/models/guarantee/guarantee_model.dart';
-import 'package:udtscc/FollowMe/models/kept/kept_detail_model.dart';
-import 'package:udtscc/FollowMe/models/kept/kept_model.dart';
-import 'package:udtscc/FollowMe/models/loan/loan_model.dart';
-import 'package:udtscc/FollowMe/models/loan/loan_model_g.dart';
-import 'package:udtscc/FollowMe/models/loan/loan_modle_d.dart';
-import 'package:udtscc/FollowMe/models/memberref/memberref_model.dart';
-import 'package:udtscc/FollowMe/models/news/msg_model.dart';
-import 'package:udtscc/FollowMe/models/news/news_model.dart';
-import 'package:udtscc/FollowMe/models/offset/offset_model.dart';
-import 'package:udtscc/FollowMe/models/offset/offset_model_d.dart';
-import 'package:udtscc/FollowMe/models/offset/offset_model_h.dart';
-import 'package:udtscc/FollowMe/models/paymentbirthday/paymentbirthday_model.dart';
-import 'package:udtscc/FollowMe/models/profile/info_model.dart';
-import 'package:udtscc/FollowMe/models/retire/retire_model.dart';
-import 'package:udtscc/FollowMe/models/share/share_model_d.dart';
-import 'package:udtscc/FollowMe/models/share/share_model_h.dart';
-import 'package:udtscc/FollowMe/models/welfare/welfare_model.dart';
-import 'package:udtscc/FollowMe/models/welfarereceive/welfarereceive_model.dart';
-import 'package:udtscc/FollowMe/models/welmaster/welmaster_model.dart';
-import 'package:udtscc/FollowMe/pages/auth/pins.dart';
-import 'package:udtscc/FollowMe/class/myclass.dart';
-import 'package:udtscc/FollowMe/models/auth/auth_json.dart';
-import 'package:udtscc/FollowMe/models/location/address_json.dart';
+import 'package:mwasc/FollowMe/models/grouplife/grouplife_model.dart';
+import 'package:mwasc/FollowMe/models/auth/pin_json.dart';
+import 'package:mwasc/FollowMe/models/creditinsure/creditinsure_model.dart';
+import 'package:mwasc/FollowMe/models/deposit/dep_model.dart';
+import 'package:mwasc/FollowMe/models/deposit/dep_model_h.dart';
+import 'package:mwasc/FollowMe/models/deposit/dep_detail_model.dart';
+import 'package:mwasc/FollowMe/models/dividend/div_detail_model.dart';
+import 'package:mwasc/FollowMe/models/dividend/div_model.dart';
+import 'package:mwasc/FollowMe/models/gain/gain_model.dart';
+import 'package:mwasc/FollowMe/models/guarantee/guarantee_model.dart';
+import 'package:mwasc/FollowMe/models/kept/kept_detail_model.dart';
+import 'package:mwasc/FollowMe/models/kept/kept_model.dart';
+import 'package:mwasc/FollowMe/models/loan/loan_model.dart';
+import 'package:mwasc/FollowMe/models/loan/loan_model_g.dart';
+import 'package:mwasc/FollowMe/models/loan/loan_modle_d.dart';
+import 'package:mwasc/FollowMe/models/memberref/memberref_model.dart';
+import 'package:mwasc/FollowMe/models/news/msg_model.dart';
+import 'package:mwasc/FollowMe/models/news/news_model.dart';
+import 'package:mwasc/FollowMe/models/offset/offset_model.dart';
+import 'package:mwasc/FollowMe/models/offset/offset_model_d.dart';
+import 'package:mwasc/FollowMe/models/offset/offset_model_h.dart';
+import 'package:mwasc/FollowMe/models/paymentbirthday/paymentbirthday_model.dart';
+import 'package:mwasc/FollowMe/models/profile/info_model.dart';
+import 'package:mwasc/FollowMe/models/retire/retire_model.dart';
+import 'package:mwasc/FollowMe/models/share/share_model_d.dart';
+import 'package:mwasc/FollowMe/models/share/share_model_h.dart';
+import 'package:mwasc/FollowMe/models/welfare/welfare_model.dart';
+import 'package:mwasc/FollowMe/models/welfarereceive/welfarereceive_model.dart';
+import 'package:mwasc/FollowMe/models/welmaster/welmaster_model.dart';
+import 'package:mwasc/FollowMe/pages/auth/pins.dart';
+import 'package:mwasc/FollowMe/class/myclass.dart';
+import 'package:mwasc/FollowMe/models/auth/auth_json.dart';
+import 'package:mwasc/FollowMe/models/location/address_json.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 
@@ -150,7 +150,7 @@ class Network {
   }
 
   static Future fetchpinlogin(data) async {
-    final url = Uri.parse('${MyClass.hostApp()}/api/v1/member/auth/login');
+    final url = Uri.parse('${MyClass.hostApp()}/api/v1/auth/login');
     Map<String, String> headers = {
       'Content-Type': 'application/json; charset=UTF-8'
     };
@@ -166,7 +166,7 @@ class Network {
   }
 
   static Future fetchpinrefresh(data, context) async {
-    final url = Uri.parse('${MyClass.hostApp()}/api/v1/member/auth/refresh');
+    final url = Uri.parse('${MyClass.hostApp()}/api/v1/auth/refresh');
     Map<String, String> headers = {
       'Content-Type': 'application/json; charset=UTF-8'
     };
@@ -215,14 +215,15 @@ class Network {
   }
 
   static Future fetchAuthFo(data) async {
-    final url =
-        Uri.parse('${MyClass.hostApp()}/api/v1/member/auth/forgetMobiles');
+    final url = Uri.parse('${MyClass.hostApp()}/api/v1/auth/forgetMobiles');
     Map<String, String> headers = {
       'Content-Type': 'application/json; charset=UTF-8'
     };
     String jsons = json.encode(data);
     final response =
         await http.post(url, headers: headers, body: json.decode(jsons));
+    print(response.body);
+    print(response.statusCode);
     if (response.statusCode == 200) {
       final List jsonResponse = json.decode('[${response.body}]');
       return jsonResponse;
@@ -232,8 +233,7 @@ class Network {
   }
 
   static Future fetchAuthRe(data) async {
-    final url =
-        Uri.parse('${MyClass.hostApp()}/api/v1/member/auth/registerMobiles');
+    final url = Uri.parse('${MyClass.hostApp()}/api/v1/auth/registerMobiles');
     Map<String, String> headers = {
       'Content-Type': 'application/json; charset=UTF-8'
     };

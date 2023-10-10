@@ -1,6 +1,6 @@
-key: udtscc@2022
-alias: udtscc
+key: mwasc@2023
+alias: mwasc
 
-Gmail (For one-signal)
-user: savingudondev@gmail.com
-pass : coopadmin#A1
+Apple ID
+user: MWASCApp@gmail.com
+pass : MWAAppm0bile77

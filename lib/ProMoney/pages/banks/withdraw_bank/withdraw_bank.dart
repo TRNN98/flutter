@@ -1,9 +1,9 @@
 import 'dart:convert';
 
 import 'package:carousel_slider/carousel_slider.dart';
-import 'package:udtscc/FollowMe/class/myclass.dart';
-import 'package:udtscc/promoney/class/custom_class.dart';
-import 'package:udtscc/promoney/class/languagepro.dart';
+import 'package:mwasc/FollowMe/class/myclass.dart';
+import 'package:mwasc/promoney/class/custom_class.dart';
+import 'package:mwasc/promoney/class/languagepro.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_multi_formatter/flutter_multi_formatter.dart';
 import 'package:shared_preferences/shared_preferences.dart';

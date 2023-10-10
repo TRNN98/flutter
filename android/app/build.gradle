@@ -50,11 +50,11 @@ ndkVersion flutter.ndkVersion
 
     defaultConfig {
         // TODO: Specify your own unique Application ID (https://developer.android.com/studio/build/application-id.html).
-        applicationId "com.soatsolution.udtscc"
+        applicationId "com.soat.mwasc"
         minSdkVersion 26
         targetSdkVersion 33
-        versionCode 203002
-        versionName "2.3"
+        versionCode 100001
+        versionName "1.00"
         multiDexEnabled true
     }
 

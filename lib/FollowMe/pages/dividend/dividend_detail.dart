@@ -1,15 +1,15 @@
 import 'dart:convert';
 
-import 'package:udtscc/FollowMe/models/dividend/div_detail_model.dart';
-import 'package:udtscc/FollowMe/pages/auth/pins.dart';
-import 'package:udtscc/FollowMe/class/custom_ui.dart';
-import 'package:udtscc/FollowMe/class/language.dart';
-import 'package:udtscc/FollowMe/class/myclass.dart';
-import 'package:udtscc/FollowMe/class/mycolor.dart';
-import 'package:udtscc/FollowMe/class/sizes.dart';
-import 'package:udtscc/FollowMe/class/textstyle.dart';
-import 'package:udtscc/FollowMe/class/widget.dart';
-import 'package:udtscc/FollowMe/services/network.dart';
+import 'package:mwasc/FollowMe/models/dividend/div_detail_model.dart';
+import 'package:mwasc/FollowMe/pages/auth/pins.dart';
+import 'package:mwasc/FollowMe/class/custom_ui.dart';
+import 'package:mwasc/FollowMe/class/language.dart';
+import 'package:mwasc/FollowMe/class/myclass.dart';
+import 'package:mwasc/FollowMe/class/mycolor.dart';
+import 'package:mwasc/FollowMe/class/sizes.dart';
+import 'package:mwasc/FollowMe/class/textstyle.dart';
+import 'package:mwasc/FollowMe/class/widget.dart';
+import 'package:mwasc/FollowMe/services/network.dart';
 import 'package:flutter/material.dart';
 
 class DividendDetail extends StatefulWidget {
@@ -181,14 +181,13 @@ class DividendDetailState extends State<DividendDetail> {
                             textScaleFactor: MyClass.blocFontSizeApp(
                                 widget.param.fontsizeapps),
                             style:
-                                CustomTextStyle.dataHeadTitleTxt(context, 2))),
+                                CustomTextStyle.dataHeadTitleTxt(context, 1))),
                     Expanded(
                         child: Text(widget.param.membershipNo,
                             textAlign: TextAlign.end,
                             textScaleFactor: MyClass.blocFontSizeApp(
                                 widget.param.fontsizeapps),
-                            style:
-                                CustomTextStyle.dataHeadTitleTxt(context, 2))),
+                            style: CustomTextStyle.dataW300Txt(context, 1))),
                   ],
                 ),
                 Row(
@@ -205,8 +204,7 @@ class DividendDetailState extends State<DividendDetail> {
                             textAlign: TextAlign.end,
                             textScaleFactor: MyClass.blocFontSizeApp(
                                 widget.param.fontsizeapps),
-                            style:
-                                CustomTextStyle.dataHeadTitleTxt(context, 2))),
+                            style: CustomTextStyle.dataW300Txt(context, 2))),
                   ],
                 ),
                 Row(
@@ -237,14 +235,14 @@ class DividendDetailState extends State<DividendDetail> {
                           Language.dividendLg('dividendRate', widget.param.lgs),
                           textScaleFactor: MyClass.blocFontSizeApp(
                               widget.param.fontsizeapps),
-                          style: CustomTextStyle.dataHeadTitleTxt(context, 2))),
+                          style: CustomTextStyle.dataHeadTitleTxt(context, 1))),
                   Expanded(
                     child: Text(
                       MyClass.checkNull(
                           jsonDecode(widget.data)[0]['dividendRate']),
                       textScaleFactor:
                           MyClass.blocFontSizeApp(widget.param.fontsizeapps),
-                      style: CustomTextStyle.dataHeadTitleTxt(context, 2),
+                      style: CustomTextStyle.dataW300Txt(context, 1),
                       textAlign: TextAlign.end,
                     ),
                   )
@@ -255,14 +253,14 @@ class DividendDetailState extends State<DividendDetail> {
                           Language.dividendLg('averageRate', widget.param.lgs),
                           textScaleFactor: MyClass.blocFontSizeApp(
                               widget.param.fontsizeapps),
-                          style: CustomTextStyle.dataHeadTitleTxt(context, 2))),
+                          style: CustomTextStyle.dataHeadTitleTxt(context, 1))),
                   Expanded(
                     child: Text(
                       MyClass.checkNull(
                           jsonDecode(widget.data)[0]['averageRate']),
                       textScaleFactor:
                           MyClass.blocFontSizeApp(widget.param.fontsizeapps),
-                      style: CustomTextStyle.dataHeadTitleTxt(context, 2),
+                      style: CustomTextStyle.dataW300Txt(context, 1),
                       textAlign: TextAlign.end,
                     ),
                   )
@@ -273,14 +271,14 @@ class DividendDetailState extends State<DividendDetail> {
                           Language.dividendLg('dividend', widget.param.lgs),
                           textScaleFactor: MyClass.blocFontSizeApp(
                               widget.param.fontsizeapps),
-                          style: CustomTextStyle.dataHeadTitleTxt(context, 2))),
+                          style: CustomTextStyle.dataHeadTitleTxt(context, 1))),
                   Expanded(
                     child: Text(
                       MyClass.formatNumber(
                           jsonDecode(widget.data)[0]['dividend']),
                       textScaleFactor:
                           MyClass.blocFontSizeApp(widget.param.fontsizeapps),
-                      style: CustomTextStyle.dataHeadTitleTxt(context, 2),
+                      style: CustomTextStyle.dataW300Txt(context, 1),
                       textAlign: TextAlign.end,
                     ),
                   )
@@ -292,14 +290,14 @@ class DividendDetailState extends State<DividendDetail> {
                               'averageRefund', widget.param.lgs),
                           textScaleFactor: MyClass.blocFontSizeApp(
                               widget.param.fontsizeapps),
-                          style: CustomTextStyle.dataHeadTitleTxt(context, 2))),
+                          style: CustomTextStyle.dataHeadTitleTxt(context, 1))),
                   Expanded(
                     child: Text(
                       MyClass.formatNumber(
                           jsonDecode(widget.data)[0]['averageReturn']),
                       textScaleFactor:
                           MyClass.blocFontSizeApp(widget.param.fontsizeapps),
-                      style: CustomTextStyle.dataHeadTitleTxt(context, 2),
+                      style: CustomTextStyle.dataW300Txt(context, 1),
                       textAlign: TextAlign.end,
                     ),
                   )
@@ -311,14 +309,14 @@ class DividendDetailState extends State<DividendDetail> {
                               'totalNetReceipts', widget.param.lgs),
                           textScaleFactor: MyClass.blocFontSizeApp(
                               widget.param.fontsizeapps),
-                          style: CustomTextStyle.dataHeadTitleTxt(context, 2))),
+                          style: CustomTextStyle.dataHeadTitleTxt(context, 1))),
                   Expanded(
                     child: Text(
                       MyClass.formatNumber(
                           jsonDecode(widget.data)[0]['totalSum']),
                       textScaleFactor:
                           MyClass.blocFontSizeApp(widget.param.fontsizeapps),
-                      style: CustomTextStyle.dataHeadTitleTxt(context, 2),
+                      style: CustomTextStyle.dataW300Txt(context, 1),
                       textAlign: TextAlign.end,
                     ),
                   )

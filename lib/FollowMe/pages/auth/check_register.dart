@@ -1,12 +1,12 @@
-import 'package:udtscc/FollowMe/pages/auth/login.dart';
-import 'package:udtscc/FollowMe/class/custom_ui.dart';
-import 'package:udtscc/FollowMe/class/language.dart';
-import 'package:udtscc/FollowMe/class/myclass.dart';
-import 'package:udtscc/FollowMe/class/mycolor.dart';
-import 'package:udtscc/FollowMe/class/sizes.dart';
-import 'package:udtscc/FollowMe/class/textstyle.dart';
-import 'package:udtscc/FollowMe/pages/auth/reandfo.dart';
-import 'package:udtscc/FollowMe/services/network.dart';
+import 'package:mwasc/FollowMe/pages/auth/login.dart';
+import 'package:mwasc/FollowMe/class/custom_ui.dart';
+import 'package:mwasc/FollowMe/class/language.dart';
+import 'package:mwasc/FollowMe/class/myclass.dart';
+import 'package:mwasc/FollowMe/class/mycolor.dart';
+import 'package:mwasc/FollowMe/class/sizes.dart';
+import 'package:mwasc/FollowMe/class/textstyle.dart';
+import 'package:mwasc/FollowMe/pages/auth/reandfo.dart';
+import 'package:mwasc/FollowMe/services/network.dart';
 import 'package:flutter/material.dart';
 
 class Checkregister extends StatefulWidget {
@@ -44,22 +44,44 @@ class CheckregisterState extends State<Checkregister> {
                   CustomUI.appbarDetailUi1('assets/imgs/icon.png', context),
                   Container(
                     padding:
-                        EdgeInsets.only(top: displayHeight(context) * 0.025),
+                        EdgeInsets.only(top: displayHeight(context) * 0.01),
                     alignment: Alignment.topCenter,
                     child: Padding(
                       padding: const EdgeInsets.all(8.0),
                       child: Column(
                         children: [
-                          Text(MyClass.company('th'),
-                              textAlign: TextAlign.center,
-                              textScaleFactor: MyClass.fontSizeApp(),
-                              style: CustomTextStyle.dataHeadTitleCTxt(
-                                  context, 3, 'Go')),
-                          Text(MyClass.company('en'),
-                              textAlign: TextAlign.center,
-                              textScaleFactor: MyClass.fontSizeApp(),
-                              style: CustomTextStyle.dataHeadTitleCTxt(
-                                  context, -2, 'Go')),
+                          Stack(
+                            children: [
+                              Text(
+                                MyClass.company('th'),
+                                textScaleFactor: MyClass.fontSizeApp(),
+                                textAlign: TextAlign.center,
+                                style: CustomTextStyle.defaultTxtPaint(
+                                    context, 7, "bl2", 2),
+                              ),
+                              Text(MyClass.company('th'),
+                                  textScaleFactor: MyClass.fontSizeApp(),
+                                  textAlign: TextAlign.center,
+                                  style: CustomTextStyle.dataHeadTitleCTxt(
+                                      context, 7, 'bl')),
+                            ],
+                          ),
+                          Stack(
+                            children: [
+                              Text(
+                                MyClass.company('en'),
+                                textScaleFactor: MyClass.fontSizeApp(),
+                                textAlign: TextAlign.center,
+                                style: CustomTextStyle.defaultTxtPaint(
+                                    context, -2, "bl2", 2),
+                              ),
+                              Text(MyClass.company('en'),
+                                  textScaleFactor: MyClass.fontSizeApp(),
+                                  textAlign: TextAlign.center,
+                                  style: CustomTextStyle.dataHeadTitleCTxt(
+                                      context, -2, 'bl')),
+                            ],
+                          ),
                         ],
                       ),
                     ),
@@ -75,8 +97,8 @@ class CheckregisterState extends State<Checkregister> {
                           ? Language.loginLg('newRegis', "th")
                           : Language.loginLg('forgotPassword', "th"),
                       textScaleFactor: MyClass.fontSizeApp(),
-                      style:
-                          CustomTextStyle.dataHeadTitleCTxt(context, 8, 'Go'),
+                      style: CustomTextStyle.dataHeadTitleCTxt(
+                          context, 8, 'TxtBlue'),
                     ),
                   ),
                   Center(
@@ -85,8 +107,8 @@ class CheckregisterState extends State<Checkregister> {
                           ? Language.loginLg('newRegis', "en")
                           : Language.loginLg('forgotPassword', "en"),
                       textScaleFactor: MyClass.fontSizeApp(),
-                      style:
-                          CustomTextStyle.dataHeadTitleCTxt(context, -1, 'Go'),
+                      style: CustomTextStyle.dataHeadTitleCTxt(
+                          context, -1, 'TxtBlue'),
                     ),
                   ),
                   Form(
@@ -94,8 +116,11 @@ class CheckregisterState extends State<Checkregister> {
                     child: Column(
                       children: [
                         Padding(
-                          padding: const EdgeInsets.only(
-                              left: 30, right: 30, top: 20, bottom: 0),
+                          padding: EdgeInsets.only(
+                              left: tabletMode ? 60 : 30,
+                              right: tabletMode ? 60 : 30,
+                              top: 20,
+                              bottom: 0),
                           child: MediaQuery(
                             data: MediaQuery.of(context).copyWith(
                               textScaleFactor: MyClass.fontSizeApp(),
@@ -122,18 +147,13 @@ class CheckregisterState extends State<Checkregister> {
                                 labelStyle: TextStyle(
                                     color: MyColor.color(
                                         'TextFormFieldTextStyle')),
-                                focusedBorder: OutlineInputBorder(
-                                  borderSide: BorderSide(
-                                    color: MyColor.color(
-                                        'TextFormFieldBorderSide'),
-                                    width: 2.0,
-                                  ),
-                                ),
                                 border: const OutlineInputBorder(),
+                                errorStyle: CustomTextStyle.defaultTxt1(
+                                    context, -4, 'R'),
                               ),
                               validator: (String? value) {
-                                _validatUser;
-                                return null;
+                                return _validatUser(value);
+                                // return null;
                               },
                               onSaved: (String? value) {
                                 user = MyClass.genmember(value);
@@ -141,14 +161,7 @@ class CheckregisterState extends State<Checkregister> {
                             ),
                           ),
                         ),
-                        lineSizedBox(context, -25),
-                        Center(
-                          child: Text(
-                            Language.loginLg('memberDetail', widget.lgs),
-                            textScaleFactor: MyClass.fontSizeApp(),
-                            style: CustomTextStyle.dataHeadTitleTxt(context, 0),
-                          ),
-                        ),
+                        lineSizedBox(context, -10),
                         hSizedBoxButton(context, 0),
                         _onSubmit(),
                       ],
@@ -179,8 +192,8 @@ class CheckregisterState extends State<Checkregister> {
             borderRadius: BorderRadius.circular(25.0),
             gradient: LinearGradient(
               colors: <Color>[
-                MyColor.color('buttongra'),
-                MyColor.color('buttongra1'),
+                MyColor.color('bl1'),
+                MyColor.color('bl3'),
               ],
             ),
           ),
@@ -191,7 +204,7 @@ class CheckregisterState extends State<Checkregister> {
               child: Text(
                 Language.loginLg('checkInformation', widget.lgs),
                 textScaleFactor: MyClass.fontSizeApp(),
-                style: CustomTextStyle.dataBoldTxt1(context, -5),
+                style: CustomTextStyle.loginBoldTxt(context, -3, 'TxtBl'),
               ),
             ),
           ),
@@ -202,12 +215,7 @@ class CheckregisterState extends State<Checkregister> {
           height: displayHeight(context) * 0.06,
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(25.0),
-            gradient: LinearGradient(
-              colors: <Color>[
-                MyColor.color('button1'),
-                MyColor.color('button1'),
-              ],
-            ),
+            color: MyColor.color('w'),
           ),
           padding: const EdgeInsets.only(left: 5),
           child: InkWell(
@@ -224,7 +232,7 @@ class CheckregisterState extends State<Checkregister> {
               child: Text(
                 Language.loginLg('cancel', widget.lgs),
                 textScaleFactor: MyClass.fontSizeApp(),
-                style: CustomTextStyle.dataBoldTxt1(context, -5),
+                style: CustomTextStyle.loginBoldTxt(context, -3, 'R'),
               ),
             ),
           ),

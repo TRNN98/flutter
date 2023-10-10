@@ -1,9 +1,9 @@
-import 'package:udtscc/FollowMe/pages/intro/splash.dart';
+import 'package:mwasc/FollowMe/pages/intro/splash.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:month_year_picker/month_year_picker.dart';
-import 'package:udtscc/root/tabs.dart';
+import 'package:mwasc/root/tabs.dart';
 
 void main() {
   return runApp(

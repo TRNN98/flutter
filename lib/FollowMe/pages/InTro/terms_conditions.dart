@@ -1,9 +1,9 @@
-import 'package:udtscc/FollowMe/pages/intro/checkrg.dart';
-import 'package:udtscc/FollowMe/pages/intro/intro_screen.dart';
-import 'package:udtscc/FollowMe/class/myclass.dart';
-import 'package:udtscc/FollowMe/class/mycolor.dart';
-import 'package:udtscc/FollowMe/class/sizes.dart';
-import 'package:udtscc/FollowMe/class/textstyle.dart';
+import 'package:mwasc/FollowMe/pages/intro/checkrg.dart';
+import 'package:mwasc/FollowMe/pages/intro/intro_screen.dart';
+import 'package:mwasc/FollowMe/class/myclass.dart';
+import 'package:mwasc/FollowMe/class/mycolor.dart';
+import 'package:mwasc/FollowMe/class/sizes.dart';
+import 'package:mwasc/FollowMe/class/textstyle.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 

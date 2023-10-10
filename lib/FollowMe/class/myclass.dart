@@ -188,14 +188,11 @@ class MyClass {
     var th = 'สหกรณ์ออมทรัพย์\nพนักงานการประปานครหลวง จำกัด';
     var en =
         "SAVING COOPERATIVE OF METROPOLITAN\n WATERWORKS AUTHORITY LIMITED";
-    var en1 =
-        "PHRAJOMKLAO PHRANAKORNNUA SAVINGS\nAND CREDIT COOPERATIVE LIMTED";
+
     if (data == 'th') {
       return th;
     } else if (data == 'en') {
       return en;
-    } else if (data == 'en1') {
-      return en1;
     }
   }
 
@@ -216,7 +213,7 @@ class MyClass {
   }
 
   static genmember(s) {
-    var number = 6 - s.toString().length;
+    var number = 5 - s.toString().length;
     for (int i = 0; i < number; i++) {
       s = '0$s';
     }
@@ -224,7 +221,7 @@ class MyClass {
   }
 
   static lengthmember() {
-    return 6;
+    return 5;
   }
 
   // static monthItoS(s) {
@@ -315,8 +312,8 @@ class MyClass {
   }
 
   static versionApp() {
-    String ios = '2.03';
-    String android = '2.03';
+    String ios = '1.00';
+    String android = '1.00';
     if (Platform.isIOS) {
       return ios;
     } else if (Platform.isAndroid) {
@@ -325,7 +322,7 @@ class MyClass {
   }
 
   static hostApp() {
-    return "https://apimobile.udtscc.com";
+    return "https://uat.mwasaving.com";
   }
 
   static formatNumberPhoneI(phoneNumberString) {

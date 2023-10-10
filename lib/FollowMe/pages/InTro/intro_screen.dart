@@ -1,10 +1,10 @@
-import 'package:udtscc/FollowMe/class/sizes.dart';
-import 'package:udtscc/FollowMe/pages/intro/pdpa.dart';
-import 'package:udtscc/FollowMe/class/myclass.dart';
-import 'package:udtscc/FollowMe/class/mycolor.dart';
-import 'package:udtscc/FollowMe/class/textstyle.dart';
-import 'package:udtscc/FollowMe/locals/dblg.dart';
-import 'package:udtscc/FollowMe/models/sql/lg_db.dart';
+import 'package:mwasc/FollowMe/class/sizes.dart';
+import 'package:mwasc/FollowMe/pages/intro/pdpa.dart';
+import 'package:mwasc/FollowMe/class/myclass.dart';
+import 'package:mwasc/FollowMe/class/mycolor.dart';
+import 'package:mwasc/FollowMe/class/textstyle.dart';
+import 'package:mwasc/FollowMe/locals/dblg.dart';
+import 'package:mwasc/FollowMe/models/sql/lg_db.dart';
 import 'package:flutter/material.dart';
 import 'package:intro_slider/intro_slider.dart';
 // import 'package:intro_slider/slide_object.dart';
@@ -238,8 +238,8 @@ class IntroScreenState extends State<IntroScreen> {
       doneButtonStyle: myButtonStyle(),
 
       // Dot indicator
-      colorDot: MyColor.color('slide1'),
-      colorActiveDot: MyColor.color('slide2'),
+      colorDot: MyColor.color('slide2'),
+      colorActiveDot: MyColor.color('slide1'),
       sizeDot: 13.0,
       // typeDotAnimation: dotSliderAnimation.SIZE_TRANSITION,
 

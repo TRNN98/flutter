@@ -1,13 +1,13 @@
 import 'package:flutter/services.dart';
 import 'package:rflutter_alert/rflutter_alert.dart';
-import 'package:udtscc/FollowMe/class/custom_date_picker_reandfo.dart';
-import 'package:udtscc/FollowMe/class/custom_ui.dart';
-import 'package:udtscc/FollowMe/class/id_card_formatter.dart';
-import 'package:udtscc/FollowMe/pages/auth/check_register.dart';
-import 'package:udtscc/FollowMe/pages/auth/login.dart';
-import 'package:udtscc/FollowMe/services/network.dart';
+import 'package:mwasc/FollowMe/class/custom_date_picker_reandfo.dart';
+import 'package:mwasc/FollowMe/class/custom_ui.dart';
+import 'package:mwasc/FollowMe/class/id_card_formatter.dart';
+import 'package:mwasc/FollowMe/pages/auth/check_register.dart';
+import 'package:mwasc/FollowMe/pages/auth/login.dart';
+import 'package:mwasc/FollowMe/services/network.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_datetime_picker/flutter_datetime_picker.dart';
+import 'package:flutter_datetime_picker_plus/flutter_datetime_picker_plus.dart';
 import 'package:intl/intl.dart';
 
 import '../../class/language.dart';
@@ -128,7 +128,7 @@ class ReandfoState extends State<Reandfo> {
                     SizedBox(
                       height: tabletMode
                           ? displayHeight(context) * 0.25
-                          : displayHeight(context) * 0.05,
+                          : displayHeight(context) * 0.08,
                     ),
                     Form(
                       key: _formKey,
@@ -141,8 +141,8 @@ class ReandfoState extends State<Reandfo> {
                                   ? Language.reandfo("regis", "th")
                                   : Language.reandfo("forget", "th"),
                               textScaleFactor: MyClass.fontSizeApp(),
-                              style: CustomTextStyle.dataBoldTxt(
-                                  context, platformandroid == true ? 15 : 10),
+                              style: CustomTextStyle.TitleTxt(
+                                  context, 16, 'TxtBlue'),
                             ),
                           ),
                           Center(
@@ -151,38 +151,25 @@ class ReandfoState extends State<Reandfo> {
                                   ? Language.reandfo("regis", "en")
                                   : Language.reandfo("forget", "en"),
                               textScaleFactor: MyClass.fontSizeApp(),
-                              style: CustomTextStyle.dataBoldTxt(context, 3),
+                              style: CustomTextStyle.TitleTxt(
+                                  context, 0, 'TxtBlue'),
                             ),
                           ),
                           Padding(
-                            padding: const EdgeInsets.only(
-                                top: 50, left: 35, bottom: 5),
+                            padding: const EdgeInsets.only(top: 50, left: 35),
                             child: Text(
                               Language.loginLg('member', widget.lgs),
                               textScaleFactor: MyClass.fontSizeApp(),
-                              style:
-                                  CustomTextStyle.defaultTxt1(context, -3, 'W'),
+                              style: CustomTextStyle.boldTxt(context, 0),
                             ),
                           ),
                           _user(txtUser, context, widget.lgs),
-                          Padding(
-                            padding:
-                                const EdgeInsets.only(left: 35, bottom: 10),
-                            child: Text(
-                              "",
-                              // Language.loginLg('memberDetail', widget.lgs),
-                              textScaleFactor: MyClass.fontSizeApp(),
-                              style:
-                                  CustomTextStyle.defaultTxt1(context, -4, 'W'),
-                            ),
-                          ),
                           Padding(
                             padding: const EdgeInsets.only(left: 35),
                             child: Text(
                               Language.loginLg('idCard', widget.lgs),
                               textScaleFactor: MyClass.fontSizeApp(),
-                              style:
-                                  CustomTextStyle.defaultTxt1(context, -3, 'W'),
+                              style: CustomTextStyle.boldTxt(context, 0),
                             ),
                           ),
                           _idCard(context, widget.lgs),
@@ -190,51 +177,63 @@ class ReandfoState extends State<Reandfo> {
                             padding:
                                 const EdgeInsets.only(left: 35, bottom: 20),
                             child: Text(
-                              Language.loginLg('idCardDetail', widget.lgs),
-                              textScaleFactor: MyClass.fontSizeApp(),
-                              style:
-                                  CustomTextStyle.defaultTxt1(context, -4, 'W'),
-                            ),
+                                Language.loginLg('idCardDetail', widget.lgs),
+                                textScaleFactor: MyClass.fontSizeApp(),
+                                style: CustomTextStyle.defaultTxt1(
+                                    context, -2, 'R')),
                           ),
                           Padding(
                             padding: const EdgeInsets.only(left: 35),
                             child: Text(
                               Language.loginLg('birthday', widget.lgs),
                               textScaleFactor: MyClass.fontSizeApp(),
-                              style:
-                                  CustomTextStyle.defaultTxt1(context, -3, 'W'),
+                              style: CustomTextStyle.boldTxt(context, 0),
                             ),
                           ),
                           _date(txtDate, context, widget.lgs),
-                          lineSizedBox(context, 0),
+                          Padding(
+                            padding:
+                                const EdgeInsets.only(left: 35, bottom: 20),
+                            child: Text(
+                                Language.loginLg('birthDayDetail', widget.lgs),
+                                textScaleFactor: MyClass.fontSizeApp(),
+                                style: CustomTextStyle.defaultTxt1(
+                                    context, -2, 'R')),
+                          ),
                           Padding(
                             padding: const EdgeInsets.only(left: 35),
                             child: Text(
                               Language.loginLg('password', widget.lgs),
                               textScaleFactor: MyClass.fontSizeApp(),
-                              style:
-                                  CustomTextStyle.defaultTxt1(context, -3, 'W'),
+                              style: CustomTextStyle.boldTxt(context, 0),
                             ),
                           ),
                           _password(context, widget.lgs),
+                          Padding(
+                            padding:
+                                const EdgeInsets.only(left: 35, bottom: 20),
+                            child: Text(
+                                Language.loginLg('passwordDetail', widget.lgs),
+                                textScaleFactor: MyClass.fontSizeApp(),
+                                style: CustomTextStyle.defaultTxt1(
+                                    context, -2, 'R')),
+                          ),
                           Padding(
                             padding: const EdgeInsets.only(left: 35),
                             child: Text(
                               Language.pinLg('confirmPasswords', widget.lgs),
                               textScaleFactor: MyClass.fontSizeApp(),
-                              style:
-                                  CustomTextStyle.defaultTxt1(context, -3, 'W'),
+                              style: CustomTextStyle.boldTxt(context, 0),
                             ),
                           ),
                           _confpassword(context, widget.lgs),
                           Padding(
                             padding: const EdgeInsets.only(left: 35),
                             child: Text(
-                              Language.loginLg('passwordDetail', widget.lgs),
-                              textScaleFactor: MyClass.fontSizeApp(),
-                              style:
-                                  CustomTextStyle.defaultTxt1(context, -3, 'W'),
-                            ),
+                                Language.loginLg('passwordDetail', widget.lgs),
+                                textScaleFactor: MyClass.fontSizeApp(),
+                                style: CustomTextStyle.defaultTxt1(
+                                    context, -2, 'R')),
                           ),
                           lineSizedBox(context, 0),
                           _onLogin(widget.title, context),
@@ -284,18 +283,10 @@ class ReandfoState extends State<Reandfo> {
           child: Text(''),
         ),
         Container(
-          width: displayWidth(context) * 0.4,
-          height: displayHeight(context) * 0.05,
+          width: displayWidth(context) * 0.35,
+          height: displayHeight(context) * 0.055,
           decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(25.0),
-            gradient: LinearGradient(
-              colors: <Color>[
-                MyColor.color('button1'),
-                MyColor.color('button1'),
-              ],
-            ),
-          ),
-          padding: const EdgeInsets.only(right: 5),
+              borderRadius: BorderRadius.circular(25.0), color: Colors.white),
           child: InkWell(
             onTap: () {
               Navigator.of(context).pushReplacement(
@@ -308,7 +299,7 @@ class ReandfoState extends State<Reandfo> {
               child: Text(
                 Language.loginLg('cancel', widget.lgs),
                 textScaleFactor: MyClass.fontSizeApp(),
-                style: CustomTextStyle.defaultTxt1(context, 3, 'w'),
+                style: CustomTextStyle.loginBoldTxt(context, -5, 'R'),
               ),
             ),
           ),
@@ -317,25 +308,24 @@ class ReandfoState extends State<Reandfo> {
           child: Text(''),
         ),
         Container(
-          width: displayWidth(context) * 0.4,
-          height: displayHeight(context) * 0.05,
+          width: displayWidth(context) * 0.35,
+          height: displayHeight(context) * 0.055,
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(25.0),
             gradient: LinearGradient(
               colors: <Color>[
-                MyColor.color('buttongra'),
-                MyColor.color('buttongra1'),
+                MyColor.color('bl1'),
+                MyColor.color('bl3'),
               ],
             ),
           ),
-          padding: const EdgeInsets.only(right: 5),
           child: InkWell(
             onTap: _submit,
             child: Center(
               child: Text(
                 Language.loginLg('save', widget.lgs),
                 textScaleFactor: MyClass.fontSizeApp(),
-                style: CustomTextStyle.buttonTxt(context, 3),
+                style: CustomTextStyle.loginBoldTxt(context, -5, 'TxtBl'),
               ),
             ),
           ),
@@ -385,7 +375,7 @@ class ReandfoState extends State<Reandfo> {
   Padding _password(context, lgs) {
     bool tabletMode = MediaQuery.of(context).size.width > 600;
     return Padding(
-      padding: const EdgeInsets.only(left: 30, right: 30, top: 10, bottom: 20),
+      padding: const EdgeInsets.only(left: 30, right: 30, top: 0, bottom: 0),
       child: MediaQuery(
         data: MediaQuery.of(context).copyWith(
           textScaleFactor: MyClass.fontSizeApp(),
@@ -442,7 +432,7 @@ class ReandfoState extends State<Reandfo> {
   Padding _confpassword(context, lgs) {
     bool tabletMode = MediaQuery.of(context).size.width > 600;
     return Padding(
-      padding: const EdgeInsets.only(left: 30, right: 30, top: 10, bottom: 0),
+      padding: const EdgeInsets.only(left: 30, right: 30, top: 0, bottom: 0),
       child: MediaQuery(
         data: MediaQuery.of(context).copyWith(
           textScaleFactor: MyClass.fontSizeApp(),
@@ -499,7 +489,7 @@ class ReandfoState extends State<Reandfo> {
 
 _onLoginsRe(value, context, lgs) {
   try {
-    if (MyClass.json(value)[0]['data']['rc_code'] == '1') {
+    if (MyClass.json(value)[0]['rc_code'] == '1') {
       Navigator.pop(context);
       _showAlert(Language.loginLg('regisok', "th"), context, lgs);
     } else {
@@ -514,7 +504,7 @@ _onLoginsRe(value, context, lgs) {
 
 _onLoginsFo(value, context, lgs) {
   try {
-    if (MyClass.json(value)[0]['data']['rc_code'] == '1') {
+    if (MyClass.json(value)[0]['rc_code'] == '1') {
       Navigator.pop(context);
       _showAlert(Language.loginLg('forgetok', "th"), context, lgs);
     } else {
@@ -545,7 +535,7 @@ _validatConPassword(value) {
 
 Padding _user(txtUser, context, lgs) {
   return Padding(
-    padding: const EdgeInsets.only(left: 30, right: 30, top: 0, bottom: 0),
+    padding: const EdgeInsets.only(left: 30, right: 30, top: 0, bottom: 10),
     child: MediaQuery(
       data: MediaQuery.of(context).copyWith(
         textScaleFactor: MyClass.fontSizeApp(),
@@ -588,7 +578,7 @@ _validatUser(value) {
 
 Padding _idCard(context, lgs) {
   return Padding(
-    padding: const EdgeInsets.only(left: 30, right: 30, top: 10, bottom: 0),
+    padding: const EdgeInsets.only(left: 30, right: 30, top: 0, bottom: 0),
     child: MediaQuery(
       data: MediaQuery.of(context).copyWith(
         textScaleFactor: MyClass.fontSizeApp(),
@@ -637,29 +627,31 @@ _validatIdCard(value) {
 }
 
 Padding _date(txtDate, context, lgs) {
+  bool tabletMode = MediaQuery.of(context).size.width > 600;
   return Padding(
-    padding: const EdgeInsets.only(left: 30, right: 30, top: 10, bottom: 0),
+    padding: tabletMode
+        ? const EdgeInsets.only(left: 60, right: 60)
+        : const EdgeInsets.only(left: 30, right: 30),
     child: MediaQuery(
       data: MediaQuery.of(context).copyWith(
         textScaleFactor: MyClass.fontSizeApp(),
       ),
       child: TextFormField(
         onTap: () async {
-          DateTime? newDateTime = await DatePicker.showDatePicker(context,
-              locale: LocaleType.th,
-              currentTime: DateTime(DateTime.now().year + 493),
-              minTime: DateTime(DateTime.now().year + 443),
-              maxTime: DateTime(DateTime.now().year + 543),
-              theme: DatePickerTheme(
-                  cancelStyle:
-                      CustomTextStyle.dataHeadDataCTxt(context, 2, 'BlH'),
-                  doneStyle: CustomTextStyle.dataHeadDataCTxt(context, 2, 'B'),
-                  itemStyle:
-                      CustomTextStyle.dataHeadDataCTxt(context, 2, 'Bl')));
+          DateTime? newDateTime = await DatePicker.showDatePicker(
+            context,
+            locale: LocaleType.th,
+            maxTime: DateTime(DateTime.now().year + 543),
+            minTime: DateTime((DateTime.now().year + 543) - 100),
+          );
           if (newDateTime != null) {
             String date = '';
-            date =
-                '${newDateTime.day.toString()}/${newDateTime.month.toString()}/${(newDateTime.year - 1).toString()}';
+            date = newDateTime.day.toString() +
+                '/' +
+                newDateTime.month.toString() +
+                '/' +
+                (newDateTime.year - 1).toString();
+            // txtDateFrom = TextEditingController()..text = date;
             txtDate.text = date;
           }
         },
@@ -670,8 +662,7 @@ Padding _date(txtDate, context, lgs) {
         decoration: InputDecoration(
           fillColor: Colors.white,
           filled: true,
-          hintText: Language.loginLg('birthdayFormat', lgs),
-          // labelText: Language.loginLg('birthday', lgs),
+          hintText: "xx/xx/xxxx",
           labelStyle: TextStyle(color: MyColor.color('TextFormFieldTextStyle')),
           focusedBorder: OutlineInputBorder(
             borderSide: BorderSide(
@@ -679,7 +670,7 @@ Padding _date(txtDate, context, lgs) {
               width: 2.0,
             ),
           ),
-          border: const OutlineInputBorder(),
+          border: OutlineInputBorder(),
         ),
         validator: (value) {
           _validatDate(value);
@@ -719,13 +710,13 @@ _showAlert(msg, context, lgs) {
         },
         gradient: LinearGradient(
           colors: <Color>[
-            MyColor.color('buttongra'),
-            MyColor.color('buttongra1'),
+            MyColor.color('bl1'),
+            MyColor.color('bl3'),
           ],
         ),
         child: Text(
           "ปิด",
-          style: CustomTextStyle.dataBoldTxt1(context, -5),
+          style: CustomTextStyle.loginBoldTxt(context, -8, 'TxtBl'),
         ),
       ),
     ],

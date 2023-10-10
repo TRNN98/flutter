@@ -1,19 +1,19 @@
 class AddressModel {
-  AddressModel({
-    this.address,
-    this.email,
-    this.email2,
-    this.fax,
-    this.numberPhone1,
-    this.txtPhone1,
-    this.numberPhone2,
-    this.txtPhone2,
-    this.numberPhone3,
-    this.txtPhone3,
-    this.line,
-    this.facebook,
-    this.map,
-  });
+  AddressModel(
+      {this.address,
+      this.email,
+      this.email2,
+      this.fax,
+      this.numberPhone1,
+      this.txtPhone1,
+      this.numberPhone2,
+      this.txtPhone2,
+      this.numberPhone3,
+      this.txtPhone3,
+      this.line,
+      this.facebook,
+      this.map,
+      this.website});
 
   String? address;
   String? email;
@@ -28,10 +28,11 @@ class AddressModel {
   String? line;
   String? facebook;
   String? map;
+  String? website;
 
   factory AddressModel.fromJson(Map<String, dynamic> json) => AddressModel(
         address: json["address"],
-    email: json["email"],
+        email: json["email"],
         email2: json["email2"],
         fax: json["fax"],
         numberPhone1: json["number_phone1"],
@@ -43,11 +44,12 @@ class AddressModel {
         line: json["line"],
         facebook: json["facebook"],
         map: json["map"],
+        website: json["website"],
       );
 
   Map<String, dynamic> toJson() => {
         "address": address,
-    "email": email,
+        "email": email,
         "email2": email2,
         "fax": fax,
         "number_phone1": numberPhone1,
@@ -59,5 +61,6 @@ class AddressModel {
         "line": line,
         "facebook": facebook,
         "map": map,
+        "website": website,
       };
 }

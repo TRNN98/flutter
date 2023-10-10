@@ -1,11 +1,11 @@
-import 'package:udtscc/FollowMe/class/sizes.dart';
-import 'package:udtscc/FollowMe/class/textstyle.dart';
-import 'package:udtscc/promoney/class/mycolorpro.dart';
+import 'package:mwasc/FollowMe/class/sizes.dart';
+import 'package:mwasc/FollowMe/class/textstyle.dart';
+import 'package:mwasc/promoney/class/mycolorpro.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:intl/intl.dart';
 import 'package:rflutter_alert/rflutter_alert.dart';
-import 'package:udtscc/root/tabs.dart';
+import 'package:mwasc/root/tabs.dart';
 
 class MyClassPro {
   static fontSizeApp(s) {

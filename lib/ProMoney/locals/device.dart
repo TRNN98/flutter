@@ -1,5 +1,5 @@
 import 'dart:io';
-import 'package:udtscc/promoney/models/sql/device_db.dart';
+import 'package:mwasc/promoney/models/sql/device_db.dart';
 import 'package:sqflite/sqflite.dart';
 import 'package:path/path.dart';
 

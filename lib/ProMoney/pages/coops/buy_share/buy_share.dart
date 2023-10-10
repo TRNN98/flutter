@@ -1,7 +1,7 @@
 // import 'dart:convert';
 
-// import 'package:udtscc/FollowMe/class/customUI.dart';
-// import 'package:udtscc/FollowMe/class/myclass.dart';
+// import 'package:mwasc/FollowMe/class/customUI.dart';
+// import 'package:mwasc/FollowMe/class/myclass.dart';
 // import 'package:carousel_slider/carousel_slider.dart';
 // import 'package:flutter/cupertino.dart';
 // import 'package:flutter/material.dart';

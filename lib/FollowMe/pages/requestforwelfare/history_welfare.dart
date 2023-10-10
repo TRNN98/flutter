@@ -1,13 +1,13 @@
-import 'package:udtscc/FollowMe/models/gain/gain_model.dart';
-import 'package:udtscc/FollowMe/pages/auth/pins.dart';
-import 'package:udtscc/FollowMe/class/custom_ui.dart';
-import 'package:udtscc/FollowMe/class/language.dart';
-import 'package:udtscc/FollowMe/class/myclass.dart';
-import 'package:udtscc/FollowMe/class/mycolor.dart';
-import 'package:udtscc/FollowMe/class/sizes.dart';
-import 'package:udtscc/FollowMe/class/textstyle.dart';
-import 'package:udtscc/FollowMe/class/widget.dart';
-import 'package:udtscc/FollowMe/services/network.dart';
+import 'package:mwasc/FollowMe/models/gain/gain_model.dart';
+import 'package:mwasc/FollowMe/pages/auth/pins.dart';
+import 'package:mwasc/FollowMe/class/custom_ui.dart';
+import 'package:mwasc/FollowMe/class/language.dart';
+import 'package:mwasc/FollowMe/class/myclass.dart';
+import 'package:mwasc/FollowMe/class/mycolor.dart';
+import 'package:mwasc/FollowMe/class/sizes.dart';
+import 'package:mwasc/FollowMe/class/textstyle.dart';
+import 'package:mwasc/FollowMe/class/widget.dart';
+import 'package:mwasc/FollowMe/services/network.dart';
 import 'package:flutter/material.dart';
 
 double _fontsizeapps = 1.0;
@@ -53,22 +53,6 @@ class HistoryWelfareState extends State<HistoryWelfare> {
                           left: paddinglist(context, 0),
                           right: paddinglist(context, 0)),
                       child: _detail(),
-                      // child: FutureBuilder<List<GainModel>>(
-                      //   future: Network.fetchGain(
-                      //       objHistoryWelfare, widget.param.token, context),
-                      //   builder: (context, snapshot) {
-                      //     if (snapshot.hasData) {
-                      //       return snapshot.data!.isNotEmpty
-                      //           ? _detail(
-                      //               gain: snapshot.data,
-                      //             )
-                      //           : MyWidget.nodata(widget.param.lgs, context);
-                      //     } else if (snapshot.hasError) {
-                      //       return Text("${snapshot.error}");
-                      //     }
-                      //     return MyClass.loading();
-                      //   },
-                      // ),
                     ),
                   ),
                 ],
@@ -148,14 +132,14 @@ class HistoryWelfareState extends State<HistoryWelfare> {
 Container _head(context, lgs) {
   return Container(
     padding: const EdgeInsets.all(15),
-    decoration: const BoxDecoration(
+    decoration: BoxDecoration(
       gradient: LinearGradient(
         begin: Alignment.centerLeft,
         end: Alignment.centerRight,
         tileMode: TileMode.decal,
         colors: <Color>[
-          Color(0xFF47A5FF),
-          Color(0xFF66C8FF),
+          MyColor.color('detailhead1'),
+          MyColor.color('detailhead2')
         ],
       ),
     ),

@@ -1,5 +1,5 @@
 import 'dart:io';
-import 'package:udtscc/FollowMe/models/sql/font_size_db.dart';
+import 'package:mwasc/FollowMe/models/sql/font_size_db.dart';
 import 'package:sqflite/sqflite.dart';
 import 'package:path/path.dart';
 

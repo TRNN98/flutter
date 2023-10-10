@@ -18,7 +18,7 @@ class DepModel {
     withdrawableAmount = json["withdrawable_amount"];
     closeStatus = json['close_status'];
     accumulateInterest = json['accumulate_interest'];
-    depositTypeName = json['deposit_type_name'];
+    depositTypeName = json['deposit_name'];
   }
   String? depositAccountNo;
   String? depositAccountName;
@@ -38,7 +38,7 @@ class DepModel {
     map['withdrawable_amount'] = withdrawableAmount;
     map['close_status'] = closeStatus;
     map['accumulate_interest'] = accumulateInterest;
-    map['deposit_type_name'] = depositTypeName;
+    map['deposit_name'] = depositTypeName;
     return map;
   }
 }

@@ -1,14 +1,14 @@
-import 'package:udtscc/FollowMe/pages/auth/pins.dart';
-import 'package:udtscc/FollowMe/pages/auth/check_register.dart';
-import 'package:udtscc/FollowMe/pages/auth/login.dart';
-import 'package:udtscc/FollowMe/class/custom_ui.dart';
-import 'package:udtscc/FollowMe/class/language.dart';
-import 'package:udtscc/FollowMe/class/myclass.dart';
-import 'package:udtscc/FollowMe/class/mycolor.dart';
-import 'package:udtscc/FollowMe/class/sizes.dart';
-import 'package:udtscc/FollowMe/class/textstyle.dart';
-import 'package:udtscc/FollowMe/locals/db_pin.dart';
-import 'package:udtscc/FollowMe/locals/db_user.dart';
+import 'package:mwasc/FollowMe/pages/auth/pins.dart';
+import 'package:mwasc/FollowMe/pages/auth/check_register.dart';
+import 'package:mwasc/FollowMe/pages/auth/login.dart';
+import 'package:mwasc/FollowMe/class/custom_ui.dart';
+import 'package:mwasc/FollowMe/class/language.dart';
+import 'package:mwasc/FollowMe/class/myclass.dart';
+import 'package:mwasc/FollowMe/class/mycolor.dart';
+import 'package:mwasc/FollowMe/class/sizes.dart';
+import 'package:mwasc/FollowMe/class/textstyle.dart';
+import 'package:mwasc/FollowMe/locals/db_pin.dart';
+import 'package:mwasc/FollowMe/locals/db_user.dart';
 import 'package:flutter/material.dart';
 
 double _fontsizeapps = 1.0;
@@ -65,7 +65,7 @@ class ChecksecurityState extends State<Checksecurity> {
         children: [
           Container(
             height: double.infinity,
-            decoration: MyClass.backGround(),
+            decoration: MyClass.backGroundAuth(),
             child: SingleChildScrollView(
               child: Column(
                 children: [
@@ -77,18 +77,38 @@ class ChecksecurityState extends State<Checksecurity> {
                       padding: const EdgeInsets.all(8.0),
                       child: Column(
                         children: [
-                          Text(MyClass.company('th'),
-                              textScaleFactor:
-                                  MyClass.blocFontSizeApp(_fontsizeapps),
-                              textAlign: TextAlign.center,
-                              style: CustomTextStyle.dataHeadTitleCTxt(
-                                  context, 3, 'Go')),
-                          Text(MyClass.company('en'),
-                              textScaleFactor:
-                                  MyClass.blocFontSizeApp(_fontsizeapps),
-                              textAlign: TextAlign.center,
-                              style: CustomTextStyle.dataHeadTitleCTxt(
-                                  context, -2, 'Go')),
+                          Stack(
+                            children: [
+                              Text(
+                                MyClass.company('th'),
+                                textScaleFactor: MyClass.fontSizeApp(),
+                                textAlign: TextAlign.center,
+                                style: CustomTextStyle.defaultTxtPaint(
+                                    context, 7, "bl2", 2),
+                              ),
+                              Text(MyClass.company('th'),
+                                  textScaleFactor: MyClass.fontSizeApp(),
+                                  textAlign: TextAlign.center,
+                                  style: CustomTextStyle.dataHeadTitleCTxt(
+                                      context, 7, 'bl')),
+                            ],
+                          ),
+                          Stack(
+                            children: [
+                              Text(
+                                MyClass.company('en'),
+                                textScaleFactor: MyClass.fontSizeApp(),
+                                textAlign: TextAlign.center,
+                                style: CustomTextStyle.defaultTxtPaint(
+                                    context, -2, "bl2", 2),
+                              ),
+                              Text(MyClass.company('en'),
+                                  textScaleFactor: MyClass.fontSizeApp(),
+                                  textAlign: TextAlign.center,
+                                  style: CustomTextStyle.dataHeadTitleCTxt(
+                                      context, -2, 'bl')),
+                            ],
+                          ),
                         ],
                       ),
                     ),
@@ -99,7 +119,8 @@ class ChecksecurityState extends State<Checksecurity> {
                     checkSecuritys[int.parse(widget.type)].title,
                     textAlign: TextAlign.center,
                     textScaleFactor: MyClass.blocFontSizeApp(_fontsizeapps),
-                    style: CustomTextStyle.dataBoldBTxt(context, 0),
+                    style: CustomTextStyle.dataHeadTitleCTxt(
+                        context, 4, 'TxtBlue'),
                   )),
                   Padding(
                     padding: const EdgeInsets.all(18.0),
@@ -108,18 +129,32 @@ class ChecksecurityState extends State<Checksecurity> {
                       checkSecuritys[int.parse(widget.type)].detail,
                       textAlign: TextAlign.center,
                       textScaleFactor: MyClass.blocFontSizeApp(_fontsizeapps),
-                      style: CustomTextStyle.dataBoldBTxt(context, 0),
+                      style: CustomTextStyle.dataHeadTitleCTxt(
+                          context, 0, 'TxtBlue'),
                     )),
                   ),
                   lineSizedBox(context, 0),
-                  Center(
-                      child: Text(
-                    Language.settingLg('youWant', widget.param.lgs) +
-                        "${checkSecuritys[int.parse(widget.type)].title} " +
-                        Language.settingLg('yesOrNo', widget.param.lgs),
-                    textScaleFactor: MyClass.blocFontSizeApp(_fontsizeapps),
-                    style: CustomTextStyle.dataBoldBTxt(context, 0),
-                  )),
+                  Stack(
+                    children: [
+                      Text(
+                        Language.settingLg('youWant', widget.param.lgs) +
+                            "${checkSecuritys[int.parse(widget.type)].title} " +
+                            Language.settingLg('yesOrNo', widget.param.lgs),
+                        textScaleFactor: MyClass.fontSizeApp(),
+                        textAlign: TextAlign.center,
+                        style:
+                            CustomTextStyle.defaultTxtPaint(context, 1, "w", 2),
+                      ),
+                      Text(
+                          Language.settingLg('youWant', widget.param.lgs) +
+                              "${checkSecuritys[int.parse(widget.type)].title} " +
+                              Language.settingLg('yesOrNo', widget.param.lgs),
+                          textScaleFactor: MyClass.fontSizeApp(),
+                          textAlign: TextAlign.center,
+                          style: CustomTextStyle.dataHeadTitleCTxt(
+                              context, 1, 'R')),
+                    ],
+                  ),
                   lineSizedBox(context, -15),
                   _buttom()
                 ],
@@ -141,38 +176,18 @@ class ChecksecurityState extends State<Checksecurity> {
           width: displayWidth(context) * 0.4,
           height: displayHeight(context) * 0.06,
           decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(25.0),
+            borderRadius: BorderRadius.circular(30),
+            boxShadow: [
+              BoxShadow(
+                  color: Colors.black.withOpacity(0.2),
+                  offset: Offset.fromDirection(2, 3),
+                  blurRadius: 6.0,
+                  spreadRadius: 1.0)
+            ],
             gradient: LinearGradient(
               colors: <Color>[
-                MyColor.color('buttongra'),
-                MyColor.color('buttongra1'),
-              ],
-            ),
-          ),
-          padding: const EdgeInsets.only(right: 5),
-          child: InkWell(
-            onTap: _submit,
-            child: Center(
-              child: Text(
-                Language.settingLg('yes', widget.param.lgs),
-                textScaleFactor: MyClass.fontSizeApp(),
-                style: CustomTextStyle.buttonTxt(context, 5),
-              ),
-            ),
-          ),
-        ),
-        const Expanded(
-          child: Text(''),
-        ),
-        Container(
-          width: displayWidth(context) * 0.4,
-          height: displayHeight(context) * 0.06,
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(25.0),
-            gradient: LinearGradient(
-              colors: <Color>[
-                MyColor.color('button1'),
-                MyColor.color('button1'),
+                MyColor.color('w'),
+                MyColor.color('w'),
               ],
             ),
           ),
@@ -185,7 +200,41 @@ class ChecksecurityState extends State<Checksecurity> {
               child: Text(
                 Language.settingLg('no', widget.param.lgs),
                 textScaleFactor: MyClass.fontSizeApp(),
-                style: CustomTextStyle.buttonTxt(context, 5),
+                style: CustomTextStyle.defaultTxt1(context, 5, 'R'),
+              ),
+            ),
+          ),
+        ),
+        const Expanded(
+          child: Text(''),
+        ),
+        Container(
+          width: displayWidth(context) * 0.4,
+          height: displayHeight(context) * 0.06,
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(30),
+            boxShadow: [
+              BoxShadow(
+                  color: Colors.black.withOpacity(0.2),
+                  offset: Offset.fromDirection(2, 3),
+                  blurRadius: 6.0,
+                  spreadRadius: 1.0)
+            ],
+            gradient: LinearGradient(
+              colors: <Color>[
+                MyColor.color('bl1'),
+                MyColor.color('w'),
+              ],
+            ),
+          ),
+          padding: const EdgeInsets.only(right: 5),
+          child: InkWell(
+            onTap: _submit,
+            child: Center(
+              child: Text(
+                Language.settingLg('yes', widget.param.lgs),
+                textScaleFactor: MyClass.fontSizeApp(),
+                style: CustomTextStyle.defaultTxt1(context, 5, 'bl'),
               ),
             ),
           ),

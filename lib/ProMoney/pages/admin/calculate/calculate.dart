@@ -1,11 +1,11 @@
-import 'package:udtscc/FollowMe/class/myclass.dart';
-import 'package:udtscc/FollowMe/class/sizes.dart';
-import 'package:udtscc/FollowMe/pages/auth/pins.dart';
-import 'package:udtscc/promoney/class/custom_ui_pro.dart';
-import 'package:udtscc/promoney/class/languagepro.dart';
-import 'package:udtscc/promoney/class/myclasspro.dart';
-import 'package:udtscc/promoney/class/mycolorpro.dart';
-import 'package:udtscc/promoney/class/textstylepro.dart';
+import 'package:mwasc/FollowMe/class/myclass.dart';
+import 'package:mwasc/FollowMe/class/sizes.dart';
+import 'package:mwasc/FollowMe/pages/auth/pins.dart';
+import 'package:mwasc/promoney/class/custom_ui_pro.dart';
+import 'package:mwasc/promoney/class/languagepro.dart';
+import 'package:mwasc/promoney/class/myclasspro.dart';
+import 'package:mwasc/promoney/class/mycolorpro.dart';
+import 'package:mwasc/promoney/class/textstylepro.dart';
 import 'package:flutter/material.dart';
 
 import 'package:url_launcher/url_launcher_string.dart';

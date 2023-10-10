@@ -1,15 +1,15 @@
 import 'dart:io';
 
 import 'package:flutter_exit_app/flutter_exit_app.dart';
-import 'package:udtscc/FollowMe/class/language.dart';
-import 'package:udtscc/FollowMe/class/myclass.dart';
-import 'package:udtscc/FollowMe/class/mycolor.dart';
-import 'package:udtscc/FollowMe/class/sizes.dart';
-import 'package:udtscc/FollowMe/class/textstyle.dart';
-import 'package:udtscc/FollowMe/class/widget.dart';
-import 'package:udtscc/FollowMe/locals/db_pdpa.dart';
-import 'package:udtscc/FollowMe/models/sql/pdpa_db.dart';
-import 'package:udtscc/FollowMe/pages/intro/checkrg.dart';
+import 'package:mwasc/FollowMe/class/language.dart';
+import 'package:mwasc/FollowMe/class/myclass.dart';
+import 'package:mwasc/FollowMe/class/mycolor.dart';
+import 'package:mwasc/FollowMe/class/sizes.dart';
+import 'package:mwasc/FollowMe/class/textstyle.dart';
+import 'package:mwasc/FollowMe/class/widget.dart';
+import 'package:mwasc/FollowMe/locals/db_pdpa.dart';
+import 'package:mwasc/FollowMe/models/sql/pdpa_db.dart';
+import 'package:mwasc/FollowMe/pages/intro/checkrg.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 

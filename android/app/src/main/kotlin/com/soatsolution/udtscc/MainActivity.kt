@@ -1,4 +1,4 @@
-package com.soatsolution.udtscc
+package com.soat.mwasc
 
 import androidx.annotation.NonNull;
 import io.flutter.embedding.android.FlutterFragmentActivity

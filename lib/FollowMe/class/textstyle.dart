@@ -1,7 +1,7 @@
-import 'package:udtscc/FollowMe/class/mycolor.dart';
-import 'package:udtscc/FollowMe/class/sizes.dart';
+import 'package:mwasc/FollowMe/class/mycolor.dart';
+import 'package:mwasc/FollowMe/class/sizes.dart';
 
-// import 'package:udtscc/ProMoney/class/mycolorpro.dart';
+// import 'package:mwasc/ProMoney/class/mycolorpro.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_custom_clippers/flutter_custom_clippers.dart';
 
@@ -28,6 +28,18 @@ class CustomTextStyle {
         fontSize: tabletMode
             ? displayWidth(context) * 0.05 + number
             : displayWidth(context) * 0.06 + number,
+        color: const Color(0xFF000000));
+  }
+
+  static TextStyle boldTxt(BuildContext context, double number) {
+    bool tabletMode = MediaQuery.of(context).size.width > 600;
+    return Theme.of(context).textTheme.bodyLarge!.copyWith(
+        fontFamily: "prompt",
+        fontWeight: FontWeight.bold,
+        // fontSize: displayWidth(context) * 0.06 + number,
+        fontSize: tabletMode
+            ? displayWidth(context) * 0.045 + number
+            : displayWidth(context) * 0.037 + number,
         color: const Color(0xFF000000));
   }
 
@@ -210,6 +222,21 @@ class CustomTextStyle {
         );
   }
 
+  static TextStyle noteTxt(BuildContext context, double number, color) {
+    bool tabletMode = MediaQuery.of(context).size.width > 600;
+
+    return Theme.of(context).textTheme.bodyLarge!.copyWith(
+          fontFamily: "prompt",
+          fontWeight: FontWeight.w300,
+
+          // fontSize: displayWidth(context) * 0.04 + number,
+          fontSize: tabletMode
+              ? displayWidth(context) * 0.03 + number
+              : displayWidth(context) * 0.04 + number,
+          color: MyColor.color(color),
+        );
+  }
+
   static TextStyle dataHeadDataTxt(BuildContext context, double number) {
     bool tabletMode = MediaQuery.of(context).size.width > 600;
 
@@ -308,12 +335,40 @@ class CustomTextStyle {
         color: checkbox ? const Color(0xFF000000) : const Color(0xFFAAAAAA));
   }
 
+  static TextStyle loginBoldTxt(BuildContext context, double number, color) {
+    bool tabletMode = MediaQuery.of(context).size.width > 600;
+
+    return Theme.of(context).textTheme.bodyLarge!.copyWith(
+        fontFamily: "prompt",
+        fontWeight: FontWeight.bold,
+        // fontSize: displayWidth(context) * (Platform.isAndroid ? 0.055 : 0.06) +
+        //     number,
+        fontSize: tabletMode
+            ? displayWidth(context) * 0.05 + number
+            : displayWidth(context) * 0.06 + number,
+        color: MyColor.color(color));
+  }
+
   static TextStyle dataBoldTxt(BuildContext context, double number) {
     bool tabletMode = MediaQuery.of(context).size.width > 600;
 
     return Theme.of(context).textTheme.bodyLarge!.copyWith(
         fontFamily: "prompt",
         fontWeight: FontWeight.w500,
+        // fontSize: displayWidth(context) * (Platform.isAndroid ? 0.03 : 0.035) +
+        //     number,
+        fontSize: tabletMode
+            ? displayWidth(context) * 0.025 + number
+            : displayWidth(context) * 0.035 + number,
+        color: const Color(0xFF1C1B1B));
+  }
+
+  static TextStyle dataW300Txt(BuildContext context, double number) {
+    bool tabletMode = MediaQuery.of(context).size.width > 600;
+
+    return Theme.of(context).textTheme.bodyLarge!.copyWith(
+        fontFamily: "prompt",
+        fontWeight: FontWeight.w300,
         // fontSize: displayWidth(context) * (Platform.isAndroid ? 0.03 : 0.035) +
         //     number,
         fontSize: tabletMode
@@ -459,33 +514,28 @@ class CustomTextStyle {
               : displayWidth(context) * 0.040 + number,
           foreground: Paint()
             ..style = PaintingStyle.stroke
-            ..strokeWidth = Width as double
+            ..strokeWidth = Width
             ..color = MyColor.color(Color),
         );
   }
+
+  static TextStyle TitleTxt(BuildContext context, double number, Color) {
+    bool tabletMode = MediaQuery.of(context).size.width > 600;
+
+    return Theme.of(context).textTheme.bodyLarge!.copyWith(
+          fontFamily: "prompt",
+          fontWeight: FontWeight.bold,
+          shadows: <Shadow>[
+            Shadow(
+              color: MyColor.color('shadowTxt'),
+              offset: Offset(0, 3),
+              blurRadius: 8,
+            )
+          ],
+          fontSize: tabletMode
+              ? displayWidth(context) * 0.06 + number
+              : displayWidth(context) * 0.05 + number,
+          color: MyColor.color(Color),
+        );
+  }
 }
-
-// class CustomShapeBorder extends ContinuousRectangleBorder {
-//   @override
-//   Path getOuterPath(Rect rect, {TextDirection textDirection}) {
-//     final double innerCircleRadius = 111;
-
-//     Path path = Path();
-//     path.lineTo(0, rect.height);
-//     path.quadraticBezierTo(rect.width / 2 - (innerCircleRadius / 2) - 30,
-//         rect.height + 15, rect.width / 2 - 75, rect.height + 50);
-//     path.cubicTo(
-//         rect.width / 2 - 40,
-//         rect.height + innerCircleRadius - 40,
-//         rect.width / 2 + 40,
-//         rect.height + innerCircleRadius - 40,
-//         rect.width / 2 + 75,
-//         rect.height + 50);
-//     path.quadraticBezierTo(rect.width / 2 + (innerCircleRadius / 2) + 30,
-//         rect.height + 15, rect.width, rect.height);
-//     path.lineTo(rect.width, 0.0);
-//     path.close();
-
-//     return path;
-//   }
-// }

@@ -6,14 +6,18 @@ class MyColor {
       return const Color(0xFFF5D512);
     } else if (data.toString() == 'datatitle') {
       return const Color(0xFFFFFFFF);
+    } else if (data.toString() == 'mainBG') {
+      return Color.fromARGB(175, 255, 255, 255);
     } else if (data.toString() == 'headtitle') {
       return Colors.blue;
     } else if (data.toString() == 'linelist') {
       return Colors.grey;
+    } else if (data.toString() == 'shadowTxt') {
+      return Color(0x4B000000);
     } else if (data.toString() == 'TextFormFieldTextStyle') {
       return const Color(0xFF6C6C6C);
     } else if (data.toString() == 'TextFormFieldBorderSide') {
-      return const Color(0xFFBA8C26);
+      return const Color(0xFF47A5FF);
     } else if (data.toString() == 'button') {
       return const Color(0xFFBA8C26);
     } else if (data.toString() == 'button1') {
@@ -65,9 +69,9 @@ class MyColor {
     } else if (data.toString() == 'Go') {
       return const Color(0xFFBA8C26);
     } else if (data.toString() == 'LineColor') {
-      return const Color(0xFFBA8C26);
+      return const Color(0xFF2192FF);
     } else if (data.toString() == 'SettingBackground') {
-      return Colors.white;
+      return const Color.fromARGB(143, 255, 255, 255);
     } else if (data.toString() == 'w') {
       return const Color(0xFFFFFFFF);
     } else if (data.toString() == 'bl') {
@@ -90,6 +94,8 @@ class MyColor {
       return Color(0xFF66C8FF);
     } else if (data.toString() == 'TxtBt') {
       return Color(0xFF2192FF);
+    } else if (data.toString() == 'note') {
+      return Color(0xFFFE820F);
     }
   }
 

@@ -1,4 +1,4 @@
-import 'package:udtscc/FollowMe/class/myclass.dart';
+import 'package:mwasc/FollowMe/class/myclass.dart';
 import 'package:flutter/material.dart';
 import 'package:photo_view/photo_view.dart';
 

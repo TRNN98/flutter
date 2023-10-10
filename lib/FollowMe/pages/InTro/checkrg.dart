@@ -1,11 +1,14 @@
-import 'package:udtscc/FollowMe/pages/auth/login.dart';
-import 'package:udtscc/FollowMe/class/myclass.dart';
-import 'package:udtscc/FollowMe/class/mycolor.dart';
-import 'package:udtscc/FollowMe/class/sizes.dart';
-import 'package:udtscc/FollowMe/class/textstyle.dart';
-import 'package:udtscc/FollowMe/class/widget.dart';
-import 'package:udtscc/FollowMe/pages/intro/notrg.dart';
+import 'package:mwasc/FollowMe/pages/auth/check_register.dart';
+import 'package:mwasc/FollowMe/pages/auth/login.dart';
+import 'package:mwasc/FollowMe/class/myclass.dart';
+import 'package:mwasc/FollowMe/class/mycolor.dart';
+import 'package:mwasc/FollowMe/class/sizes.dart';
+import 'package:mwasc/FollowMe/class/textstyle.dart';
+import 'package:mwasc/FollowMe/class/widget.dart';
+import 'package:mwasc/FollowMe/pages/intro/notrg.dart';
 import 'package:flutter/material.dart';
+
+import '../../class/language.dart';
 
 class Checkrg extends StatefulWidget {
   const Checkrg({super.key});
@@ -92,7 +95,8 @@ class CheckrgState extends State<Checkrg> {
             onTap: () {
               Navigator.of(context).pushReplacement(
                 MaterialPageRoute(
-                  builder: (context) => const Notrg(),
+                  builder: (context) => Checkregister(
+                      title: Language.loginLg('memberRegis', 'th'), lgs: 'th'),
                 ),
               );
             },

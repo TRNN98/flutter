@@ -1,4 +1,4 @@
-import 'package:udtscc/FollowMe/class/myclass.dart';
+import 'package:mwasc/FollowMe/class/myclass.dart';
 
 class Language {
   // MainMenu
@@ -143,7 +143,7 @@ class Language {
       return l == 'en' ? "Membership" : "ทะเบียนสมาชิก";
     }
     if (m == 'name') {
-      return l == 'en' ? "Name" : "ชื่อ - สกุล";
+      return l == 'en' ? "Name" : "ชื่อ - นามสกุล";
     }
     if (m == 'detail') {
       return l == 'en' ? "Detail" : "รายละเอียด";
@@ -535,58 +535,58 @@ class Language {
 
   static profileLg(m, l) {
     if (m == 'position') {
-      return l == 'en' ? "Position: " : "ตำแหน่ง : ";
+      return l == 'en' ? "Position" : "ตำแหน่ง";
     }
     if (m == 'share_stock') {
-      return l == 'en' ? "Share Stock: " : "ทุนเรือนหุ้น : ";
+      return l == 'en' ? "Share Stock" : "ทุนเรือนหุ้น";
     }
     if (m == 'member_group_prename') {
-      return l == 'en' ? "member_group_prename: " : "หน่วยงาน : ";
+      return l == 'en' ? "member_group_prename" : "หน่วยงาน";
     }
     if (m == 'salary') {
-      return l == 'en' ? "Salary: " : "เงินเดือน : ";
+      return l == 'en' ? "Salary" : "เงินเดือน";
     }
     if (m == 'mem_status') {
-      return l == 'en' ? "mem_status: " : "ประเภท : ";
+      return l == 'en' ? "mem_status" : "ประเภท";
     }
     if (m == 'birthday') {
-      return l == 'en' ? "Birthday: " : "วันเกิด : ";
+      return l == 'en' ? "Birthday" : "วันเกิด";
     }
     if (m == 'dateOfMembership') {
-      return l == 'en' ? "Date of membership: " : "วันที่เป็นสมาชิก : ";
+      return l == 'en' ? "Date of membership" : "วันที่เป็นสมาชิก";
     }
     if (m == 'address') {
-      return l == 'en' ? "Address: " : "ที่อยู่ : ";
+      return l == 'en' ? "Address" : "ที่อยู่";
     }
     if (m == 'present_telephone') {
-      return l == 'en' ? "present_telephone: " : "เบอร์โทรบ้าน: ";
+      return l == 'en' ? "present_telephone" : "เบอร์โทรบ้าน";
     }
     if (m == 'BANK_ACC_NO') {
-      return l == 'en' ? "BANK_ACC_NO: " : "เลขที่บัญชี: ";
+      return l == 'en' ? "BANK_ACC_NO" : "เลขที่บัญชี";
     }
     if (m == 'mem_type') {
-      return l == 'en' ? "Status: " : "สถานะ: ";
+      return l == 'en' ? "Status" : "สถานะ";
     }
     if (m == 'mem_status') {
-      return l == 'en' ? "mem_status: " : "ประเภท: ";
+      return l == 'en' ? "mem_status" : "ประเภท";
     }
     if (m == 'GROUP_PAY_DES') {
-      return l == 'en' ? "GROUP_PAY_DES: " : "วิธีรับปันผล: ";
+      return l == 'en' ? "GROUP_PAY_DES" : "วิธีรับปันผล";
     }
     if (m == 'member') {
-      return l == 'en' ? "Membership: " : "ทะเบียนสมาชิก: ";
+      return l == 'en' ? "Membership" : "ทะเบียนสมาชิก";
     }
     if (m == 'idCard') {
-      return l == 'en' ? "ID Card: " : "บัตรประชาชน: ";
+      return l == 'en' ? "ID Card" : "บัตรประชาชน";
     }
     if (m == 'dateOfRegisingation') {
-      return l == 'en' ? "Date of Regisingation: " : "วันที่ลาออก: ";
+      return l == 'en' ? "Date of Regisingation" : "วันที่ลาออก";
     }
     if (m == 'phone') {
-      return l == 'en' ? "Phone: " : "เบอร์โทรศัพท์ : ";
+      return l == 'en' ? "Phone" : "เบอร์โทรศัพท์";
     }
     if (m == 'department') {
-      return l == 'en' ? "Department: " : "หน่วยงาน: ";
+      return l == 'en' ? "Department: " : "หน่วยงาน";
     }
 
     if (m == 'profile') {
@@ -995,11 +995,19 @@ class Language {
     if (m == 'deactivate') {
       return l == 'en' ? "Deactivate" : "ลงชื่อออกจากระบบ";
     }
-
+    if (m == 'forgotPassworddesc') {
+      return l == 'en' ? "Change Pin" : "กรณีลืมรหัสผ่าน";
+    }
+    if (m == 'deactivatedesc') {
+      return l == 'en' ? "Deactivate" : "ลงชื่อออกจากอุปกรณ์";
+    }
+    if (m == 'changePindesc') {
+      return l == 'en' ? "Change Pin" : "ปรับปรุง PIN CODE";
+    }
     if (m == 'changePinDetail') {
       return l == 'en'
           ? "\t\tTo change the PIN Code, you must first enter the old password. And then change to the new code you need"
-          : "\t\tการเปลี่ยนPIN CODE ท่านจะต้องใส่ PIN เดิมก่อน แล้วจึงทำการตั้งPIN CODE ใหม่";
+          : "\t\tการเปลี่ยน PIN CODE ท่านจะต้องกรอก PIN เดิมก่อน แล้วจึงทำการตั้งPIN CODE ใหม่";
     }
     if (m == 'forgotPasswordDetail') {
       return l == 'en'
@@ -1016,7 +1024,7 @@ class Language {
       return l == 'en' ? "     Yes     " : "     ใช่     ";
     }
     if (m == 'no') {
-      return l == 'en' ? "     No     " : "     ไม่     ";
+      return l == 'en' ? "     No     " : "     ไม่ใช่     ";
     }
     if (m == 'youWant') {
       return l == 'en' ? "You want " : "ท่านต้องการ ";
@@ -1052,7 +1060,7 @@ class Language {
 
   static pinLg(m, l) {
     if (m == 'pinCode') {
-      return l == 'en' ? "Please enter the PIN Code" : "กรุณาใส่PIN CODE";
+      return l == 'en' ? "Please enter the PIN Code" : "กรุณากรอกPIN CODE";
     }
     if (m == 'pleaseTryAgain') {
       return l == 'en'
@@ -1062,7 +1070,7 @@ class Language {
     if (m == 'originalPINCode') {
       return l == 'en'
           ? "Please enter the original PIN Code"
-          : "กรุณาใส่PIN CODE เดิม";
+          : "กรุณากรอกPIN CODE เดิม";
     }
     if (m == 'incorrectOriginalPINCode') {
       return l == 'en'
@@ -1159,7 +1167,7 @@ class Language {
     if (m == 'memberDetail') {
       return l == 'en'
           ? "Please enter your ${MyClass.lengthmember()}-digit membership registration number"
-          : "กรุณาใส่เลขทะเบียนสมาชิก ให้ครบ ${MyClass.lengthmember()} หลัก";
+          : "กรุณากรอกเลขทะเบียนสมาชิก ให้ครบ ${MyClass.lengthmember()} หลัก";
     }
     if (m == 'password') {
       return l == 'en' ? "Password" : "รหัสผ่าน";
@@ -1171,7 +1179,7 @@ class Language {
       return l == 'en' ? "Please confirm password" : "กรุณายืนยันรหัสผ่าน";
     }
     if (m == 'pleaseYourpassword') {
-      return l == 'en' ? "Please enter your password" : "กรุณาใส่รหัสผ่าน";
+      return l == 'en' ? "Please enter your password" : "กรุณากรอกรหัสผ่าน";
     }
     if (m == 'logIn') {
       return l == 'en' ? "Log In" : "เข้าสู่ระบบ";
@@ -1206,17 +1214,17 @@ class Language {
     if (m == 'idCardDetail') {
       return l == 'en'
           ? "Please enter your 13-digit identification number"
-          : "กรุณาใส่เลขบัตรประชาชน ให้ครบ 13 หลัก";
+          : "กรุณากรอกเลขบัตรประชาชน ให้ครบ 13 หลัก";
     }
     if (m == 'birthDayDetail') {
       return l == 'en'
           ? "Please specify the date of birth in the form 01/01/2563 \n or click the Icon"
-          : "กรุณาระบุวันเกิดในรูปแบบ  01/01/2563 หรือ คลิกที่รูป Icon";
+          : "กรุณาระบุวันเกิด ในรูปแบบปี พ.ศ. เช่น 01/01/2524";
     }
     if (m == 'passwordDetail') {
       return l == 'en'
           ? "Please enter a password, at least 6 digits"
-          : "กรุณาใส่รหัสผ่านอย่างน้อย 6 หลัก";
+          : "กรุณากรอกรหัสผ่านอย่างน้อย 6 หลัก";
     }
     if (m == 'invalidIDCard') {
       return l == 'en'
@@ -1245,7 +1253,7 @@ class Language {
           : "เปลี่ยนรหัสผ่านไม่สำเร็จ";
     }
     if (m == 'save') {
-      return l == 'en' ? "   Save   " : "   บันทึก   ";
+      return l == 'en' ? "   Save   " : "   ยืนยัน   ";
     }
     if (m == 'idCard') {
       return l == 'en' ? "ID Card" : "เลขบัตรประชาชน";

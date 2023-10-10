@@ -1,11 +1,11 @@
-import 'package:udtscc/FollowMe/pages/auth/pins.dart';
-import 'package:udtscc/FollowMe/class/custom_ui.dart';
-import 'package:udtscc/FollowMe/class/language.dart';
-import 'package:udtscc/FollowMe/class/myclass.dart';
-import 'package:udtscc/FollowMe/class/mycolor.dart';
-import 'package:udtscc/FollowMe/class/sizes.dart';
-import 'package:udtscc/FollowMe/class/textstyle.dart';
-import 'package:udtscc/FollowMe/pages/settings/security/checksecurity.dart';
+import 'package:mwasc/FollowMe/pages/auth/pins.dart';
+import 'package:mwasc/FollowMe/class/custom_ui.dart';
+import 'package:mwasc/FollowMe/class/language.dart';
+import 'package:mwasc/FollowMe/class/myclass.dart';
+import 'package:mwasc/FollowMe/class/mycolor.dart';
+import 'package:mwasc/FollowMe/class/sizes.dart';
+import 'package:mwasc/FollowMe/class/textstyle.dart';
+import 'package:mwasc/FollowMe/pages/settings/security/checksecurity.dart';
 import 'package:flutter/material.dart';
 
 double _fontsizeapps = 1.0;
@@ -22,8 +22,9 @@ class Security extends StatefulWidget {
 class Securitys {
   String? title;
   int? type;
+  String? description;
 
-  Securitys({this.title, this.type});
+  Securitys({this.title, this.description, this.type});
 }
 
 var imgprofile = '';
@@ -37,12 +38,18 @@ class SecurityState extends State<Security> {
     bool tabletMode = MediaQuery.of(context).size.width > 600;
     List<Securitys> securitys = <Securitys>[
       Securitys(
-          title: Language.settingLg('changePin', widget.param.lgs), type: 0),
+          title: Language.settingLg('changePin', widget.param.lgs),
+          description: Language.settingLg('changePindesc', widget.param.lgs),
+          type: 0),
       Securitys(
           title: Language.settingLg('forgotPassword', widget.param.lgs),
+          description:
+              Language.settingLg('forgotPassworddesc', widget.param.lgs),
           type: 1),
       Securitys(
-          title: Language.settingLg('deactivate', widget.param.lgs), type: 2),
+          title: Language.settingLg('deactivate', widget.param.lgs),
+          description: Language.settingLg('deactivatedesc', widget.param.lgs),
+          type: 2),
     ];
     return Scaffold(
       extendBodyBehindAppBar: true,
@@ -117,11 +124,25 @@ class SecurityState extends State<Security> {
                           children: [
                             Padding(
                               padding: const EdgeInsets.only(left: 15),
-                              child: Text(
-                                security[index].title,
-                                textScaleFactor:
-                                    MyClass.blocFontSizeApp(_fontsizeapps),
-                                style: CustomTextStyle.settingTxt(context, 0),
+                              child: Column(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Text(
+                                    security[index].title,
+                                    textScaleFactor:
+                                        MyClass.blocFontSizeApp(_fontsizeapps),
+                                    style:
+                                        CustomTextStyle.settingTxt(context, 0),
+                                  ),
+                                  Text(
+                                    security[index].description,
+                                    textScaleFactor:
+                                        MyClass.blocFontSizeApp(_fontsizeapps),
+                                    style:
+                                        CustomTextStyle.settingTxt(context, -3),
+                                  ),
+                                ],
                               ),
                             ),
                             Expanded(

@@ -1,7 +1,7 @@
 import 'dart:io';
 
-import 'package:udtscc/FollowMe/class/sizes.dart';
-import 'package:udtscc/promoney/class/mycolorpro.dart';
+import 'package:mwasc/FollowMe/class/sizes.dart';
+import 'package:mwasc/promoney/class/mycolorpro.dart';
 import 'package:flutter/material.dart';
 
 class CustomTextStylePro {

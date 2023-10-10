@@ -3,17 +3,17 @@ import 'dart:io';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_exit_app/flutter_exit_app.dart';
-import 'package:udtscc/FollowMe/models/news/news_model.dart';
-import 'package:udtscc/FollowMe/pages/auth/pins.dart';
-import 'package:udtscc/FollowMe/class/custom_ui.dart';
-import 'package:udtscc/FollowMe/class/language.dart';
-import 'package:udtscc/FollowMe/class/myclass.dart';
-import 'package:udtscc/FollowMe/class/mycolor.dart';
-import 'package:udtscc/FollowMe/class/sizes.dart';
-import 'package:udtscc/FollowMe/class/textstyle.dart';
-import 'package:udtscc/FollowMe/class/widget.dart';
-import 'package:udtscc/FollowMe/pages/news/news_detail.dart';
-import 'package:udtscc/FollowMe/services/network.dart';
+import 'package:mwasc/FollowMe/models/news/news_model.dart';
+import 'package:mwasc/FollowMe/pages/auth/pins.dart';
+import 'package:mwasc/FollowMe/class/custom_ui.dart';
+import 'package:mwasc/FollowMe/class/language.dart';
+import 'package:mwasc/FollowMe/class/myclass.dart';
+import 'package:mwasc/FollowMe/class/mycolor.dart';
+import 'package:mwasc/FollowMe/class/sizes.dart';
+import 'package:mwasc/FollowMe/class/textstyle.dart';
+import 'package:mwasc/FollowMe/class/widget.dart';
+import 'package:mwasc/FollowMe/pages/news/news_detail.dart';
+import 'package:mwasc/FollowMe/services/network.dart';
 import 'package:flutter/material.dart';
 
 class News extends StatefulWidget {
@@ -112,10 +112,12 @@ class NewsState extends State<News> {
                     ),
                     Container(
                       padding: EdgeInsets.only(
-                          top: displayHeight(context) *
-                              (tabletMode ? 0.175 : 0.175),
-                          left: paddinglist(context, 0),
-                          right: paddinglist(context, 0)),
+                        top: displayHeight(context) *
+                            (tabletMode ? 0.175 : 0.175),
+                        left: paddinglist(context, 0),
+                        right: paddinglist(context, 0),
+                        bottom: displayHeight(context) * 0.1,
+                      ),
                       // child: _getnew(news1: new12, tabletMode: tabletMode),
                       child: FutureBuilder<List<NewsModel>>(
                         future: Network.fetchNews(
@@ -191,7 +193,7 @@ class NewsState extends State<News> {
                                   textScaleFactor: MyClass.blocFontSizeApp(
                                       widget.param.fontsizeapps),
                                   style: CustomTextStyle.dataHTxt(
-                                      context, 1, 'Go'),
+                                      context, 1, 'TxtBlue'),
                                 ),
                                 Text(
                                   news1[index].question,
@@ -199,8 +201,8 @@ class NewsState extends State<News> {
                                   maxLines: 1,
                                   textScaleFactor: MyClass.blocFontSizeApp(
                                       widget.param.fontsizeapps),
-                                  style:
-                                      CustomTextStyle.defaultTxt(context, -2),
+                                  style: CustomTextStyle.dataHTxt(
+                                      context, 0, 'TxtBlue'),
                                 ),
                               ],
                             ),
@@ -213,7 +215,7 @@ class NewsState extends State<News> {
                                 Icon(
                                   Icons.keyboard_arrow_right,
                                   size: iconnext(context, 0),
-                                  color: MyColor.color('Go'),
+                                  color: MyColor.color('buttonnext'),
                                 ),
                               ],
                             ),

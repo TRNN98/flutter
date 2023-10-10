@@ -2,19 +2,19 @@ import 'dart:io';
 
 import 'package:device_info_plus/device_info_plus.dart';
 import 'package:flutter_udid/flutter_udid.dart';
-import 'package:udtscc/FollowMe/pages/auth/pins.dart';
-import 'package:udtscc/FollowMe/pages/auth/check_register.dart';
-import 'package:udtscc/FollowMe/class/custom_ui.dart';
-import 'package:udtscc/FollowMe/class/language.dart';
-import 'package:udtscc/FollowMe/class/myclass.dart';
-import 'package:udtscc/FollowMe/class/mycolor.dart';
-import 'package:udtscc/FollowMe/class/sizes.dart';
-import 'package:udtscc/FollowMe/class/textstyle.dart';
-import 'package:udtscc/FollowMe/locals/db_pin.dart';
-import 'package:udtscc/FollowMe/locals/db_tf.dart';
-import 'package:udtscc/FollowMe/locals/db_user.dart';
-import 'package:udtscc/FollowMe/models/sql/user_db.dart';
-import 'package:udtscc/FollowMe/services/network.dart';
+import 'package:mwasc/FollowMe/pages/auth/pins.dart';
+import 'package:mwasc/FollowMe/pages/auth/check_register.dart';
+import 'package:mwasc/FollowMe/class/custom_ui.dart';
+import 'package:mwasc/FollowMe/class/language.dart';
+import 'package:mwasc/FollowMe/class/myclass.dart';
+import 'package:mwasc/FollowMe/class/mycolor.dart';
+import 'package:mwasc/FollowMe/class/sizes.dart';
+import 'package:mwasc/FollowMe/class/textstyle.dart';
+import 'package:mwasc/FollowMe/locals/db_pin.dart';
+import 'package:mwasc/FollowMe/locals/db_tf.dart';
+import 'package:mwasc/FollowMe/locals/db_user.dart';
+import 'package:mwasc/FollowMe/models/sql/user_db.dart';
+import 'package:mwasc/FollowMe/services/network.dart';
 import 'package:flutter/material.dart';
 
 import '../lock/lockpin.dart';
@@ -101,23 +101,43 @@ class LoginState extends State<Login> {
                     ),
                     CustomUI.appbarDetailUi1('assets/imgs/icon.png', context),
                     Container(
-                      padding:
-                          EdgeInsets.only(top: displayHeight(context) * 0.025),
                       alignment: Alignment.topCenter,
                       child: Padding(
                         padding: const EdgeInsets.all(8.0),
                         child: Column(
                           children: [
-                            Text(MyClass.company('th'),
-                                textScaleFactor: MyClass.fontSizeApp(),
-                                textAlign: TextAlign.center,
-                                style: CustomTextStyle.dataHeadTitleCTxt(
-                                    context, 7, 'bl')),
-                            Text(MyClass.company('en'),
-                                textAlign: TextAlign.center,
-                                textScaleFactor: MyClass.fontSizeApp(),
-                                style: CustomTextStyle.dataHeadTitleCTxt(
-                                    context, -1, 'bl')),
+                            Stack(
+                              children: [
+                                Text(
+                                  MyClass.company('th'),
+                                  textScaleFactor: MyClass.fontSizeApp(),
+                                  textAlign: TextAlign.center,
+                                  style: CustomTextStyle.defaultTxtPaint(
+                                      context, 7, "bl2", 2),
+                                ),
+                                Text(MyClass.company('th'),
+                                    textScaleFactor: MyClass.fontSizeApp(),
+                                    textAlign: TextAlign.center,
+                                    style: CustomTextStyle.dataHeadTitleCTxt(
+                                        context, 7, 'bl')),
+                              ],
+                            ),
+                            Stack(
+                              children: [
+                                Text(
+                                  MyClass.company('en'),
+                                  textScaleFactor: MyClass.fontSizeApp(),
+                                  textAlign: TextAlign.center,
+                                  style: CustomTextStyle.defaultTxtPaint(
+                                      context, -2, "bl2", 2),
+                                ),
+                                Text(MyClass.company('en'),
+                                    textScaleFactor: MyClass.fontSizeApp(),
+                                    textAlign: TextAlign.center,
+                                    style: CustomTextStyle.dataHeadTitleCTxt(
+                                        context, -2, 'bl')),
+                              ],
+                            ),
                           ],
                         ),
                       ),
@@ -125,11 +145,14 @@ class LoginState extends State<Login> {
                     SizedBox(
                       height: tabletMode
                           ? displayHeight(context) * 0.01
-                          : displayHeight(context) * 0.01,
+                          : displayHeight(context) * 0.03,
                     ),
                     Padding(
-                      padding: const EdgeInsets.only(
-                          left: 30, right: 30, top: 0, bottom: 0),
+                      padding: EdgeInsets.only(
+                          left: tabletMode ? 60 : 30,
+                          right: tabletMode ? 60 : 30,
+                          top: 0,
+                          bottom: 0),
                       child: MediaQuery(
                         data: MediaQuery.of(context).copyWith(
                           textScaleFactor: MyClass.fontSizeApp(),
@@ -151,17 +174,12 @@ class LoginState extends State<Login> {
                                 onPressed: () {},
                               ),
                             ),
-                            prefixIcon: Icon(Icons.account_circle,
-                                size: tabletMode ? 40 : 30,
-                                color: const Color(0xFFBA8C26)),
+                            prefixIcon: Icon(
+                              Icons.account_circle_outlined,
+                              size: tabletMode ? 40 : 30,
+                            ),
                             labelStyle: TextStyle(
                                 color: MyColor.color('TextFormFieldTextStyle')),
-                            focusedBorder: OutlineInputBorder(
-                              borderSide: BorderSide(
-                                color: MyColor.color('TextFormFieldBorderSide'),
-                                width: 2.0,
-                              ),
-                            ),
                             border: const OutlineInputBorder(),
                           ),
                           validator: (String? value) {
@@ -175,13 +193,12 @@ class LoginState extends State<Login> {
                       ),
                     ),
                     Padding(
-                      padding: const EdgeInsets.only(
-                        left: 35,
+                      padding: EdgeInsets.only(
+                        left: tabletMode ? 65 : 35,
                       ),
                       child: Text(Language.loginLg('memberDetail', widget.lgs),
                           textScaleFactor: MyClass.fontSizeApp(),
-                          style:
-                              CustomTextStyle.defaultTxt1(context, -4, 'Gr')),
+                          style: CustomTextStyle.defaultTxt1(context, -4, 'R')),
                     ),
                     SizedBox(
                       height: tabletMode
@@ -189,8 +206,11 @@ class LoginState extends State<Login> {
                           : displayHeight(context) * 0.03,
                     ),
                     Padding(
-                      padding: const EdgeInsets.only(
-                          left: 30, right: 30, top: 0, bottom: 0),
+                      padding: EdgeInsets.only(
+                          left: tabletMode ? 60 : 30,
+                          right: tabletMode ? 60 : 30,
+                          top: 0,
+                          bottom: 0),
                       child: MediaQuery(
                         data: MediaQuery.of(context).copyWith(
                           textScaleFactor: MyClass.fontSizeApp(),
@@ -214,7 +234,7 @@ class LoginState extends State<Login> {
                                     : Icon(
                                         Icons.visibility,
                                         size: tabletMode ? 40 : 30,
-                                        color: const Color(0xFFBA8C26),
+                                        // color: const Color(0xFFBA8C26),
                                       ),
                                 onPressed: () {
                                   _toggle();
@@ -224,17 +244,12 @@ class LoginState extends State<Login> {
                             prefixIcon: Icon(
                               Icons.lock,
                               size: tabletMode ? 40 : 30,
-                              color: const Color(0xFFBA8C26),
+                              // color: const Color(0xFFBA8C26),
                             ),
                             // labelText: Language.loginLg('password', widget.lgs),
                             labelStyle: TextStyle(
                                 color: MyColor.color('TextFormFieldTextStyle')),
-                            focusedBorder: OutlineInputBorder(
-                              borderSide: BorderSide(
-                                color: MyColor.color('TextFormFieldBorderSide'),
-                                width: 2.0,
-                              ),
-                            ),
+
                             border: const OutlineInputBorder(),
                           ),
                           obscureText: _obscureText,
@@ -249,11 +264,11 @@ class LoginState extends State<Login> {
                       ),
                     ),
                     Padding(
-                      padding: const EdgeInsets.only(left: 35),
+                      padding: EdgeInsets.only(left: tabletMode ? 65 : 35),
                       child: Text(
                         Language.loginLg('pleaseYourpassword', widget.lgs),
                         textScaleFactor: MyClass.fontSizeApp(),
-                        style: CustomTextStyle.defaultTxt1(context, -4, 'Gr'),
+                        style: CustomTextStyle.defaultTxt1(context, -4, 'R'),
                       ),
                     ),
                     hSizedBoxButton(context, 0),
@@ -280,19 +295,14 @@ class LoginState extends State<Login> {
       width: displayWidth(context) * 0.85,
       height: displayHeight(context) * 0.06,
       child: Row(
-        mainAxisAlignment: MainAxisAlignment.start,
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           Container(
-            width: displayWidth(context) * 0.4,
+            width: displayWidth(context) * 0.5,
             height: displayHeight(context) * 0.05,
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(25.0),
-              gradient: LinearGradient(
-                colors: <Color>[
-                  MyColor.color('buttonRegis'),
-                  MyColor.color('buttonRegis'),
-                ],
-              ),
+              color: MyColor.color('w'),
             ),
             // padding: const EdgeInsets.only(right: 5),
             child: InkWell(
@@ -309,7 +319,7 @@ class LoginState extends State<Login> {
                 child: Text(
                   Language.loginLg('memberRegis', widget.lgs),
                   textScaleFactor: MyClass.fontSizeApp(),
-                  style: CustomTextStyle.dataBoldTxt1(context, -8),
+                  style: CustomTextStyle.loginBoldTxt(context, -8, 'TxtBt'),
                 ),
               ),
             ),
@@ -318,16 +328,11 @@ class LoginState extends State<Login> {
             width: displayWidth(context) * 0.05,
           ),
           Container(
-            width: displayWidth(context) * 0.4,
+            width: displayWidth(context) * 0.3,
             height: displayHeight(context) * 0.05,
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(25.0),
-              gradient: LinearGradient(
-                colors: <Color>[
-                  MyColor.color('button1'),
-                  MyColor.color('button1'),
-                ],
-              ),
+              color: MyColor.color('TxtBlue'),
             ),
             // padding: const EdgeInsets.only(right: 5),
             child: InkWell(
@@ -344,7 +349,7 @@ class LoginState extends State<Login> {
                 child: Text(
                   Language.loginLg('forgotPassword', widget.lgs),
                   textScaleFactor: MyClass.fontSizeApp(),
-                  style: CustomTextStyle.dataBoldTxt1(context, -8),
+                  style: CustomTextStyle.loginBoldTxt(context, -8, 'w'),
                 ),
               ),
             ),
@@ -362,8 +367,8 @@ class LoginState extends State<Login> {
         borderRadius: BorderRadius.circular(25.0),
         gradient: LinearGradient(
           colors: <Color>[
-            MyColor.color('buttongra'),
-            MyColor.color('buttongra1'),
+            MyColor.color('bl1'),
+            MyColor.color('bl3'),
           ],
         ),
       ),
@@ -374,7 +379,7 @@ class LoginState extends State<Login> {
           child: Text(
             Language.loginLg('logIn', widget.lgs),
             textScaleFactor: MyClass.fontSizeApp(),
-            style: CustomTextStyle.dataBoldTxt1(context, -3),
+            style: CustomTextStyle.loginBoldTxt(context, -3, 'TxtBl'),
           ),
         ),
       ),

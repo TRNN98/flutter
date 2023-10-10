@@ -1,9 +1,10 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/src/animation/animation_controller.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:flutter/src/widgets/ticker_provider.dart';
 import 'package:flutter/material.dart';
-import 'package:udtscc/FollowMe/pages/requestforwelfare/welfare.dart';
+import 'package:mwasc/FollowMe/pages/requestforwelfare/welfare.dart';
 
 import '../../class/custom_ui.dart';
 import '../../class/language.dart';
@@ -45,8 +46,8 @@ class _RequestWelfareState extends State<RequestWelfare>
   Widget build(BuildContext context) {
     return Scaffold(
       extendBodyBehindAppBar: true,
-      appBar:
-          CustomUI.appbarUi("สวัสดิการ", widget.param.fontsizeapps, context),
+      appBar: CustomUI.appbarUi(
+          "ประวัติการทำรายการ", widget.param.fontsizeapps, context),
       body: Stack(
         children: <Widget>[
           Container(
@@ -119,7 +120,7 @@ class _RequestWelfareState extends State<RequestWelfare>
                                     color: Colors.white,
                                   ),
                                   label: Text(
-                                    "ประวัติทำรายการ",
+                                    "สถานะการทำรายการ",
                                     textScaleFactor:
                                         MyClass.blocFontSizeApp(_fontsizeapps),
                                     style: CustomTextStyle.dataHeadDataCTxt(
@@ -138,7 +139,7 @@ class _RequestWelfareState extends State<RequestWelfare>
                                         MyClass.blocFontSizeApp(_fontsizeapps),
                                     textAlign: TextAlign.start,
                                     style: CustomTextStyle.dataHeadTitleCTxt(
-                                        context, 5, 'Bl')),
+                                        context, 1, 'Bl')),
                                 lineSizedBox(context, -30),
                                 Stack(
                                   children: [
@@ -196,7 +197,7 @@ class _RequestWelfareState extends State<RequestWelfare>
                         fit: BoxFit.fitHeight,
                       )),
                   Expanded(
-                    flex: 5,
+                    flex: 8,
                     child: Padding(
                       padding: const EdgeInsets.only(left: 8.0),
                       child: Column(
@@ -208,7 +209,7 @@ class _RequestWelfareState extends State<RequestWelfare>
                             textScaleFactor: MyClass.blocFontSizeApp(
                                 widget.param.fontsizeapps),
                             style: CustomTextStyle.dataHeadTitleCTxt(
-                                context, 2, 'BlH'),
+                                context, -2, 'BlH'),
                             overflow: TextOverflow.ellipsis,
                             maxLines: 1,
                           ),
@@ -217,7 +218,7 @@ class _RequestWelfareState extends State<RequestWelfare>
                             textAlign: TextAlign.left,
                             textScaleFactor: MyClass.blocFontSizeApp(
                                 widget.param.fontsizeapps),
-                            style: CustomTextStyle.dataTxt(context, 3),
+                            style: CustomTextStyle.dataTxt(context, -1),
                           ),
                           Padding(
                             padding: const EdgeInsets.only(left: 5),
@@ -226,7 +227,7 @@ class _RequestWelfareState extends State<RequestWelfare>
                               textAlign: TextAlign.start,
                               textScaleFactor:
                                   MyClass.blocFontSizeApp(_fontsizeapps),
-                              style: CustomTextStyle.dataHTxt(context, 2, 'Bl'),
+                              style: CustomTextStyle.dataHTxt(context, 0, 'Bl'),
                             ),
                           ),
                         ],
@@ -240,5 +241,33 @@ class _RequestWelfareState extends State<RequestWelfare>
         ),
       ],
     );
+  }
+
+  _alert() {
+    showDialog(
+        context: context,
+        builder: (BuildContext context) {
+          return CupertinoAlertDialog(
+            title: Text(
+              'คำเตือน',
+              style: CustomTextStyle.dataHTxt(context, 5, 'Bl'),
+            ),
+            content: Text(
+              'คุณสามารถใส่ Pin ได้อีกเพียง 1 ครั้ง หรือทำการกดลืม Pin เพื่อ Login ใหม่',
+              style: CustomTextStyle.dataHTxt(context, 0, 'Bl'),
+            ),
+            actions: <Widget>[
+              CupertinoDialogAction(
+                child: Text(
+                  'OK',
+                  style: CustomTextStyle.dataHTxt(context, 3, 'B'),
+                ),
+                onPressed: () {
+                  Navigator.of(context).pop(false);
+                },
+              ),
+            ],
+          );
+        });
   }
 }

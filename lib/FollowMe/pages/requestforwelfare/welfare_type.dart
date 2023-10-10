@@ -1,8 +1,10 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:udtscc/FollowMe/pages/requestforwelfare/welfare.dart';
+import 'package:rflutter_alert/rflutter_alert.dart';
+import 'package:mwasc/FollowMe/pages/requestforwelfare/welfare.dart';
 
 import '../../class/custom_ui.dart';
-import 'package:udtscc/FollowMe/pages/auth/pins.dart';
+import 'package:mwasc/FollowMe/pages/auth/pins.dart';
 
 import '../../class/language.dart';
 import '../../class/myclass.dart';
@@ -11,6 +13,9 @@ import '../../class/sizes.dart';
 import '../../class/textstyle.dart';
 
 double _fontsizeapps = 1.0;
+
+// for check if this type is have remark?
+bool showremark = true;
 
 class TypeWelfare extends StatefulWidget {
   final Param param;
@@ -64,7 +69,48 @@ class _TypeWelfareState extends State<TypeWelfare> {
                             Padding(
                               padding: const EdgeInsets.only(right: 5),
                               child: ElevatedButton.icon(
-                                onPressed: () {},
+                                onPressed: () {
+                                  showDialog(
+                                      context: context,
+                                      builder: (context) => AlertDialog(
+                                            title: Center(
+                                              child: Text(
+                                                "เงื่อนไข",
+                                                style: CustomTextStyle
+                                                    .dataHeadTitleCTxt(
+                                                        context, 1, 'Bl'),
+                                              ),
+                                            ),
+                                            content: Text(
+                                              "1. เป็นสมาชิกสหกรณ์มาแล้วไม่น้อยกว่า 10 ปี\n2. อายุครบ 55 ปีบริบูรณ์\n3. ไม่เคยมีคู่สมรสทั้งโดยนิตินัยและพฤตินัย",
+                                              style: CustomTextStyle
+                                                  .dataHeadTitleTxt(context, 0),
+                                            ),
+                                            actions: [
+                                              Center(
+                                                child: DialogButton(
+                                                  onPressed: () => {
+                                                    Navigator.of(context,
+                                                            rootNavigator: true)
+                                                        .pop(),
+                                                  },
+                                                  width: displayWidth(context) *
+                                                      0.3,
+                                                  color: MyColor.color(
+                                                      'LineColor'),
+                                                  radius: BorderRadius.all(
+                                                      Radius.circular(30)),
+                                                  child: Text(
+                                                    "รับทราบ",
+                                                    style: CustomTextStyle
+                                                        .dataBoldTxt1(
+                                                            context, -5),
+                                                  ),
+                                                ),
+                                              ),
+                                            ],
+                                          ));
+                                },
                                 style: ElevatedButton.styleFrom(
                                     backgroundColor: const Color(0xFF0051CA),
                                     shape: RoundedRectangleBorder(
@@ -75,7 +121,7 @@ class _TypeWelfareState extends State<TypeWelfare> {
                                     'assets/imgs/icon_condition.png',
                                     width: 20),
                                 label: Text(
-                                  "เงื่่อนไข",
+                                  "เงื่อนไข",
                                   textScaleFactor:
                                       MyClass.blocFontSizeApp(_fontsizeapps),
                                   style: CustomTextStyle.dataHeadDataCTxt(
@@ -84,7 +130,52 @@ class _TypeWelfareState extends State<TypeWelfare> {
                               ),
                             ),
                             ElevatedButton.icon(
-                              onPressed: () {},
+                              onPressed: () {
+                                showDialog(
+                                    context: context,
+                                    builder: (context) => AlertDialog(
+                                          title: Center(
+                                            child: Text(
+                                              "สวัสดิการที่ได้รับ",
+                                              style: CustomTextStyle
+                                                  .dataHeadTitleCTxt(
+                                                      context, 1, 'Bl'),
+                                            ),
+                                          ),
+                                          content: Text(
+                                            "เจ้าบ้าน ได้รับเงินตามความเสียหายจริง ดังนี้ \n- อัคคีภัย 50,000 บาท\n- ภัยธรรมชาติอื่นๆ 10,000 บาท\n- ผู้อาศัย ได้รับเงินตามความเสียหายจริง ดังนี้\n -อัคคีภัย 30,000 บาท\n- ภัยธรรมชาติอื่นๆ 6,000 บาท",
+                                            style: CustomTextStyle
+                                                .dataHeadTitleTxt(context, 0),
+                                          ),
+                                          actions: [
+                                            Center(
+                                              child: DialogButton(
+                                                onPressed: () => {
+                                                  Navigator.of(context,
+                                                          rootNavigator: true)
+                                                      .pop(),
+                                                },
+                                                width:
+                                                    displayWidth(context) * 0.3,
+                                                color:
+                                                    MyColor.color('LineColor'),
+                                                radius: BorderRadius.all(
+                                                    Radius.circular(30)),
+                                                child: Text(
+                                                  "รับทราบ",
+                                                  style: CustomTextStyle
+                                                      .dataBoldTxt1(
+                                                          context, -5),
+                                                ),
+                                              ),
+                                            ),
+                                          ],
+                                        ));
+
+                                // showAlert(
+                                //     'เจ้าบ้าน ได้รับเงินตามความเสียหายจริง ดังนี้ \n- อัคคีภัย 50,000 บาท\n- ภัยธรรมชาติอื่นๆ 10,000 บาท\n- ผู้อาศัย ได้รับเงินตามความเสียหายจริง ดังนี้\n -อัคคีภัย 30,000 บาท\n- ภัยธรรมชาติอื่นๆ 6,000 บาท',
+                                //     context);
+                              },
                               style: ElevatedButton.styleFrom(
                                   backgroundColor: const Color(0xFF2194FF),
                                   shape: RoundedRectangleBorder(
@@ -105,7 +196,6 @@ class _TypeWelfareState extends State<TypeWelfare> {
                         ),
                       ),
                     ),
-
                     lineSizedBox(context, -25),
                     Padding(
                         padding: EdgeInsets.only(
@@ -113,34 +203,6 @@ class _TypeWelfareState extends State<TypeWelfare> {
                             right: paddinglist(context, 0)),
                         child: _detail(widget.param.membershipNo,
                             widget.param.name, context, widget.param.lgs)),
-
-                    Center(
-                        child: Text(
-                      ".title",
-                      textAlign: TextAlign.center,
-                      textScaleFactor: MyClass.blocFontSizeApp(_fontsizeapps),
-                      style: CustomTextStyle.dataBoldBTxt(context, 0),
-                    )),
-                    Padding(
-                      padding: const EdgeInsets.all(18.0),
-                      child: Center(
-                          child: Text(
-                        "checkSecuritys[int.parse(widget.type)].detail",
-                        textAlign: TextAlign.center,
-                        textScaleFactor: MyClass.blocFontSizeApp(_fontsizeapps),
-                        style: CustomTextStyle.dataBoldBTxt(context, 0),
-                      )),
-                    ),
-                    lineSizedBox(context, 0),
-                    Center(
-                        child: Text(
-                      Language.settingLg('youWant', widget.param.lgs) +
-                          Language.settingLg('yesOrNo', widget.param.lgs),
-                      textScaleFactor: MyClass.blocFontSizeApp(_fontsizeapps),
-                      style: CustomTextStyle.dataBoldBTxt(context, 0),
-                    )),
-                    lineSizedBox(context, -15),
-                    // _buttom()
                   ],
                 ),
               ),
@@ -254,36 +316,37 @@ class _TypeWelfareState extends State<TypeWelfare> {
               ),
               color: MyColor.color('datatitle'),
             ),
-            padding: const EdgeInsets.all(20),
+            padding: const EdgeInsets.all(16),
             child: Column(
               children: <Widget>[
-                Column(
-                  children: [
-                    const Text(
-                      '*ระยะเวลาขอรับ - ภายใน 60 วัน นับตั้งแต่วันประสบภัย',
-                      style: TextStyle(color: Color(0xFFFE820F)),
-                    ),
-                  ],
-                ),
-                Row(
-                  children: [
-                    Expanded(
-                      flex: 2,
-                      child: Text("กรอกข้อมูล",
-                          textScaleFactor:
-                              MyClass.blocFontSizeApp(_fontsizeapps),
-                          style: CustomTextStyle.dataHeadTitleCTxt(
-                              context, 3, 'Bl')),
-                    ),
-                    const Expanded(
-                        flex: 4,
-                        child: Divider(
-                          color: Colors.black,
-                          endIndent: 2,
-                          height: 5,
-                          thickness: 1,
-                        )),
-                  ],
+                showremark == true
+                    ? Padding(
+                        padding: const EdgeInsets.only(bottom: 8),
+                        child: _showremark(),
+                      )
+                    : SizedBox(),
+                Padding(
+                  padding: const EdgeInsets.only(bottom: 8),
+                  child: Row(
+                    children: [
+                      Expanded(
+                        flex: 2,
+                        child: Text("กรอกข้อมูล",
+                            textScaleFactor:
+                                MyClass.blocFontSizeApp(_fontsizeapps),
+                            style: CustomTextStyle.dataHeadTitleCTxt(
+                                context, 1, 'Bl')),
+                      ),
+                      const Expanded(
+                          flex: 4,
+                          child: Divider(
+                            color: Colors.black,
+                            endIndent: 2,
+                            height: 5,
+                            thickness: 1,
+                          )),
+                    ],
+                  ),
                 ),
                 Row(
                   children: [
@@ -301,11 +364,19 @@ class _TypeWelfareState extends State<TypeWelfare> {
                             color: const Color(0xFFF8F8F8),
                           ),
                           child: TextFormField(
+                            onTap: () {
+                              print("object");
+                            },
+                            // controller: txtDate,
                             readOnly: true,
-                            showCursor: false,
-                            decoration: InputDecoration(
-                                suffixIcon: Icon(Icons.close),
-                                hintText: "รูปภาพ หรือไฟล์ PDF..."),
+                            textAlign: TextAlign.start,
+                            style: CustomTextStyle.defaultpdpaTxt(context, 0),
+                            decoration: const InputDecoration(
+                              filled: true,
+                              suffixIcon: Icon(Icons.close),
+                              hintText: "รูปภาพ หรือไฟล์ PDF...",
+                              border: InputBorder.none,
+                            ),
                           )),
                     ),
                     Expanded(
@@ -326,22 +397,110 @@ class _TypeWelfareState extends State<TypeWelfare> {
                                     color: Colors.grey[700]))),
                       ),
                     ),
-                    FloatingActionButton(
-                      backgroundColor: Color(0xFFE7E7E7),
-                      onPressed: () {
-                        // ทำงานเมื่อปุ่มถูกคลิก
-                        // คุณสามารถเรียกฟังก์ชันหรือแสดงหน้าต่างเพื่อแนบไฟล์ที่นี่
-                      },
-                      child: Icon(Icons.file_upload_outlined,
-                          color: Colors.grey[700]),
-                    ),
+                    // Row(
+                    //   children: [
+                    //     FloatingActionButton.small(
+                    //       shape: RoundedRectangleBorder(
+                    //           borderRadius:
+                    //               BorderRadius.all(Radius.circular(15.0))),
+                    //       backgroundColor: Color(0xFFE7E7E7),
+                    //       onPressed: () {
+                    //         // ทำงานเมื่อปุ่มถูกคลิก
+                    //         // คุณสามารถเรียกฟังก์ชันหรือแสดงหน้าต่างเพื่อแนบไฟล์ที่นี่
+                    //       },
+                    //       child: Icon(Icons.file_upload_outlined,
+                    //           color: Colors.grey[700]),
+                    //     ),
+                    //   ],
+                    // ),
                   ],
                 ),
+                // SizedBox(
+                //   height: displayHeight(context) * 0.5,
+                // ),
+                SizedBox(
+                  height: 16,
+                ),
+                _buttomClick(),
               ],
             ),
           ),
         ],
       ),
     );
+  }
+
+  Widget _showremark() {
+    return SizedBox(
+      height: MediaQuery.of(context).size.height * 0.04,
+      width: MediaQuery.of(context).size.width * 1,
+      child: Container(
+        decoration: const BoxDecoration(
+          borderRadius: BorderRadius.all(
+            Radius.circular(6),
+          ),
+          color: Color(0xFFFFF0D9),
+        ),
+        child: Center(
+          child: Text('*ระยะเวลาขอรับ - ภายใน 60 วัน นับตั้งแต่วันประสบภัย',
+              style: CustomTextStyle.noteTxt(context, -3, 'note')),
+        ),
+      ),
+    );
+  }
+
+  Container _buttomClick() {
+    return Container(
+      width: displayWidth(context) * 0.4,
+      height: displayHeight(context) * 0.06,
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(25.0),
+        gradient: LinearGradient(
+          colors: <Color>[
+            MyColor.color('LineColor'),
+            MyColor.color('LineColor'),
+          ],
+        ),
+      ),
+      padding: const EdgeInsets.only(right: 5),
+      child: InkWell(
+        onTap: () {},
+        child: Center(
+          child: Text(
+            'ส่งข้อมูล',
+            textScaleFactor: MyClass.blocFontSizeApp(_fontsizeapps),
+            style: CustomTextStyle.loginBoldTxt(context, -8, 'w'),
+          ),
+        ),
+      ),
+    );
+  }
+
+  static showAlert(msg, context) {
+    Alert(
+      context: context,
+      // type: AlertType.warning,
+      style: AlertStyle(
+          titleStyle: CustomTextStyle.dataHeadTitleCTxt(context, 1, 'Bl'),
+          descStyle: CustomTextStyle.dataHeadTitleTxt(context, 2)),
+      title: "สวัสดิการที่ได้รับ",
+      desc: msg,
+      onWillPopActive: true,
+      closeIcon: const Padding(padding: EdgeInsets.symmetric(vertical: 10)),
+      buttons: [
+        DialogButton(
+          onPressed: () => {
+            Navigator.of(context, rootNavigator: true).pop(),
+          },
+          width: displayWidth(context) * 0.3,
+          color: MyColor.color('LineColor'),
+          radius: BorderRadius.all(Radius.circular(30)),
+          child: Text(
+            "รับทราบ",
+            style: CustomTextStyle.dataBoldTxt1(context, -5),
+          ),
+        ),
+      ],
+    ).show();
   }
 }

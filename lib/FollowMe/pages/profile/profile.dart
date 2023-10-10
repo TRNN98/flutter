@@ -2,15 +2,15 @@ import 'dart:async';
 import 'dart:io';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_exit_app/flutter_exit_app.dart';
-import 'package:udtscc/FollowMe/models/profile/info_model.dart';
-import 'package:udtscc/FollowMe/pages/auth/pins.dart';
-import 'package:udtscc/FollowMe/class/custom_ui.dart';
-import 'package:udtscc/FollowMe/class/language.dart';
-import 'package:udtscc/FollowMe/class/myclass.dart';
-import 'package:udtscc/FollowMe/class/mycolor.dart';
-import 'package:udtscc/FollowMe/class/sizes.dart';
-import 'package:udtscc/FollowMe/class/textstyle.dart';
-import 'package:udtscc/FollowMe/services/network.dart';
+import 'package:mwasc/FollowMe/models/profile/info_model.dart';
+import 'package:mwasc/FollowMe/pages/auth/pins.dart';
+import 'package:mwasc/FollowMe/class/custom_ui.dart';
+import 'package:mwasc/FollowMe/class/language.dart';
+import 'package:mwasc/FollowMe/class/myclass.dart';
+import 'package:mwasc/FollowMe/class/mycolor.dart';
+import 'package:mwasc/FollowMe/class/sizes.dart';
+import 'package:mwasc/FollowMe/class/textstyle.dart';
+import 'package:mwasc/FollowMe/services/network.dart';
 import 'package:flutter/material.dart';
 import 'package:image_cropper/image_cropper.dart';
 import 'package:image_picker/image_picker.dart';
@@ -196,7 +196,10 @@ class ProfileState extends State<Profile> {
                     Expanded(
                       flex: 3,
                       child: Padding(
-                        padding: const EdgeInsets.only(left: 15, right: 15),
+                        padding: EdgeInsets.only(
+                            left: 15,
+                            right: 15,
+                            bottom: displayHeight(context) * 0.06),
                         child: FutureBuilder<List<InfoModel>>(
                           future: Network.fetchInfo(
                               objInfo, widget.param.token, context),
@@ -345,9 +348,8 @@ class ProfileState extends State<Profile> {
 
   Widget _detail({info}) => Container(
         decoration: BoxDecoration(
-          borderRadius: const BorderRadius.only(
-              topLeft: Radius.circular(0.0), topRight: Radius.circular(0.0)),
-          color: MyColor.color('datatitle'),
+          borderRadius: const BorderRadius.all(Radius.circular(10)),
+          color: MyColor.color('SettingBackground'),
         ),
         child: Scrollbar(
           child: ListView.separated(
@@ -358,10 +360,6 @@ class ProfileState extends State<Profile> {
             itemBuilder: (BuildContext context, int index) {
               return Container(
                 padding: const EdgeInsets.all(8),
-                decoration: BoxDecoration(
-                    border: Border(
-                        left: BorderSide(
-                            color: MyColor.color('LineColor'), width: 4))),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   mainAxisSize: MainAxisSize.min,
@@ -369,7 +367,7 @@ class ProfileState extends State<Profile> {
                   children: <Widget>[
                     Expanded(
                       child: Padding(
-                        padding: const EdgeInsets.only(left: 10),
+                        padding: const EdgeInsets.only(left: 10, right: 10),
                         child: Column(
                           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                           mainAxisSize: MainAxisSize.min,
@@ -382,10 +380,11 @@ class ProfileState extends State<Profile> {
                                   child: Text(
                                     Language.profileLg(
                                         'member', widget.param.lgs),
+                                    textAlign: TextAlign.start,
                                     textScaleFactor: MyClass.blocFontSizeApp(
                                         widget.param.fontsizeapps),
-                                    style: CustomTextStyle.dataHTxt(
-                                        context, 0, 'Go'),
+                                    style:
+                                        CustomTextStyle.dataBoldTxt(context, 1),
                                   ),
                                 ),
                                 Expanded(
@@ -393,10 +392,11 @@ class ProfileState extends State<Profile> {
                                   child: Text(
                                     MyClass.checkNull(
                                         info[index].membershipNo.toString()),
+                                    textAlign: TextAlign.end,
                                     textScaleFactor: MyClass.blocFontSizeApp(
                                         widget.param.fontsizeapps),
-                                    style: CustomTextStyle.dataHTxt(
-                                        context, 0, 'Bl'),
+                                    style:
+                                        CustomTextStyle.dataW300Txt(context, 1),
                                   ),
                                 ),
                               ],
@@ -407,19 +407,20 @@ class ProfileState extends State<Profile> {
                                 Expanded(
                                   flex: 1,
                                   child: Text(
-                                    Language.profileLg(
-                                        'idCard', widget.param.lgs),
-                                    textScaleFactor: MyClass.blocFontSizeApp(
-                                        widget.param.fontsizeapps),
-                                    style: CustomTextStyle.dataHTxt(
-                                        context, 0, 'Go'),
-                                  ),
+                                      Language.profileLg(
+                                          'idCard', widget.param.lgs),
+                                      textAlign: TextAlign.start,
+                                      textScaleFactor: MyClass.blocFontSizeApp(
+                                          widget.param.fontsizeapps),
+                                      style: CustomTextStyle.dataBoldTxt(
+                                          context, 1)),
                                 ),
                                 Expanded(
                                   flex: 2,
                                   child: Text(
                                     MyClass.checkNull(
                                         info[index].idCard.toString()),
+                                    textAlign: TextAlign.end,
                                     textScaleFactor: MyClass.blocFontSizeApp(
                                         widget.param.fontsizeapps),
                                     style: CustomTextStyle.dataHTxt(
@@ -429,24 +430,25 @@ class ProfileState extends State<Profile> {
                               ],
                             ),
                             lineSizedBox(context, -15),
-                            Row(
+/*   Row(
                               children: [
                                 Expanded(
                                   flex: 1,
                                   child: Text(
-                                    Language.profileLg(
-                                        'position', widget.param.lgs),
-                                    textScaleFactor: MyClass.blocFontSizeApp(
-                                        widget.param.fontsizeapps),
-                                    style: CustomTextStyle.dataHTxt(
-                                        context, 0, 'Go'),
-                                  ),
+                                      Language.profileLg(
+                                          'position', widget.param.lgs),
+                                      textAlign: TextAlign.start,
+                                      textScaleFactor: MyClass.blocFontSizeApp(
+                                          widget.param.fontsizeapps),
+                                      style: CustomTextStyle.dataBoldTxt(
+                                          context, 1)),
                                 ),
                                 Expanded(
                                   flex: 2,
                                   child: Text(
                                     MyClass.checkNull(
                                         info[index].positionName.toString()),
+                                    textAlign: TextAlign.end,
                                     textScaleFactor: MyClass.blocFontSizeApp(
                                         widget.param.fontsizeapps),
                                     style: CustomTextStyle.dataHTxt(
@@ -455,25 +457,26 @@ class ProfileState extends State<Profile> {
                                 ),
                               ],
                             ),
-                            lineSizedBox(context, -15),
-                            Row(
+                            lineSizedBox(context, -15),*/
+                            /*   Row(
                               children: [
                                 Expanded(
                                   flex: 1,
                                   child: Text(
-                                    Language.profileLg(
-                                        'share_stock', widget.param.lgs),
-                                    textScaleFactor: MyClass.blocFontSizeApp(
-                                        widget.param.fontsizeapps),
-                                    style: CustomTextStyle.dataHTxt(
-                                        context, 0, 'Go'),
-                                  ),
+                                      Language.profileLg(
+                                          'share_stock', widget.param.lgs),
+                                      textAlign: TextAlign.start,
+                                      textScaleFactor: MyClass.blocFontSizeApp(
+                                          widget.param.fontsizeapps),
+                                      style: CustomTextStyle.dataBoldTxt(
+                                          context, 1)),
                                 ),
                                 Expanded(
                                   flex: 2,
                                   child: Text(
                                     MyClass.checkNull(
                                         info[index].shareStock.toString()),
+                                    textAlign: TextAlign.end,
                                     textScaleFactor: MyClass.blocFontSizeApp(
                                         widget.param.fontsizeapps),
                                     style: CustomTextStyle.dataHTxt(
@@ -482,26 +485,27 @@ class ProfileState extends State<Profile> {
                                 ),
                               ],
                             ),
-                            lineSizedBox(context, -15),
+                            lineSizedBox(context, -15),*/
                             Row(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 Expanded(
                                   flex: 1,
                                   child: Text(
-                                    Language.profileLg('member_group_prename',
-                                        widget.param.lgs),
-                                    textScaleFactor: MyClass.blocFontSizeApp(
-                                        widget.param.fontsizeapps),
-                                    style: CustomTextStyle.dataHTxt(
-                                        context, 0, 'Go'),
-                                  ),
+                                      Language.profileLg('member_group_prename',
+                                          widget.param.lgs),
+                                      textAlign: TextAlign.start,
+                                      textScaleFactor: MyClass.blocFontSizeApp(
+                                          widget.param.fontsizeapps),
+                                      style: CustomTextStyle.dataBoldTxt(
+                                          context, 1)),
                                 ),
                                 Expanded(
                                   flex: 2,
                                   child: Text(
                                     MyClass.checkNull(
                                         info[index].memberGroupName.toString()),
+                                    textAlign: TextAlign.end,
                                     textScaleFactor: MyClass.blocFontSizeApp(
                                         widget.param.fontsizeapps),
                                     style: CustomTextStyle.dataHTxt(
@@ -510,25 +514,26 @@ class ProfileState extends State<Profile> {
                                 ),
                               ],
                             ),
-                            lineSizedBox(context, -15),
+                            /*   lineSizedBox(context, -15),
                             Row(
                               children: [
                                 Expanded(
                                   flex: 1,
                                   child: Text(
-                                    Language.profileLg(
-                                        'salary', widget.param.lgs),
-                                    textScaleFactor: MyClass.blocFontSizeApp(
-                                        widget.param.fontsizeapps),
-                                    style: CustomTextStyle.dataHTxt(
-                                        context, 0, 'Go'),
-                                  ),
+                                      Language.profileLg(
+                                          'salary', widget.param.lgs),
+                                      textAlign: TextAlign.start,
+                                      textScaleFactor: MyClass.blocFontSizeApp(
+                                          widget.param.fontsizeapps),
+                                      style: CustomTextStyle.dataBoldTxt(
+                                          context, 1)),
                                 ),
                                 Expanded(
                                   flex: 2,
                                   child: Text(
                                     MyClass.checkNull(
                                         info[index].salaryAmount.toString()),
+                                    textAlign: TextAlign.end,
                                     textScaleFactor: MyClass.blocFontSizeApp(
                                         widget.param.fontsizeapps),
                                     style: CustomTextStyle.dataHTxt(
@@ -536,53 +541,55 @@ class ProfileState extends State<Profile> {
                                   ),
                                 ),
                               ],
-                            ),
+                            ), */
+                            // lineSizedBox(context, -15),
+                            // Row(
+                            //   children: [
+                            //     Expanded(
+                            //       flex: 1,
+                            //       child: Text(
+                            //           Language.profileLg(
+                            //               'mem_status', widget.param.lgs),
+                            //           textAlign: TextAlign.start,
+                            //           textScaleFactor: MyClass.blocFontSizeApp(
+                            //               widget.param.fontsizeapps),
+                            //           style: CustomTextStyle.dataBoldTxt(
+                            //               context, 1)),
+                            //     ),
+                            //     Expanded(
+                            //       flex: 2,
+                            //       child: Text(
+                            //         MyClass.checkNull(
+                            //             info[index].memTypeDesc.toString()),
+                            //         textAlign: TextAlign.end,
+                            //         textScaleFactor: MyClass.blocFontSizeApp(
+                            //             widget.param.fontsizeapps),
+                            //         style: CustomTextStyle.dataHTxt(
+                            //             context, 0, 'Bl'),
+                            //       ),
+                            //     ),
+                            //   ],
+                            // ),
                             lineSizedBox(context, -15),
                             Row(
                               children: [
                                 Expanded(
                                   flex: 1,
                                   child: Text(
-                                    Language.profileLg(
-                                        'mem_status', widget.param.lgs),
-                                    textScaleFactor: MyClass.blocFontSizeApp(
-                                        widget.param.fontsizeapps),
-                                    style: CustomTextStyle.dataHTxt(
-                                        context, 0, 'Go'),
-                                  ),
-                                ),
-                                Expanded(
-                                  flex: 2,
-                                  child: Text(
-                                    MyClass.checkNull(
-                                        info[index].memTypeDesc.toString()),
-                                    textScaleFactor: MyClass.blocFontSizeApp(
-                                        widget.param.fontsizeapps),
-                                    style: CustomTextStyle.dataHTxt(
-                                        context, 0, 'Bl'),
-                                  ),
-                                ),
-                              ],
-                            ),
-                            lineSizedBox(context, -15),
-                            Row(
-                              children: [
-                                Expanded(
-                                  flex: 1,
-                                  child: Text(
-                                    Language.profileLg(
-                                        'birthday', widget.param.lgs),
-                                    textScaleFactor: MyClass.blocFontSizeApp(
-                                        widget.param.fontsizeapps),
-                                    style: CustomTextStyle.dataHTxt(
-                                        context, 0, 'Go'),
-                                  ),
+                                      Language.profileLg(
+                                          'birthday', widget.param.lgs),
+                                      textAlign: TextAlign.start,
+                                      textScaleFactor: MyClass.blocFontSizeApp(
+                                          widget.param.fontsizeapps),
+                                      style: CustomTextStyle.dataBoldTxt(
+                                          context, 1)),
                                 ),
                                 Expanded(
                                   flex: 2,
                                   child: Text(
                                     MyClass.checkNull(
                                         info[index].dateOfBirth.toString()),
+                                    textAlign: TextAlign.end,
                                     textScaleFactor: MyClass.blocFontSizeApp(
                                         widget.param.fontsizeapps),
                                     style: CustomTextStyle.dataHTxt(
@@ -597,19 +604,20 @@ class ProfileState extends State<Profile> {
                                 Expanded(
                                   flex: 1,
                                   child: Text(
-                                    Language.profileLg(
-                                        'dateOfMembership', widget.param.lgs),
-                                    textScaleFactor: MyClass.blocFontSizeApp(
-                                        widget.param.fontsizeapps),
-                                    style: CustomTextStyle.dataHTxt(
-                                        context, 0, 'Go'),
-                                  ),
+                                      Language.profileLg(
+                                          'dateOfMembership', widget.param.lgs),
+                                      textAlign: TextAlign.start,
+                                      textScaleFactor: MyClass.blocFontSizeApp(
+                                          widget.param.fontsizeapps),
+                                      style: CustomTextStyle.dataBoldTxt(
+                                          context, 1)),
                                 ),
                                 Expanded(
                                   flex: 2,
                                   child: Text(
                                     MyClass.checkNull(
                                         info[index].dateOfApprove.toString()),
+                                    textAlign: TextAlign.end,
                                     textScaleFactor: MyClass.blocFontSizeApp(
                                         widget.param.fontsizeapps),
                                     style: CustomTextStyle.dataHTxt(
@@ -625,19 +633,20 @@ class ProfileState extends State<Profile> {
                                 Expanded(
                                   flex: 1,
                                   child: Text(
-                                    Language.profileLg(
-                                        'address', widget.param.lgs),
-                                    textScaleFactor: MyClass.blocFontSizeApp(
-                                        widget.param.fontsizeapps),
-                                    style: CustomTextStyle.dataHTxt(
-                                        context, 0, 'Go'),
-                                  ),
+                                      Language.profileLg(
+                                          'address', widget.param.lgs),
+                                      textAlign: TextAlign.start,
+                                      textScaleFactor: MyClass.blocFontSizeApp(
+                                          widget.param.fontsizeapps),
+                                      style: CustomTextStyle.dataBoldTxt(
+                                          context, 1)),
                                 ),
                                 Expanded(
                                   flex: 2,
                                   child: Text(
                                     MyClass.checkNull(
                                         info[index].address.toString()),
+                                    textAlign: TextAlign.end,
                                     textScaleFactor: MyClass.blocFontSizeApp(
                                         widget.param.fontsizeapps),
                                     style: CustomTextStyle.dataHTxt(
@@ -652,13 +661,13 @@ class ProfileState extends State<Profile> {
                                 Expanded(
                                   flex: 1,
                                   child: Text(
-                                    Language.profileLg(
-                                        'phone', widget.param.lgs),
-                                    textScaleFactor: MyClass.blocFontSizeApp(
-                                        widget.param.fontsizeapps),
-                                    style: CustomTextStyle.dataHTxt(
-                                        context, 0, 'Go'),
-                                  ),
+                                      Language.profileLg(
+                                          'phone', widget.param.lgs),
+                                      textAlign: TextAlign.start,
+                                      textScaleFactor: MyClass.blocFontSizeApp(
+                                          widget.param.fontsizeapps),
+                                      style: CustomTextStyle.dataBoldTxt(
+                                          context, 1)),
                                 ),
                                 Expanded(
                                   flex: 2,
@@ -666,6 +675,7 @@ class ProfileState extends State<Profile> {
                                     MyClass.checkNull(info[index]
                                         .presentTelephone
                                         .toString()),
+                                    textAlign: TextAlign.end,
                                     textScaleFactor: MyClass.blocFontSizeApp(
                                         widget.param.fontsizeapps),
                                     style: CustomTextStyle.dataHTxt(

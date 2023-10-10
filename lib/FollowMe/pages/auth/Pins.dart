@@ -4,24 +4,24 @@ import 'dart:io' show Platform;
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_udid/flutter_udid.dart';
 import 'package:rflutter_alert/rflutter_alert.dart';
-import 'package:udtscc/FollowMe/class/custom_ui.dart';
-import 'package:udtscc/FollowMe/pages/auth/login.dart';
-import 'package:udtscc/FollowMe/class/language.dart';
-import 'package:udtscc/FollowMe/class/myclass.dart';
-import 'package:udtscc/FollowMe/class/mycolor.dart';
-import 'package:udtscc/FollowMe/class/sizes.dart';
-import 'package:udtscc/FollowMe/class/textstyle.dart';
-import 'package:udtscc/FollowMe/locals/db_font_size.dart';
-import 'package:udtscc/FollowMe/locals/db_pin.dart';
-import 'package:udtscc/FollowMe/locals/db_tf.dart';
-import 'package:udtscc/FollowMe/locals/db_user.dart';
-import 'package:udtscc/root/tabs.dart';
-import 'package:udtscc/FollowMe/models/sql/font_size_db.dart';
-import 'package:udtscc/FollowMe/models/sql/lg_db.dart';
-import 'package:udtscc/FollowMe/models/sql/pin_db.dart';
-import 'package:udtscc/FollowMe/models/sql/tf_db.dart';
-import 'package:udtscc/FollowMe/models/sql/user_db.dart';
-import 'package:udtscc/FollowMe/services/network.dart';
+import 'package:mwasc/FollowMe/class/custom_ui.dart';
+import 'package:mwasc/FollowMe/pages/auth/login.dart';
+import 'package:mwasc/FollowMe/class/language.dart';
+import 'package:mwasc/FollowMe/class/myclass.dart';
+import 'package:mwasc/FollowMe/class/mycolor.dart';
+import 'package:mwasc/FollowMe/class/sizes.dart';
+import 'package:mwasc/FollowMe/class/textstyle.dart';
+import 'package:mwasc/FollowMe/locals/db_font_size.dart';
+import 'package:mwasc/FollowMe/locals/db_pin.dart';
+import 'package:mwasc/FollowMe/locals/db_tf.dart';
+import 'package:mwasc/FollowMe/locals/db_user.dart';
+import 'package:mwasc/root/tabs.dart';
+import 'package:mwasc/FollowMe/models/sql/font_size_db.dart';
+import 'package:mwasc/FollowMe/models/sql/lg_db.dart';
+import 'package:mwasc/FollowMe/models/sql/pin_db.dart';
+import 'package:mwasc/FollowMe/models/sql/tf_db.dart';
+import 'package:mwasc/FollowMe/models/sql/user_db.dart';
+import 'package:mwasc/FollowMe/services/network.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:local_auth/local_auth.dart';
@@ -185,13 +185,13 @@ class PinsState extends State<Pins> {
           onPressed: () => {Navigator.pop(context), _resetall()},
           gradient: LinearGradient(
             colors: <Color>[
-              MyColor.color('buttongra'),
-              MyColor.color('buttongra1'),
+              MyColor.color('bl1'),
+              MyColor.color('bl3'),
             ],
           ),
           child: Text(
             "ปิด",
-            style: CustomTextStyle.dataBoldTxt1(context, -5),
+            style: CustomTextStyle.loginBoldTxt(context, -8, 'TxtBl'),
           ),
         ),
       ],
@@ -219,22 +219,22 @@ class PinsState extends State<Pins> {
   //   }
   // }
 
-  _oneSignal(user) async {
-    await OneSignal.shared.setLogLevel(OSLogLevel.verbose, OSLogLevel.none);
-    await OneSignal.shared.setAppId("533b8306-e6d8-4818-9914-d2562cc0cd75");
-    // await OneSignal.shared
-    //     .promptUserForPushNotificationPermission(fallbackToSettings: true);
-    await OneSignal.shared
-        .promptUserForPushNotificationPermission()
-        .then((accepted) {
-      // MyClass.showToast(accepted);
-    });
-    await OneSignal.shared.sendTag('membership_no', user);
-    //
-    // OneSignal.shared.setInAppMessageClickedHandler((OSInAppMessageAction action) {
-    //   MyClass.showToast(action);
-    // });
-  }
+  // _oneSignal(user) async {
+  //   await OneSignal.shared.setLogLevel(OSLogLevel.verbose, OSLogLevel.none);
+  //   await OneSignal.shared.setAppId("533b8306-e6d8-4818-9914-d2562cc0cd75");
+  //   // await OneSignal.shared
+  //   //     .promptUserForPushNotificationPermission(fallbackToSettings: true);
+  //   await OneSignal.shared
+  //       .promptUserForPushNotificationPermission()
+  //       .then((accepted) {
+  //     // MyClass.showToast(accepted);
+  //   });
+  //   await OneSignal.shared.sendTag('membership_no', user);
+  //   //
+  //   // OneSignal.shared.setInAppMessageClickedHandler((OSInAppMessageAction action) {
+  //   //   MyClass.showToast(action);
+  //   // });
+  // }
 
   @override
   void initState() {
@@ -735,12 +735,12 @@ class PinsState extends State<Pins> {
           descStyle: CustomTextStyle.dataHeadTitleTxt(context, 2),
           titleStyle: CustomTextStyle.dataHeadTitleTxt(context, 6),
           alertBorder: const RoundedRectangleBorder(
-            borderRadius: BorderRadius.all(Radius.circular(35)),
+            borderRadius: BorderRadius.all(Radius.circular(30)),
           ),
         ),
         title: "คำเตือน",
         desc:
-            "หากกรอก Pin ผิดเกิน 3 ครั้ง\nระบบจะทำการล็อคจากแอปพลิเคชั่น\nเป็นเวลา 24 ชม.\nหากจำรหัส Pin ไม่ได้ กดปุ่มลืม Pin",
+            "หากกรอก PIN ผิดเกิน 3 ครั้ง\nระบบจะทำการล็อคจากแอปพลิเคชั่น\nเป็นเวลา 24 ชม.\nหากจำรหัส PIN ไม่ได้ กดปุ่มลืม PIN",
         onWillPopActive: true,
         buttons: [
           DialogButton(
@@ -749,13 +749,13 @@ class PinsState extends State<Pins> {
             onPressed: () => {Navigator.pop(context)},
             gradient: LinearGradient(
               colors: <Color>[
-                MyColor.color('buttongra'),
-                MyColor.color('buttongra1'),
+                MyColor.color('bl1'),
+                MyColor.color('bl3'),
               ],
             ),
             child: Text(
               "ยืนยัน",
-              style: CustomTextStyle.dataBoldTxt1(context, -5),
+              style: CustomTextStyle.loginBoldTxt(context, -8, 'TxtBl'),
             ),
           ),
         ],
@@ -832,7 +832,7 @@ class PinsState extends State<Pins> {
                             .then((val) => {
                                   _getToken(
                                       value[0]['access_token'],
-                                      val[0]['member_full_name'],
+                                      val[0]['name'],
                                       MyClass.genmember(user).toString(),
                                       t),
                                 }),
@@ -853,7 +853,7 @@ class PinsState extends State<Pins> {
         ''.toString(),
         ''.toString());
     Navigator.of(context, rootNavigator: true).pop('AlertDialog');
-    _oneSignal(user.toString());
+    // _oneSignal(user.toString());
     Navigator.pushAndRemoveUntil(
         context,
         MaterialPageRoute(builder: (BuildContext context) => Tabs(param)),

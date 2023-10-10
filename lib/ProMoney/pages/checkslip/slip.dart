@@ -1,14 +1,14 @@
 import 'dart:io';
 
-import 'package:udtscc/FollowMe/class/myclass.dart';
-import 'package:udtscc/FollowMe/class/sizes.dart';
-import 'package:udtscc/FollowMe/pages/auth/pins.dart';
-import 'package:udtscc/promoney/class/languagepro.dart';
-import 'package:udtscc/promoney/class/myclasspro.dart';
-import 'package:udtscc/promoney/class/mycolorpro.dart';
-import 'package:udtscc/promoney/class/textstylepro.dart';
-import 'package:udtscc/promoney/pages/promoney.dart';
-import 'package:udtscc/root/tabs.dart';
+import 'package:mwasc/FollowMe/class/myclass.dart';
+import 'package:mwasc/FollowMe/class/sizes.dart';
+import 'package:mwasc/FollowMe/pages/auth/pins.dart';
+import 'package:mwasc/promoney/class/languagepro.dart';
+import 'package:mwasc/promoney/class/myclasspro.dart';
+import 'package:mwasc/promoney/class/mycolorpro.dart';
+import 'package:mwasc/promoney/class/textstylepro.dart';
+import 'package:mwasc/promoney/pages/promoney.dart';
+import 'package:mwasc/root/tabs.dart';
 import 'package:flutter/material.dart';
 import 'package:image_gallery_saver/image_gallery_saver.dart';
 import 'package:path_provider/path_provider.dart';

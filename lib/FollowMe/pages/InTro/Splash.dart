@@ -1,15 +1,15 @@
 import 'dart:io';
 
 import 'package:flutter/cupertino.dart';
-import 'package:udtscc/FollowMe/class/language.dart';
-import 'package:udtscc/FollowMe/class/textstyle.dart';
-import 'package:udtscc/FollowMe/pages/intro/intro_screen.dart';
-import 'package:udtscc/FollowMe/pages/auth/pins.dart';
-import 'package:udtscc/FollowMe/class/myclass.dart';
-import 'package:udtscc/FollowMe/locals/db_pin.dart';
-import 'package:udtscc/FollowMe/models/sql/pin_db.dart';
+import 'package:mwasc/FollowMe/class/language.dart';
+import 'package:mwasc/FollowMe/class/textstyle.dart';
+import 'package:mwasc/FollowMe/pages/intro/intro_screen.dart';
+import 'package:mwasc/FollowMe/pages/auth/pins.dart';
+import 'package:mwasc/FollowMe/class/myclass.dart';
+import 'package:mwasc/FollowMe/locals/db_pin.dart';
+import 'package:mwasc/FollowMe/models/sql/pin_db.dart';
 import 'package:flutter/material.dart';
-import 'package:udtscc/FollowMe/services/network.dart';
+import 'package:mwasc/FollowMe/services/network.dart';
 import 'package:url_launcher/url_launcher_string.dart';
 
 class Splash extends StatefulWidget {
