@@ -107,6 +107,37 @@ class LoanDetailState extends State<LoanDetail> {
                         ),
                         lineSizedBox(context, -25),
                         Row(
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: <Widget>[
+                            Expanded(
+                              flex: 3,
+                              child: Container(
+                                  alignment: Alignment.bottomLeft,
+                                  child: Text(
+                                      Language.loanLg('collateralDescription',
+                                          widget.param.lgs),
+                                      textAlign: TextAlign.start,
+                                      textScaleFactor: MyClass.blocFontSizeApp(
+                                          _fontsizeapps),
+                                      style: CustomTextStyle.dataBoldTxt(
+                                          context, 1))),
+                            ),
+                            Expanded(
+                              flex: 4,
+                              child: Text(
+                                  MyClass.checkNull(jsonDecode(widget.data)[0]
+                                      ['loan_type_description']),
+                                  textAlign: TextAlign.end,
+                                  textScaleFactor:
+                                      MyClass.blocFontSizeApp(_fontsizeapps),
+                                  style:
+                                      CustomTextStyle.dataW300Txt(context, 1)),
+                            ),
+                          ],
+                        ),
+                        lineSizedBox(context, -25),
+                        Row(
                           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                           children: <Widget>[
                             Expanded(
@@ -308,7 +339,7 @@ class LoanDetailState extends State<LoanDetail> {
                     ),
                   ),
                   SizedBox(
-                    height: displayHeight(context) * 0.125,
+                    height: displayHeight(context) * 0.09,
                   ),
                   _buttomClick(),
                   SizedBox(

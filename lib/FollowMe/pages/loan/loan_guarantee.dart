@@ -107,49 +107,32 @@ class LoanGuaranteeState extends State<LoanGuarantee> {
           itemBuilder: (BuildContext context, int index) {
             return InkWell(
               onTap: () {},
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                mainAxisSize: MainAxisSize.min,
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: <Widget>[
-                  Expanded(
-                    flex: 2,
-                    child: Padding(
-                      padding: const EdgeInsets.only(left: 10),
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                        mainAxisSize: MainAxisSize.min,
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: <Widget>[
-                          Text(
-                            MyClass.checkNull(loanGuarantee[index].name),
-                            textAlign: TextAlign.left,
-                            textScaleFactor:
-                                MyClass.blocFontSizeApp(_fontsizeapps),
-                            style: CustomTextStyle.dataBoldBTxt(context, -2),
-                          ),
-                        ],
+              child: Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: <Widget>[
+                    Expanded(
+                      flex: 2,
+                      child: Text(
+                        MyClass.checkNull(loanGuarantee[index].refOwnName),
+                        textAlign: TextAlign.left,
+                        textScaleFactor: MyClass.blocFontSizeApp(_fontsizeapps),
+                        style: CustomTextStyle.dataBoldBTxt(context, -2),
                       ),
                     ),
-                  ),
-                  Expanded(
-                    flex: 1,
-                    child: Padding(
-                      padding: const EdgeInsets.only(right: 15),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.end,
-                        children: <Widget>[
-                          Text(
-                            loanGuarantee[index].collateralDescription,
-                            textScaleFactor:
-                                MyClass.blocFontSizeApp(_fontsizeapps),
-                            style: CustomTextStyle.dataHTxt(context, 0, 'BlH'),
-                          ),
-                        ],
+                    Expanded(
+                      flex: 1,
+                      child: Text(
+                        loanGuarantee[index].usedAmount,
+                        textAlign: TextAlign.end,
+                        textScaleFactor: MyClass.blocFontSizeApp(_fontsizeapps),
+                        style: CustomTextStyle.dataHTxt(context, 0, 'BlH'),
                       ),
                     ),
-                  ),
-                ],
+                  ],
+                ),
               ),
             );
           },
@@ -300,7 +283,7 @@ Container _head(context, lgs) {
         ),
         Expanded(
           flex: 1,
-          child: Text(Language.loanLg('collateralDescription', lgs),
+          child: Text(Language.loanLg('loanApprove', lgs),
               textAlign: TextAlign.end,
               textScaleFactor: MyClass.blocFontSizeApp(_fontsizeapps),
               style: CustomTextStyle.dataHeadTitleCTxt(context, -1, 'TxtBlue')),

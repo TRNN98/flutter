@@ -227,6 +227,10 @@ class Language {
     if (m == 'collateralDescription') {
       return l == 'en' ? "Collateral Description" : "ประเภทหลักประกัน";
     }
+
+    if (m == 'loanApprove') {
+      return l == 'en' ? "LoanApprove" : "วงเงินค้ำประกัน";
+    }
   }
 
   static deposit(m, l) {
