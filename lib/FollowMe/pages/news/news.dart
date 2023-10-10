@@ -147,12 +147,12 @@ class NewsState extends State<News> {
   _getnew({news1}) => Container(
         decoration: BoxDecoration(
           border: Border(
-              left: BorderSide(color: MyColor.color('LineColor'), width: 4)),
-          color: MyColor.color('datatitle'),
+              left: BorderSide(color: MyColor.color('LineColor'), width: 8)),
+          color: MyColor.color('SettingBackground'),
         ),
         child: Scrollbar(
           child: ListView.separated(
-            padding: const EdgeInsets.only(bottom: 25),
+            padding: const EdgeInsets.only(top: 5, bottom: 5),
             separatorBuilder: (context, index) => Divider(
               color: MyColor.color('linelist'),
             ),
@@ -172,7 +172,7 @@ class NewsState extends State<News> {
                   children: [
                     Container(
                       padding:
-                          const EdgeInsets.only(top: 15, left: 20, bottom: 5),
+                          const EdgeInsets.only(top: 5, left: 10, bottom: 5),
                       child: Row(
                         children: [
                           FadeInImage.memoryNetwork(
@@ -182,27 +182,27 @@ class NewsState extends State<News> {
                               placeholder: list,
                               image:
                                   '${MyClass.hostApp()}${news1[index].nphoto}'),
-                          const Text('      '),
+                          const Text('   '),
                           Expanded(
                             flex: 5,
                             child: Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 Text(
-                                  news1[index].date,
+                                  news1[index].title,
                                   textScaleFactor: MyClass.blocFontSizeApp(
                                       widget.param.fontsizeapps),
                                   style: CustomTextStyle.dataHTxt(
-                                      context, 1, 'TxtBlue'),
+                                      context, 3, 'TxtBlue'),
                                 ),
                                 Text(
-                                  news1[index].question,
+                                  news1[index].question2,
                                   overflow: TextOverflow.ellipsis,
                                   maxLines: 1,
                                   textScaleFactor: MyClass.blocFontSizeApp(
                                       widget.param.fontsizeapps),
                                   style: CustomTextStyle.dataHTxt(
-                                      context, 0, 'TxtBlue'),
+                                      context, 2, 'TxtBlue'),
                                 ),
                               ],
                             ),

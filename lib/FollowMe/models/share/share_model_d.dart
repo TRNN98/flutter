@@ -16,7 +16,7 @@ class ShareModelD {
   }
 
   String? operateDate;
-  int? shareValue;
+  String? shareValue;
   String? itemTypeDescription;
   int? period;
   String? shareStock;

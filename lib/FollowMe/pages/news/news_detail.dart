@@ -60,119 +60,114 @@ class NewsDetailState extends State<NewsDetail> {
     );
   }
 
-  Widget _detail() => Container(
-        decoration: BoxDecoration(
-          borderRadius: const BorderRadius.only(
-              topLeft: Radius.circular(0.0), topRight: Radius.circular(0.0)),
-          color: MyColor.color('datatitle'),
-        ),
-        child: Scrollbar(
-          child: ListView.separated(
-            padding: const EdgeInsets.only(top: 0),
-            separatorBuilder: (context, index) => Divider(
-              color: MyColor.color('linelist'),
-            ),
-            itemCount: 1,
-            itemBuilder: (BuildContext context, int index) {
-              // print(div[index]);
-              return Container(
+  Widget _detail() => Scrollbar(
+        child: ListView.separated(
+          padding: const EdgeInsets.only(top: 0),
+          separatorBuilder: (context, index) => Divider(
+            color: MyColor.color('linelist'),
+          ),
+          itemCount: 1,
+          itemBuilder: (BuildContext context, int index) {
+            return Container(
+              padding: EdgeInsets.only(
+                  left: paddinglist(context, -5),
+                  right: paddinglist(context, -5)),
+              child: Container(
                 decoration: BoxDecoration(
                   border: Border(
                       left: BorderSide(
-                          color: MyColor.color('LineColor'), width: 4)),
+                          color: MyColor.color('LineColor'), width: 8)),
+                  color: MyColor.color('SettingBackground'),
                 ),
-                padding: EdgeInsets.only(
-                    left: paddinglist(context, 0),
-                    right: paddinglist(context, 0)),
-                child: Container(
-                  decoration: BoxDecoration(
-                    color: MyColor.color('datatitle'),
-                  ),
-                  child: Column(
-                    children: [
-                      Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: Text(
-                          widget.newdata.question.toString(),
-                          textScaleFactor:
-                              MyClass.blocFontSizeApp(_fontsizeapps),
-                          style: CustomTextStyle.dataHTxt(context, 5, 'TxtBl'),
-                        ),
+                child: Column(
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Text(
+                        widget.newdata.question2.toString(),
+                        textAlign: TextAlign.center,
+                        textScaleFactor: MyClass.blocFontSizeApp(_fontsizeapps),
+                        style: CustomTextStyle.dataHeadTitleCTxt(
+                            context, 3, 'TxtBl'),
                       ),
-                      Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: GestureDetector(
-                          child: Image.network(
-                            '${MyClass.hostApp()}${widget.newdata.nphoto.toString()}',
-                            height: displayHeight(context) * 0.2,
-                            width: displayWidth(context) * 1,
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: GestureDetector(
+                        child: Image.network(
+                          '${MyClass.hostApp()}${widget.newdata.nphoto.toString()}',
+                          height: displayHeight(context) * 0.2,
+                          width: displayWidth(context) * 1,
+                        ),
+                        onTap: () {
+                          Navigator.push(context,
+                              MaterialPageRoute(builder: (_) {
+                            return DetailScreen(
+                              url:
+                                  '${MyClass.hostApp()}${widget.newdata.nphoto}',
+                            );
+                          }));
+                        },
+                      ),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.all(8),
+                      child: HtmlWidget(
+                        '''${widget.newdata.note}''',
+                        textStyle: CustomTextStyle.defaultTxt(context, -2),
+                        customStylesBuilder: (element) {
+                          if (element.classes.contains('')) {
+                            return {'color': 'red'};
+                          }
+                          return null;
+                        },
+                      ),
+                    ),
+                    widget.newdata.ndata != null
+                        ? widget.newdata.ndata != ''
+                            ? _checkloadfile()
+                            : const Padding(
+                                padding: EdgeInsets.all(8),
+                              )
+                        : const Padding(
+                            padding: EdgeInsets.all(8),
                           ),
-                          onTap: () {
-                            Navigator.push(context,
-                                MaterialPageRoute(builder: (_) {
-                              return DetailScreen(
-                                url:
-                                    '${MyClass.hostApp()}${widget.newdata.nphoto}',
-                              );
-                            }));
-                          },
-                        ),
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.all(8),
-                        child: HtmlWidget(
-                          '''${widget.newdata.note}''',
-                          textStyle: CustomTextStyle.defaultTxt(context, -2),
-                          customStylesBuilder: (element) {
-                            if (element.classes.contains('')) {
-                              return {'color': 'red'};
-                            }
-                            return null;
-                          },
-                        ),
-                      ),
-                      widget.newdata.ndata != null
-                          ? widget.newdata.ndata != ''
-                              ? _checkloadfile()
-                              : const Padding(
-                                  padding: EdgeInsets.all(8),
-                                )
-                          : const Padding(
-                              padding: EdgeInsets.all(8),
-                            ),
-                    ],
-                  ),
+                  ],
                 ),
-              );
-            },
-          ),
+              ),
+            );
+          },
         ),
       );
 
   Padding _checkloadfile() {
     return Padding(
-      padding: const EdgeInsets.all(8.0),
+      padding: const EdgeInsets.all(15.0),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           GestureDetector(
-            onTap: () => {_launchURL(widget.newdata.ndata.toString())},
+            onTap: () => {
+              _launchURL(
+                  '${MyClass.hostApp()}' + widget.newdata.ndata.toString()),
+            },
             child: Container(
               padding: const EdgeInsets.all(10.0),
               decoration: BoxDecoration(
-                border: Border.all(width: 1.5, color: Colors.blue),
+                color: Colors.white,
+                border: Border.all(width: 1.5, color: Colors.black),
                 borderRadius: BorderRadius.circular(10.0),
               ),
               child: Row(
                 children: [
-                  Icon(
+                  const Icon(
                     Icons.file_download,
-                    color: Colors.red[500],
+                    color: Colors.black,
                   ),
                   Text(
                     Language.newsLg('load', widget.param.lgs),
                     textScaleFactor: MyClass.blocFontSizeApp(_fontsizeapps),
-                    style: CustomTextStyle.settingTxt(context, -10),
+                    style: CustomTextStyle.defaultTxt(context, 1),
                   ),
                 ],
               ),
